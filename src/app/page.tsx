@@ -17,8 +17,6 @@ export default function Home() {
         <p className="text-foreground/60 max-w-md mx-auto mt-6">
           Welcome to the Aura Wellness Ecosystem Prototype. Select a portal to begin.
         </p>
-      </div>
-
       <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-lg">
         <Link 
           href="/patient"
