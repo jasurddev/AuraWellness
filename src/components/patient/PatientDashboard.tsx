@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Circle, Clock, Calendar, ChevronRight, Activity, Leaf, Droplets, MapPin, X } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Circle, Clock, Calendar, ChevronRight, ChevronDown, Activity, Leaf, Droplets, MapPin, X } from 'lucide-react';
 import { MOCK_PRESCRIPTIONS, MOCK_JOURNEY } from '@/lib/mockData';
 
 export function PatientDashboard({ onBack }: { onBack: () => void }) {
   const [prescriptions, setPrescriptions] = useState(MOCK_PRESCRIPTIONS);
   const [selectedRx, setSelectedRx] = useState<any>(null);
   const [selectedJourney, setSelectedJourney] = useState<any>(null);
+  const [showRoutine, setShowRoutine] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
 
   const togglePrescription = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -88,7 +90,7 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
             </div>
             <div className="flex items-center justify-between pt-4 border-t border-white/10 relative z-10">
               <div className="flex items-center gap-2.5">
-                <img src="https://images.unsplash.com/photo-1594824436998-d14c2db4c0c4?auto=format&fit=crop&q=80&w=100&h=100" alt="Dr. Sarah" className="w-7 h-7 rounded-full object-cover border border-white/20" />
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=100&h=100" alt="Dr. Sarah" className="w-7 h-7 rounded-full object-cover border border-white/20" />
                 <span className="text-xs text-white/80">Dr. Sarah Lee</span>
               </div>
               <div className="flex items-center gap-1 text-[10px] font-medium text-gold uppercase tracking-wider">
@@ -100,82 +102,116 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
 
         {/* E-Prescription Routine */}
         <div className="mb-10">
-          <h3 className="text-lg font-serif text-primary mb-4 flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-accent" /> Daily Routine
-          </h3>
+          <button 
+            onClick={() => setShowRoutine(!showRoutine)}
+            className="w-full flex items-center justify-between text-left mb-4 group"
+          >
+            <h3 className="text-lg font-serif text-primary flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-accent" /> Daily Routine
+            </h3>
+            <ChevronDown className={`w-5 h-5 text-border transition-transform duration-300 ${showRoutine ? 'rotate-180' : ''}`} />
+          </button>
           
-          <div className="space-y-4">
-            {/* Morning */}
-            <div className="glass-panel p-4 rounded-2xl">
-              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Morning Care</h4>
-              <div className="space-y-3">
-                {morningRx.map(rx => (
-                  <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
-                        {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
-                      </div>
-                      <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
-                        {rx.title}
-                      </span>
+          <AnimatePresence>
+            {showRoutine && (
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="space-y-4 pb-2">
+                  {/* Morning */}
+                  <div className="glass-panel p-4 rounded-2xl">
+                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Morning Care</h4>
+                    <div className="space-y-3">
+                      {morningRx.map(rx => (
+                        <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
+                          <div className="flex items-center gap-3">
+                            <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
+                              {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                            </div>
+                            <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
+                              {rx.title}
+                            </span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
+                        </div>
+                      ))}
                     </div>
-                    <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Night */}
-            <div className="glass-panel p-4 rounded-2xl">
-              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Night Care</h4>
-              <div className="space-y-3">
-                {nightRx.map(rx => (
-                  <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
-                        {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
-                      </div>
-                      <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
-                        {rx.title}
-                      </span>
+                  {/* Night */}
+                  <div className="glass-panel p-4 rounded-2xl">
+                    <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Night Care</h4>
+                    <div className="space-y-3">
+                      {nightRx.map(rx => (
+                        <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
+                          <div className="flex items-center gap-3">
+                            <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
+                              {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                            </div>
+                            <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
+                              {rx.title}
+                            </span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
+                        </div>
+                      ))}
                     </div>
-                    <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Journey Timeline */}
-        <div>
-          <h3 className="text-lg font-serif text-primary mb-4 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-accent" /> Timeline
-          </h3>
+        <div className="mb-8">
+          <button 
+            onClick={() => setShowTimeline(!showTimeline)}
+            className="w-full flex items-center justify-between text-left mb-4 group"
+          >
+            <h3 className="text-lg font-serif text-primary flex items-center gap-2">
+              <Clock className="w-5 h-5 text-accent" /> Timeline
+            </h3>
+            <ChevronDown className={`w-5 h-5 text-border transition-transform duration-300 ${showTimeline ? 'rotate-180' : ''}`} />
+          </button>
           
-          <div className="relative border-l-2 border-border/50 ml-3 space-y-6">
-            {MOCK_JOURNEY.map((item, idx) => (
-              <div key={idx} className="relative pl-6">
-                <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-accent" />
-                <div className="text-xs text-muted-foreground font-medium mb-1 flex items-center gap-1">
-                  <Calendar className="w-3 h-3" /> {item.date}
+          <AnimatePresence>
+            {showTimeline && (
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="relative border-l-2 border-border/50 ml-3 space-y-6 pt-2 pb-4">
+                  {MOCK_JOURNEY.map((item, idx) => (
+                    <div key={idx} className="relative pl-6">
+                      <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-accent" />
+                      <div className="text-xs text-muted-foreground font-medium mb-1 flex items-center gap-1">
+                        <Calendar className="w-3 h-3" /> {item.date}
+                      </div>
+                      <div 
+                        onClick={() => setSelectedJourney(item)}
+                        className="bg-white p-3 rounded-xl border border-border/40 shadow-sm cursor-pointer hover:border-primary/30 hover:shadow-md transition-all group flex justify-between items-center"
+                      >
+                        <div>
+                          <h4 className="text-sm font-medium text-primary group-hover:text-accent transition-colors">{item.title}</h4>
+                          <p className="text-[10px] text-muted-foreground capitalize mt-1 flex items-center gap-1">
+                            {item.type === 'treatment' ? <Leaf className="w-3 h-3" /> : <Activity className="w-3 h-3" />}
+                            {item.type} Completed
+                          </p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-border group-hover:text-accent transition-colors" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div 
-                  onClick={() => setSelectedJourney(item)}
-                  className="bg-white p-3 rounded-xl border border-border/40 shadow-sm cursor-pointer hover:border-primary/30 hover:shadow-md transition-all group flex justify-between items-center"
-                >
-                  <div>
-                    <h4 className="text-sm font-medium text-primary group-hover:text-accent transition-colors">{item.title}</h4>
-                    <p className="text-[10px] text-muted-foreground capitalize mt-1 flex items-center gap-1">
-                      {item.type === 'treatment' ? <Leaf className="w-3 h-3" /> : <Activity className="w-3 h-3" />}
-                      {item.type} Completed
-                    </p>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-border group-hover:text-accent transition-colors" />
-                </div>
-              </div>
-            ))}
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
       </div>
