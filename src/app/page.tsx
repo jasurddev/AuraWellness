@@ -75,6 +75,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 2.5 Live Metrics & Grand Reveal */}
+      <section className="pt-10 pb-32 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Live Metrics */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-24 border-y border-slate-200 py-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-50 to-transparent opacity-50 -z-10"></div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center text-center"
+            >
+              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">Rp 50B<span className="text-yellow-500">+</span></span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Payments Processed</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col items-center text-center"
+            >
+              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">1.2M<span className="text-yellow-500">+</span></span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">AI Skin Scans</span>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col items-center text-center"
+            >
+              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">99.9<span className="text-yellow-500">%</span></span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Uptime & Reliability</span>
+            </motion.div>
+          </div>
+
+          {/* Grand Reveal Image */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200/60 bg-white"
+          >
+             <Image 
+                src="/images/hero-dashboard.png" 
+                alt="AuraOS Dashboard Interface" 
+                width={1600} 
+                height={900} 
+                className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-1000" 
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 3. Refined Features Showcase */}
       <section id="features" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
