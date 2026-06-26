@@ -26,11 +26,11 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-0 relative flex items-center justify-center shrink-0"
         >
-          <div className="h-10 flex items-center justify-center">
+          <div className="h-20 flex items-center justify-center">
             <img 
               src="/logo.png" 
               alt="Aura Wellness by Studio Satu Akun" 
-              className="h-full w-auto object-contain"
+              className="h-full w-auto object-contain scale-125"
             />
           </div>
         </motion.div>
