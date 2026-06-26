@@ -43,7 +43,7 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
         </div>
       </div>
 
-      <div className="flex-1 px-6 pb-24 overflow-y-auto">
+      <div className="flex-1 px-6 pb-24 overflow-y-auto scrollbar-hide">
         <AnimatePresence mode="wait">
           
           {/* STEP 1: Treatments */}

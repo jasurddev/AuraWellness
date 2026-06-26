@@ -22,7 +22,7 @@ export function PainTrackerFlow({ onComplete, onBack }: { onComplete: () => void
   };
 
   return (
-    <div className="min-h-full flex flex-col bg-[#F9F8F6]">
+    <div className="h-full flex flex-col bg-[#F9F8F6] relative">
       {/* Header */}
       <div className="pt-12 pb-4 px-6 flex items-center justify-between sticky top-0 bg-[#F9F8F6]/80 backdrop-blur-md z-20">
         <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-secondary text-primary transition-colors">
@@ -32,7 +32,7 @@ export function PainTrackerFlow({ onComplete, onBack }: { onComplete: () => void
         <div className="w-9" />
       </div>
 
-      <div className="flex-1 px-6 pb-24 overflow-y-auto">
+      <div className="flex-1 px-6 pb-24 overflow-y-auto scrollbar-hide">
         <div className="mb-6">
           <h2 className="text-2xl font-serif text-primary mb-2">Area Keluhan</h2>
           <p className="text-sm text-muted-foreground">Ketuk area tubuh yang terasa kaku atau nyeri. Kami akan merekomendasikan terapi yang tepat.</p>
@@ -88,7 +88,7 @@ export function PainTrackerFlow({ onComplete, onBack }: { onComplete: () => void
       </div>
 
       {/* Bottom Action */}
-      <div className="fixed bottom-0 w-full max-w-[400px] p-6 bg-gradient-to-t from-[#F9F8F6] via-[#F9F8F6] to-transparent z-30">
+      <div className="absolute bottom-0 left-0 right-0 px-6 pb-8 pt-10 bg-gradient-to-t from-[#F9F8F6] via-[#F9F8F6] to-transparent z-30">
         <button
           onClick={handleProceed}
           disabled={painAreas.length === 0}
