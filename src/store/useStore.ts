@@ -31,8 +31,8 @@ type AppState = {
   togglePainArea: (area: string) => void;
   
   // Admin dashboard state
-  activeTab: 'overview' | 'schedule' | 'emr';
-  setActiveTab: (tab: 'overview' | 'schedule' | 'emr') => void;
+  activeTab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory';
+  setActiveTab: (tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory') => void;
 };
 
 export const useStore = create<AppState>((set) => ({
