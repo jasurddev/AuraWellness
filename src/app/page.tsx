@@ -57,7 +57,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Tingkatkan <i>patient experience</i> dan efisiensi operasional klinik lo dengan platform <i>all-in-one</i>. Dilengkapi dengan <i>AI-powered Patient App</i> dan <i>Admin Dashboard</i> yang komprehensif.
+            Tingkatkan <i>patient experience</i> dan efisiensi operasional klinik Anda dengan platform <i>all-in-one</i>. Dilengkapi dengan <i>AI-powered Patient App</i> dan <i>Admin Dashboard</i> yang komprehensif.
           </motion.p>
           
           <motion.div 
@@ -80,7 +80,7 @@ export default function Home() {
       <section id="features" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to scale up klinik lo</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to scale up klinik Anda</h2>
             <p className="text-slate-600">Didesain khusus buat klinik estetika dan dermatologi, AuraOS menggabungkan <i>powerful tools</i> ke dalam satu ekosistem digital yang <i>seamless</i>.</p>
           </div>
 
@@ -130,7 +130,7 @@ export default function Home() {
                 <Activity className="w-6 h-6 text-slate-900" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Cloud EMR</h3>
-              <p className="text-slate-600">Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan bisa lo akses kapanpun dari <i>device</i> apapun.</p>
+              <p className="text-slate-600">Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan bisa Anda akses kapanpun dari <i>device</i> apapun.</p>
             </div>
 
             {/* Financial Analytics */}
@@ -176,7 +176,7 @@ export default function Home() {
                 <Smartphone className="w-6 h-6 text-yellow-400" />
               </div>
               <h4 className="text-xl font-bold mb-3">White-label Patient App</h4>
-              <p className="text-slate-400 leading-relaxed"><i>Your brand, our technology</i>. Kasih pasien lo sebuah <i>premium mobile web app</i> yang pakai logo dan warna khas klinik lo sendiri.</p>
+              <p className="text-slate-400 leading-relaxed"><i>Your brand, our technology</i>. Kasih pasien Anda sebuah <i>premium mobile web app</i> yang pakai logo dan warna khas klinik Anda sendiri.</p>
             </div>
             <div>
               <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
@@ -194,7 +194,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Simple, transparent pricing</h2>
-            <p className="text-slate-600">Pilih paket <i>subscription</i> yang paling pas buat skala klinik lo.</p>
+            <p className="text-slate-600">Pilih paket <i>subscription</i> yang paling pas buat skala klinik Anda.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -262,7 +262,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Experience the magic</h2>
           <p className="text-slate-800 text-lg mb-12 max-w-2xl mx-auto">
-            Cobain langsung <i>interactive prototypes</i> kita. Lihat sendiri seberapa <i>smooth patient experience</i>-nya, dan gimana praktisnya tim lo me-<i>manage</i> klinik.
+            Cobain langsung <i>interactive prototypes</i> kita. Lihat sendiri seberapa <i>smooth patient experience</i>-nya, dan gimana praktisnya tim Anda me-<i>manage</i> klinik.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
