@@ -116,22 +116,30 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Grand Reveal Image */}
+          {/* 3D Floating Gallery Reveal */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-slate-200/60 bg-white"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative w-full max-w-5xl mx-auto h-[250px] sm:h-[400px] md:h-[600px] flex items-center justify-center [perspective:2000px] group mt-10 md:mt-0"
           >
-             <Image 
-                src="/images/hero-dashboard.png" 
-                alt="AuraOS Dashboard Interface" 
-                width={1600} 
-                height={900} 
-                className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-1000" 
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+             {/* Left Image: Mobile App */}
+             <div className="absolute left-0 md:-left-8 w-[60%] md:w-[65%] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_10px_30px_-15px_rgba(0,0,0,0.2)] [transform:rotateY(15deg)_translateZ(-150px)_translateX(5%)] group-hover:[transform:rotateY(0deg)_translateZ(50px)_translateX(20%)] transition-all duration-1000 ease-out z-0 group-hover:z-30 border border-slate-200/50 bg-white cursor-pointer opacity-80 group-hover:opacity-100">
+               <Image src="/images/bento-smart-booking.png" alt="Patient App Mockup" width={800} height={600} className="w-full h-full object-cover aspect-video" />
+               <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none"></div>
+             </div>
+
+             {/* Right Image: Analytics/Scanner */}
+             <div className="absolute right-0 md:-right-8 w-[60%] md:w-[65%] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_10px_30px_-15px_rgba(0,0,0,0.2)] [transform:rotateY(-15deg)_translateZ(-150px)_translateX(-5%)] group-hover:[transform:rotateY(0deg)_translateZ(50px)_translateX(-20%)] transition-all duration-1000 ease-out z-0 group-hover:z-30 border border-slate-200/50 bg-white cursor-pointer opacity-80 group-hover:opacity-100">
+               <Image src="/images/bento-ai-scanner.png" alt="AI Scanner Mockup" width={800} height={600} className="w-full h-full object-cover aspect-video" />
+               <div className="absolute inset-0 bg-gradient-to-tl from-white/30 to-transparent pointer-events-none"></div>
+             </div>
+
+             {/* Center Image: Admin Dashboard (Main) */}
+             <div className="absolute w-[75%] md:w-[80%] rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl [transform:translateZ(50px)] group-hover:[transform:translateZ(120px)_scale(1.05)] transition-all duration-1000 ease-out z-20 border border-slate-200 bg-white cursor-pointer">
+               <Image src="/images/hero-dashboard.png" alt="AuraOS Dashboard Interface" width={1200} height={800} className="w-full h-full object-cover aspect-video" />
+             </div>
           </motion.div>
         </div>
       </section>
