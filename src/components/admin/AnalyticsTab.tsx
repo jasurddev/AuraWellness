@@ -31,18 +31,51 @@ export function AnalyticsTab() {
         })}
       </div>
 
-      {/* Charts Placeholder */}
+      {/* Charts Dummy */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-2xl border border-border shadow-sm h-80 flex flex-col">
-          <h3 className="font-semibold text-charcoal mb-4">Revenue Trend</h3>
-          <div className="flex-1 bg-muted/30 rounded-xl border border-dashed border-border flex items-center justify-center text-muted-foreground">
-            [Chart Area: Revenue over last 6 months]
+        {/* Revenue Trend */}
+        <div className="bg-white p-6 rounded-2xl border border-border shadow-sm flex flex-col">
+          <h3 className="font-semibold text-charcoal mb-6">Revenue Trend (6 Months)</h3>
+          <div className="h-48 flex items-end justify-between space-x-2">
+            {[45, 55, 40, 70, 65, 85].map((height, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center space-y-2 h-full">
+                <div className="w-full h-full bg-muted/30 rounded-t-lg relative group overflow-hidden">
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 bg-blue-400 rounded-t-lg transition-all duration-500"
+                    style={{ height: `${height}%` }}
+                  />
+                  <div className="opacity-0 group-hover:opacity-100 absolute bottom-2 left-1/2 -translate-x-1/2 bg-charcoal text-white text-[10px] py-1 px-2 rounded transition-opacity whitespace-nowrap z-10">
+                    Rp {height}M
+                  </div>
+                </div>
+                <div className="text-[10px] text-muted-foreground uppercase tracking-wider">
+                  {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][i]}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="bg-white p-6 rounded-2xl border border-border shadow-sm h-80 flex flex-col">
-          <h3 className="font-semibold text-charcoal mb-4">Treatment Demographics</h3>
-          <div className="flex-1 bg-muted/30 rounded-xl border border-dashed border-border flex items-center justify-center text-muted-foreground">
-            [Chart Area: Treatment Popularity Pie Chart]
+
+        {/* Treatment Demographics */}
+        <div className="bg-white p-6 rounded-2xl border border-border shadow-sm flex flex-col">
+          <h3 className="font-semibold text-charcoal mb-6">Treatment Demographics</h3>
+          <div className="flex-1 flex flex-col justify-center space-y-5">
+            {[
+              { label: 'Laser & Light Therapy', value: 45, color: 'bg-amber-400' },
+              { label: 'Injectables (Botox/Filler)', value: 30, color: 'bg-emerald-400' },
+              { label: 'Facials & Peels', value: 15, color: 'bg-blue-400' },
+              { label: 'Body Contouring', value: 10, color: 'bg-purple-400' },
+            ].map((item, i) => (
+              <div key={i}>
+                <div className="flex justify-between text-xs mb-1.5">
+                  <span className="font-medium text-charcoal">{item.label}</span>
+                  <span className="text-muted-foreground">{item.value}%</span>
+                </div>
+                <div className="w-full bg-muted/40 h-2.5 rounded-full overflow-hidden">
+                  <div className={`h-full rounded-full ${item.color}`} style={{ width: `${item.value}%` }}></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

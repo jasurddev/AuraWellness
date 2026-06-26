@@ -47,8 +47,8 @@ export function OverviewTab() {
         {/* Simple CSS Bar Chart */}
         <div className="h-64 flex items-end justify-between space-x-2 pt-4">
           {[40, 60, 45, 80, 55, 30, 70].map((height, i) => (
-            <div key={i} className="flex-1 flex flex-col items-center space-y-2">
-              <div className="w-full bg-muted rounded-t-lg relative group overflow-hidden">
+            <div key={i} className="flex-1 flex flex-col items-center space-y-2 h-full">
+              <div className="w-full h-full bg-muted rounded-t-lg relative group overflow-hidden">
                 <div 
                   className="absolute bottom-0 left-0 right-0 bg-gold rounded-t-lg transition-all duration-500"
                   style={{ height: `${height}%` }}
