@@ -19,19 +19,19 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aurawellness.vercel.app"),
-  title: "Aura Wellness by Studio Satu Akun",
-  description: "Aura Wellness Digital Ecosystem Prototype",
+  title: "Aura Aesthetics by Studio Satu Akun",
+  description: "Aura Aesthetics Digital Ecosystem Prototype",
   openGraph: {
-    title: "Aura Wellness by Studio Satu Akun",
+    title: "Aura Aesthetics by Studio Satu Akun",
     description: "Premium Digital Ecosystem for Holistic Beauty & Wellness.",
     url: "https://aurawellness.vercel.app",
-    siteName: "Aura Wellness",
+    siteName: "Aura Aesthetics",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Aura Wellness Social Preview",
+        alt: "Aura Aesthetics Social Preview",
       },
     ],
     locale: "id_ID",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aura Wellness by Studio Satu Akun",
+    title: "Aura Aesthetics by Studio Satu Akun",
     description: "Premium Digital Ecosystem for Holistic Beauty & Wellness.",
     images: ["/og-image.png"],
   },

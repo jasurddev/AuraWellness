@@ -29,7 +29,7 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
           <div className="h-20 flex items-center justify-center">
             <img 
               src="/logo.png" 
-              alt="Aura Wellness by Studio Satu Akun" 
+              alt="Aura Aesthetics by Studio Satu Akun" 
               className="h-full w-auto object-contain scale-125"
             />
           </div>

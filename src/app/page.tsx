@@ -8,14 +8,14 @@ export default function Home() {
           <div className="w-32 h-32 rounded-full overflow-hidden flex items-center justify-center shadow-sm mb-3">
             <img 
               src="/logo.png" 
-              alt="Aura Wellness" 
+              alt="Aura Aesthetics" 
               className="w-full h-full object-cover scale-110"
             />
           </div>
           <div className="text-sm font-normal text-muted-foreground tracking-normal">by Studio Satu Akun</div>
         </div>
         <p className="text-foreground/60 max-w-md mx-auto mt-6">
-          Welcome to the Aura Wellness Ecosystem Prototype. Select a portal to begin.
+          Welcome to the Aura Aesthetics Ecosystem Prototype. Select a portal to begin.
         </p>
       <div className="flex flex-col sm:flex-row items-center gap-4 w-full max-w-lg">
         <Link 
