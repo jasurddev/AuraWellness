@@ -28,7 +28,7 @@ export const MOCK_DOCTORS: Doctor[] = [
     id: 'd1', 
     name: 'Dr. Sarah Lee', 
     specialty: 'Aesthetic Dermatologist', 
-    imageUrl: 'https://images.unsplash.com/photo-1594824436998-d14c2db4c0c4?auto=format&fit=crop&q=80&w=250&h=250' 
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=250&h=250' 
   },
   { 
     id: 'd2', 
