@@ -31,7 +31,7 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
         <div className="w-9" />
       </div>
 
-      <div className="flex-1 px-6 pb-24 overflow-y-auto">
+      <div className="flex-1 px-6 pb-24 overflow-y-auto scrollbar-hide">
         
         {/* Profile Summary */}
         <div className="flex items-center gap-4 mb-6">
@@ -196,7 +196,7 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
               exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#F9F8F6] w-full max-h-[85vh] rounded-t-3xl p-6 shadow-2xl overflow-y-auto"
+              className="bg-[#F9F8F6] w-full max-h-[85vh] rounded-t-3xl p-6 shadow-2xl overflow-y-auto scrollbar-hide"
             >
               <div className="w-12 h-1.5 bg-border rounded-full mx-auto mb-6" />
               
