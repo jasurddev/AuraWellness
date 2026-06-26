@@ -17,20 +17,20 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#EFECE5] to-transparent pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
       
-      <div className="px-6 pt-6 pb-12 flex flex-col items-center z-10 min-h-max">
+      <div className="px-6 pt-16 pb-12 flex flex-col items-center z-10 min-h-max">
         
         {/* Aura Logo */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-4 relative flex items-center justify-center shrink-0"
+          className="mb-0 relative flex items-center justify-center shrink-0"
         >
-          <div className="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center">
+          <div className="h-10 flex items-center justify-center">
             <img 
               src="/logo.png" 
               alt="Aura Wellness by Studio Satu Akun" 
-              className="w-full h-full object-cover scale-110"
+              className="h-full w-auto object-contain"
             />
           </div>
         </motion.div>
