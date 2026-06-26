@@ -50,7 +50,7 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
             <span className="italic text-accent">Beauty</span> Care
           </h1>
           <p className="text-[11px] text-muted-foreground px-4 leading-relaxed max-w-[260px] mx-auto">
-            Klinik kecantikan premium di Jakarta Selatan. Nikmati perawatan holistik dan inovatif.
+            Merawat kecantikan dari dalam hingga luar. Hadirkan versi terbaik diri Anda dengan sentuhan estetika medis berstandar internasional.
           </p>
         </motion.div>
 
