@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Sparkles, LayoutDashboard, ArrowRight, ShieldCheck, Zap, Smartphone, CheckCircle2, ChevronRight, Activity, CalendarDays, PieChart } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -49,7 +48,7 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-tight mb-6"
           >
-            The Modern Operating System for <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900">Premium Clinics</span>
+            The Modern Operating System for <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900">Klinik Estetika Premium</span>
           </motion.h1>
           
           <motion.p 
@@ -58,7 +57,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed"
           >
-            Elevate patient experience and streamline operations with our all-in-one platform. Featuring an AI-powered Patient App and a comprehensive Admin Dashboard.
+            Tingkatkan <i>patient experience</i> dan efisiensi operasional klinik lo dengan platform <i>all-in-one</i>. Dilengkapi dengan <i>AI-powered Patient App</i> dan <i>Admin Dashboard</i> yang komprehensif.
           </motion.p>
           
           <motion.div 
@@ -81,8 +80,8 @@ export default function Home() {
       <section id="features" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to scale</h2>
-            <p className="text-slate-600">Built specifically for aesthetic and dermatology clinics, AuraOS combines powerful tools into one seamless experience.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to scale up klinik lo</h2>
+            <p className="text-slate-600">Didesain khusus buat klinik estetika dan dermatologi, AuraOS menggabungkan <i>powerful tools</i> ke dalam satu ekosistem digital yang <i>seamless</i>.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
@@ -95,7 +94,7 @@ export default function Home() {
                     <Sparkles className="w-6 h-6 text-yellow-400" />
                   </div>
                   <h3 className="text-3xl font-bold text-white mb-4">AI-Powered Skin Scanner</h3>
-                  <p className="text-slate-400 max-w-md text-lg">Analyze patient skin conditions instantly with our proprietary AI algorithm. Generate personalized treatment plans automatically.</p>
+                  <p className="text-slate-400 max-w-md text-lg">Analisa kondisi kulit pasien secara instan pakai <i>proprietary AI algorithm</i> kita. <i>Generate personalized treatment plan</i> otomatis tanpa ribet.</p>
                 </div>
                 {/* Abstract UI representation */}
                 <div className="mt-8 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-2xl p-4 shadow-2xl flex-1 overflow-hidden relative">
@@ -121,8 +120,8 @@ export default function Home() {
               <div className="bg-white/30 w-12 h-12 rounded-xl flex items-center justify-center backdrop-blur-md mb-6">
                 <CalendarDays className="w-6 h-6 text-slate-900" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Smart Booking</h3>
-              <p className="text-slate-800">Reduce no-shows by 40% with automated reminders and intuitive multi-step booking.</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Smart Booking System</h3>
+              <p className="text-slate-800">Kurangi <i>no-shows</i> sampai 40% lewat fitur <i>automated reminders</i> dan <i>booking flow</i> yang intuitif.</p>
             </div>
 
             {/* Electronic Medical Records */}
@@ -131,7 +130,7 @@ export default function Home() {
                 <Activity className="w-6 h-6 text-slate-900" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Cloud EMR</h3>
-              <p className="text-slate-600">Secure, encrypted, and instantly accessible patient medical records from any device.</p>
+              <p className="text-slate-600">Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan bisa lo akses kapanpun dari <i>device</i> apapun.</p>
             </div>
 
             {/* Financial Analytics */}
@@ -141,7 +140,7 @@ export default function Home() {
                   <PieChart className="w-6 h-6 text-slate-900" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Real-time Analytics</h3>
-                <p className="text-slate-600 mb-6">Track revenue, patient demographics, and inventory levels with beautiful, actionable dashboards.</p>
+                <p className="text-slate-600 mb-6">Pantau <i>revenue</i>, demografi pasien, sampai status stok <i>inventory</i> lewat <i>dashboard</i> estetik yang <i>actionable</i>.</p>
                </div>
                <div className="w-full sm:w-1/2 h-full bg-white rounded-2xl border border-slate-100 shadow-sm p-4 flex flex-col justify-end gap-2">
                  {/* Fake Chart */}
@@ -170,21 +169,21 @@ export default function Home() {
                 <ShieldCheck className="w-6 h-6 text-yellow-400" />
               </div>
               <h4 className="text-xl font-bold mb-3">Bank-grade Security</h4>
-              <p className="text-slate-400 leading-relaxed">All patient data is encrypted at rest and in transit. Fully compliant with international healthcare data standards.</p>
+              <p className="text-slate-400 leading-relaxed">Semua data pasien dienkripsi penuh (<i>at rest</i> & <i>in transit</i>). Udah <i>fully compliant</i> sama standar <i>healthcare data</i> internasional.</p>
             </div>
             <div>
               <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                 <Smartphone className="w-6 h-6 text-yellow-400" />
               </div>
               <h4 className="text-xl font-bold mb-3">White-label Patient App</h4>
-              <p className="text-slate-400 leading-relaxed">Your brand, our technology. Provide your patients with a premium mobile web app featuring your clinic's logo and colors.</p>
+              <p className="text-slate-400 leading-relaxed"><i>Your brand, our technology</i>. Kasih pasien lo sebuah <i>premium mobile web app</i> yang pakai logo dan warna khas klinik lo sendiri.</p>
             </div>
             <div>
               <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                 <Zap className="w-6 h-6 text-yellow-400" />
               </div>
-              <h4 className="text-xl font-bold mb-3">Lightning Fast</h4>
-              <p className="text-slate-400 leading-relaxed">Built on Next.js 15 and React 19. Experience zero-latency navigation and instant data sync across all your devices.</p>
+              <h4 className="text-xl font-bold mb-3">Lightning Fast Performance</h4>
+              <p className="text-slate-400 leading-relaxed">Dibangun di atas Next.js 15 & React 19. Rasakan <i>zero-latency navigation</i> dan sinkronisasi data <i>real-time</i> lintas perangkat tanpa lemot.</p>
             </div>
           </div>
         </div>
@@ -195,17 +194,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Simple, transparent pricing</h2>
-            <p className="text-slate-600">Choose the perfect plan for your clinic's size and needs.</p>
+            <p className="text-slate-600">Pilih paket <i>subscription</i> yang paling pas buat skala klinik lo.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Starter */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
-              <p className="text-slate-500 text-sm mb-6">For independent practitioners.</p>
+              <p className="text-slate-500 text-sm mb-6">Cocok buat praktisi medis independen.</p>
               <div className="mb-8">
                 <span className="text-4xl font-bold text-slate-900">Rp 1.5M</span>
-                <span className="text-slate-500">/mo</span>
+                <span className="text-slate-500">/bulan</span>
               </div>
               <ul className="space-y-4 mb-8">
                 {['1 Doctor Account', 'Basic EMR', 'Smart Booking', 'Standard Support'].map((feature, i) => (
@@ -223,10 +222,10 @@ export default function Home() {
                 Most Popular
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Professional</h3>
-              <p className="text-slate-400 text-sm mb-6">For growing aesthetic clinics.</p>
+              <p className="text-slate-400 text-sm mb-6">Pas banget buat klinik yang lagi <i>scale up</i>.</p>
               <div className="mb-8">
                 <span className="text-4xl font-bold text-white">Rp 3.5M</span>
-                <span className="text-slate-400">/mo</span>
+                <span className="text-slate-400">/bulan</span>
               </div>
               <ul className="space-y-4 mb-8">
                 {['Up to 5 Doctors', 'AI Skin Scanner', 'Advanced Analytics', 'Inventory Management', 'Priority Support'].map((feature, i) => (
@@ -241,7 +240,7 @@ export default function Home() {
             {/* Enterprise */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 mb-2">Enterprise</h3>
-              <p className="text-slate-500 text-sm mb-6">For large clinic chains.</p>
+              <p className="text-slate-500 text-sm mb-6">Spesial buat jaringan klinik skala besar.</p>
               <div className="mb-8">
                 <span className="text-4xl font-bold text-slate-900">Custom</span>
               </div>
@@ -263,7 +262,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">Experience the magic</h2>
           <p className="text-slate-800 text-lg mb-12 max-w-2xl mx-auto">
-            Try out our interactive prototypes. See exactly what your patients will experience, and how your team will manage the clinic.
+            Cobain langsung <i>interactive prototypes</i> kita. Lihat sendiri seberapa <i>smooth patient experience</i>-nya, dan gimana praktisnya tim lo me-<i>manage</i> klinik.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -276,7 +275,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-1">Patient Portal Demo</h3>
-                <p className="text-sm text-slate-500">Mobile-first web application</p>
+                <p className="text-sm text-slate-500">Premium mobile web app buat pasien</p>
               </div>
               <div className="mt-2 text-yellow-600 font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 Launch Demo <ChevronRight className="w-4 h-4" />
@@ -292,7 +291,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white mb-1">Admin Dashboard Demo</h3>
-                <p className="text-sm text-slate-400">Comprehensive management</p>
+                <p className="text-sm text-slate-400">Manajemen klinik yang komprehensif</p>
               </div>
               <div className="mt-2 text-yellow-400 font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 Launch Demo <ChevronRight className="w-4 h-4" />
