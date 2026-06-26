@@ -189,12 +189,34 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 />
                 
-                {/* Scanner Line */}
+                {/* Scanner Laser and Particles */}
                 <motion.div
-                  className="absolute left-0 right-0 h-1 bg-accent/80 shadow-[0_0_15px_rgba(197,168,128,0.8)] z-10"
+                  className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent shadow-[0_0_20px_#C5A880] z-20"
                   animate={{ top: ['0%', '100%', '0%'] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                />
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                >
+                  {/* Laser core */}
+                  <div className="absolute inset-0 bg-white/50 blur-[1px]" />
+                </motion.div>
+                
+                {/* Sparkles Effect */}
+                <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center">
+                  <motion.div 
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_#fff]"
+                  />
+                  <motion.div 
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.5, 0.8] }}
+                    transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                    className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_10px_#C5A880]"
+                  />
+                  <motion.div 
+                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
+                    transition={{ duration: 2.5, repeat: Infinity, delay: 1.5 }}
+                    className="absolute top-1/2 left-2/3 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_#fff]"
+                  />
+                </div>
               </div>
 
               <h3 className="text-xl font-serif text-primary mb-2">Menganalisa Holistik...</h3>

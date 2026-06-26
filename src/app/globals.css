@@ -23,6 +23,11 @@
   --color-charcoal: #2A2D24;
   --color-gold: #C5A880;
   --color-blush: #EFECE5;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
 }
 
 :root {

@@ -18,6 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aurawellness.vercel.app"),
   title: "Aura Wellness by Studio Satu Akun",
   description: "Aura Wellness Digital Ecosystem Prototype",
   openGraph: {
