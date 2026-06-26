@@ -4,11 +4,15 @@ import { Sparkles, LayoutDashboard } from 'lucide-react';
 export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center space-y-8">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-light text-charcoal tracking-tight flex flex-col items-center">
-          <div>AURA <span className="font-medium text-gold">Wellness</span></div>
-          <div className="text-sm font-normal text-muted-foreground mt-2 tracking-normal">by Studio Satu Akun</div>
-        </h1>
+        <div className="flex justify-center mb-6">
+          <div className="w-32 h-32 rounded-full overflow-hidden flex items-center justify-center shadow-sm">
+            <img 
+              src="/logo.png" 
+              alt="Aura Wellness by Studio Satu Akun" 
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
+        </div>
         <p className="text-foreground/60 max-w-md mx-auto mt-6">
           Welcome to the Aura Wellness Ecosystem Prototype. Select a portal to begin.
         </p>
