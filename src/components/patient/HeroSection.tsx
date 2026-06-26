@@ -27,7 +27,7 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
           className="mb-8 w-24 h-24 relative flex items-center justify-center bg-white rounded-full shadow-sm border border-border/50 shrink-0"
         >
           <img 
-            src="https://nalluraclinic.com/cdn/shop/files/Logo_Nallura.png?v=1772940413" 
+            src="/logo.png" 
             alt="Aura Wellness by Studio Satu Akun" 
             className="w-16 h-16 object-contain"
           />
