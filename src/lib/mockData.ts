@@ -85,17 +85,17 @@ export const MOCK_TREATMENTS: Treatment[] = [
 
 // E-Prescription Mock Data for Patient Dashboard
 export const MOCK_PRESCRIPTIONS = [
-  { id: 'rx1', time: 'Morning', title: 'Gentle Cleanser', completed: true },
-  { id: 'rx2', time: 'Morning', title: 'Vitamin C Serum 15%', completed: false },
-  { id: 'rx3', time: 'Morning', title: 'Sunscreen SPF 50+', completed: false },
-  { id: 'rx4', time: 'Night', title: 'Retinol 0.5% Cream', completed: false },
-  { id: 'rx5', time: 'Night', title: 'Deep Hydration Moisturizer', completed: false },
+  { id: 'rx1', time: 'Morning', title: 'Gentle Cleanser', completed: true, instructions: 'Gunakan 1-2 pump, pijat lembut di wajah basah.', benefits: 'Membersihkan kotoran tanpa merusak skin barrier.' },
+  { id: 'rx2', time: 'Morning', title: 'Vitamin C Serum 15%', completed: false, instructions: 'Teteskan 3-4 tetes merata ke seluruh wajah dan leher.', benefits: 'Mencerahkan dan melindungi dari radikal bebas.' },
+  { id: 'rx3', time: 'Morning', title: 'Sunscreen SPF 50+', completed: false, instructions: 'Gunakan sebanyak 2 jari, reapply setiap 4 jam.', benefits: 'Perlindungan maksimal dari UVA & UVB.' },
+  { id: 'rx4', time: 'Night', title: 'Retinol 0.5% Cream', completed: false, instructions: 'Gunakan seukuran kacang polong (pea-sized) setelah toner.', benefits: 'Stimulasi kolagen & anti-aging.' },
+  { id: 'rx5', time: 'Night', title: 'Deep Hydration Moisturizer', completed: false, instructions: 'Oleskan tebal sebagai tahap akhir rutinitas malam.', benefits: 'Mengunci kelembapan sepanjang malam.' },
 ];
 
 export const MOCK_JOURNEY = [
-  { date: '10 Jun 2026', title: 'Happy Aging Peeling', type: 'treatment' },
-  { date: '15 May 2026', title: 'Therapeutic Neck Relief', type: 'treatment' },
-  { date: '01 May 2026', title: 'Initial AI Skin Scan', type: 'scan' },
+  { id: 'j1', date: '10 Jun 2026', title: 'Happy Aging Peeling', type: 'treatment', doctor: 'Dr. Sarah Lee', notes: 'Kulit merespons sangat baik terhadap peeling. Kemerahan normal hilang dalam 1 jam. Disarankan rutin hidrasi malam.' },
+  { id: 'j2', date: '15 May 2026', title: 'Therapeutic Neck Relief', type: 'treatment', doctor: 'Dr. James Chen', notes: 'Ketegangan otot leher bagian atas berkurang signifikan. Postur mulai membaik.' },
+  { id: 'j3', date: '01 May 2026', title: 'Initial AI Skin Scan', type: 'scan', doctor: 'AI System', notes: 'Skor awal: Hidrasi 65%, Pori-pori 80%. Terdapat tanda penuaan dini ringan di area mata.' },
 ];
 
 export type TimeSlot = {

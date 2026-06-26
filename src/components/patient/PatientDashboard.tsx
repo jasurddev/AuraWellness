@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, Circle, Clock, Calendar, ChevronRight, Activity, Leaf, Droplets, MapPin } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, CheckCircle2, Circle, Clock, Calendar, ChevronRight, Activity, Leaf, Droplets, MapPin, X } from 'lucide-react';
 import { MOCK_PRESCRIPTIONS, MOCK_JOURNEY } from '@/lib/mockData';
 
 export function PatientDashboard({ onBack }: { onBack: () => void }) {
   const [prescriptions, setPrescriptions] = useState(MOCK_PRESCRIPTIONS);
+  const [selectedRx, setSelectedRx] = useState<any>(null);
+  const [selectedJourney, setSelectedJourney] = useState<any>(null);
 
-  const togglePrescription = (id: string) => {
+  const togglePrescription = (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     setPrescriptions(prev => 
       prev.map(p => p.id === id ? { ...p, completed: !p.completed } : p)
     );
@@ -107,13 +110,16 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
               <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Morning Care</h4>
               <div className="space-y-3">
                 {morningRx.map(rx => (
-                  <div key={rx.id} onClick={() => togglePrescription(rx.id)} className="flex items-center gap-3 cursor-pointer group">
-                    <div className={`transition-colors ${rx.completed ? 'text-primary' : 'text-border group-hover:text-primary/50'}`}>
-                      {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                  <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
+                        {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                      </div>
+                      <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
+                        {rx.title}
+                      </span>
                     </div>
-                    <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
-                      {rx.title}
-                    </span>
+                    <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
                   </div>
                 ))}
               </div>
@@ -124,13 +130,16 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
               <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Night Care</h4>
               <div className="space-y-3">
                 {nightRx.map(rx => (
-                  <div key={rx.id} onClick={() => togglePrescription(rx.id)} className="flex items-center gap-3 cursor-pointer group">
-                    <div className={`transition-colors ${rx.completed ? 'text-primary' : 'text-border group-hover:text-primary/50'}`}>
-                      {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                  <div key={rx.id} onClick={() => setSelectedRx(rx)} className="flex items-center justify-between p-3 bg-white rounded-xl border border-border/50 cursor-pointer hover:border-primary/30 transition-colors group shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <div onClick={(e) => togglePrescription(rx.id, e)} className={`transition-colors p-1 -ml-1 ${rx.completed ? 'text-primary' : 'text-border hover:text-primary/50'}`}>
+                        {rx.completed ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
+                      </div>
+                      <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
+                        {rx.title}
+                      </span>
                     </div>
-                    <span className={`text-sm transition-all ${rx.completed ? 'text-muted-foreground line-through' : 'text-primary font-medium'}`}>
-                      {rx.title}
-                    </span>
+                    <ChevronRight className="w-4 h-4 text-border group-hover:text-primary/50 transition-colors" />
                   </div>
                 ))}
               </div>
@@ -151,12 +160,18 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
                 <div className="text-xs text-muted-foreground font-medium mb-1 flex items-center gap-1">
                   <Calendar className="w-3 h-3" /> {item.date}
                 </div>
-                <div className="bg-white p-3 rounded-xl border border-border/40 shadow-sm">
-                  <h4 className="text-sm font-medium text-primary">{item.title}</h4>
-                  <p className="text-[10px] text-muted-foreground capitalize mt-1 flex items-center gap-1">
-                    {item.type === 'treatment' ? <Leaf className="w-3 h-3" /> : <Activity className="w-3 h-3" />}
-                    {item.type} Completed
-                  </p>
+                <div 
+                  onClick={() => setSelectedJourney(item)}
+                  className="bg-white p-3 rounded-xl border border-border/40 shadow-sm cursor-pointer hover:border-primary/30 hover:shadow-md transition-all group flex justify-between items-center"
+                >
+                  <div>
+                    <h4 className="text-sm font-medium text-primary group-hover:text-accent transition-colors">{item.title}</h4>
+                    <p className="text-[10px] text-muted-foreground capitalize mt-1 flex items-center gap-1">
+                      {item.type === 'treatment' ? <Leaf className="w-3 h-3" /> : <Activity className="w-3 h-3" />}
+                      {item.type} Completed
+                    </p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-border group-hover:text-accent transition-colors" />
                 </div>
               </div>
             ))}
@@ -164,6 +179,87 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
         </div>
 
       </div>
+
+      {/* Bottom Drawer Overlay */}
+      <AnimatePresence>
+        {(selectedRx || selectedJourney) && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => { setSelectedRx(null); setSelectedJourney(null); }}
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm z-50 flex flex-col justify-end overflow-hidden"
+          >
+            <motion.div 
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#F9F8F6] w-full max-h-[85vh] rounded-t-3xl p-6 shadow-2xl overflow-y-auto"
+            >
+              <div className="w-12 h-1.5 bg-border rounded-full mx-auto mb-6" />
+              
+              {selectedRx && (
+                <div>
+                  <h3 className="text-xl font-serif text-primary mb-2">{selectedRx.title}</h3>
+                  <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-6">
+                    <Clock className="w-3 h-3" /> {selectedRx.time} Care Routine
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="bg-white p-4 rounded-2xl border border-border/50 shadow-sm">
+                      <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-2">Cara Penggunaan</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{selectedRx.instructions || 'Ikuti anjuran dokter atau panduan di kemasan.'}</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-2xl border border-border/50 shadow-sm">
+                      <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-2">Fungsi & Manfaat</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{selectedRx.benefits || 'Menjaga kesehatan kulit secara holistik.'}</p>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => { togglePrescription(selectedRx.id); setSelectedRx(null); }}
+                    className={`w-full py-4 rounded-xl font-medium transition-all ${selectedRx.completed ? 'bg-secondary text-primary border border-primary/20 hover:bg-secondary/70' : 'bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90'}`}
+                  >
+                    {selectedRx.completed ? 'Batalkan (Undo)' : 'Tandai Selesai'}
+                  </button>
+                </div>
+              )}
+
+              {selectedJourney && (
+                <div>
+                  <h3 className="text-xl font-serif text-primary mb-2">{selectedJourney.title}</h3>
+                  <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-6">
+                    <Calendar className="w-3 h-3" /> {selectedJourney.date}
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-border/50 shadow-sm">
+                      <div className="bg-accent/10 p-2.5 rounded-full"><MapPin className="w-5 h-5 text-accent" /></div>
+                      <div>
+                        <h4 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">Ditangani Oleh</h4>
+                        <p className="text-sm font-medium text-primary mt-0.5">{selectedJourney.doctor || 'Aura Clinic Expert'}</p>
+                      </div>
+                    </div>
+                    <div className="bg-white p-4 rounded-2xl border border-border/50 shadow-sm">
+                      <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-2">Catatan Medis & Progres</h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{selectedJourney.notes || 'Perkembangan positif, lanjutkan gaya hidup sehat dan rutinitas harian.'}</p>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => setSelectedJourney(null)}
+                    className="w-full py-4 rounded-xl font-medium bg-secondary text-primary border border-border transition-all hover:bg-border/50"
+                  >
+                    Tutup Detail
+                  </button>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
