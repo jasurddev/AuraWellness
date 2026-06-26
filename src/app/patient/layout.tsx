@@ -6,7 +6,7 @@ export default function PatientLayout({
   return (
     <div className="min-h-screen lg:bg-[#EFECE5] bg-[#F9F8F6] flex items-center justify-center lg:p-8 font-sans">
       {/* Device Frame (Only visible on Desktop, Fullscreen on Mobile/Tablet) */}
-      <div className="relative w-full h-screen lg:h-[850px] lg:max-h-[90vh] lg:max-w-[400px] bg-[#F9F8F6] lg:rounded-[3rem] shadow-none lg:shadow-[0_20px_50px_rgba(84,87,67,0.15)] overflow-hidden lg:border-[10px] lg:border-[#2A2D24] ring-1 ring-border/50">
+      <div className="relative w-full h-screen lg:h-[90vh] lg:max-h-[850px] lg:w-auto lg:aspect-[393/852] bg-[#F9F8F6] lg:rounded-[3rem] shadow-none lg:shadow-[0_20px_50px_rgba(84,87,67,0.15)] overflow-hidden lg:border-[10px] lg:border-[#2A2D24] ring-1 ring-border/50">
         
         {/* Dynamic Island / Camera Notch (Only on Desktop) */}
         <div className="hidden lg:flex absolute top-2 inset-x-0 justify-center z-50 pointer-events-none">
