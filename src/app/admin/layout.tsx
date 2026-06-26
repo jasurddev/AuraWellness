@@ -46,7 +46,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex items-center mb-1 h-8">
+          <div className="flex items-center mb-1 h-16">
             <img src="/logo.png" alt="Aura Logo" className="h-full w-auto object-contain brightness-0 invert opacity-90" />
           </div>
           <span className="text-[10px] text-white/50 tracking-wide uppercase mt-3">by Studio Satu Akun</span>

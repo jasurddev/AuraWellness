@@ -20,7 +20,7 @@ export function OverviewTab() {
           </div>
           <div>
             <div className="text-sm text-foreground/50 mb-1">Revenue Today</div>
-            <div className="text-2xl font-semibold text-charcoal">$4,250</div>
+            <div className="text-2xl font-semibold text-charcoal">Rp 65.5M</div>
           </div>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-border shadow-sm flex items-center space-x-4">

@@ -107,7 +107,7 @@ export type TimeSlot = {
 export const MOCK_PATIENTS: Patient[] = [
   { id: 'p1', name: 'Emma Watson', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250&h=250', lastVisit: '2026-05-15', notes: 'Therapeutic Neck Relief. Good progress.' },
   { id: 'p2', name: 'Liam Neeson', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=250&h=250', lastVisit: '2026-06-02', notes: 'Happy Aging Peeling. Recommended daily sunscreen.' },
-  { id: 'p3', name: 'Sophia Loren', avatar: 'https://images.unsplash.com/photo-1531123897727-8f129e1bf98c?auto=format&fit=crop&q=80&w=250&h=250', lastVisit: '2026-06-10', notes: 'Consultation for pain management.' },
+  { id: 'p3', name: 'Sophia Loren', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250', lastVisit: '2026-06-10', notes: 'Consultation for pain management.' },
 ];
 
 export const MOCK_TIME_SLOTS: TimeSlot[] = [
