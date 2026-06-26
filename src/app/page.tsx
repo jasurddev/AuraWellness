@@ -87,9 +87,9 @@ export default function Home() {
              </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 border border-slate-200">
+          <div className="flex md:grid md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
             {/* Feature 1 */}
-            <div className="bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI Scanner</span>
                 <h3 className="text-3xl font-serif mb-4">Precision Analysis</h3>
@@ -103,7 +103,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">02 / EMR System</span>
                 <h3 className="text-3xl font-serif mb-4">Electronic Records</h3>
@@ -117,7 +117,7 @@ export default function Home() {
             </div>
             
             {/* Feature 3 */}
-            <div className="bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">03 / Smart Booking</span>
                 <h3 className="text-3xl font-serif mb-4">Frictionless Flow</h3>
@@ -131,7 +131,7 @@ export default function Home() {
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">04 / Analytics</span>
                 <h3 className="text-3xl font-serif mb-4">Actionable Insights</h3>
@@ -147,7 +147,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Value Proposition (Typography focus) */}
+      {/* 4. Payment Gateway (New Fintech Section) */}
+      <section id="fintech" className="py-32 px-6 bg-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+          <div className="flex-1 space-y-8">
+            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase block">Fintech Integration</span>
+            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+              Frictionless Payment, <br/>Zero No-Shows.
+            </h2>
+            <p className="text-slate-600 leading-relaxed max-w-lg">
+              Ubah cara pasien bertransaksi. AuraOS dilengkapi infrastruktur Payment Gateway terintegrasi atas nama klinik Anda. Terapkan sistem Down Payment (DP) otomatis via QRIS & Virtual Account untuk mengeliminasi pembatalan sepihak. Rekonsiliasi keuangan berjalan otomatis, dan dana cair langsung ke rekening klinik Anda tanpa campur tangan manual.
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                <span className="text-slate-900 text-sm font-medium">100% White-labeled (Transaksi masuk atas nama klinik Anda)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                <span className="text-slate-900 text-sm font-medium">Auto-Reconciliation (Lupakan cek mutasi manual)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                <span className="text-slate-900 text-sm font-medium">Secure Payouts (Dana disalurkan oleh lembaga perbankan resmi)</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="flex-1 w-full aspect-square md:aspect-[4/3] bg-slate-50 border border-slate-200 rounded-3xl p-8 flex items-center justify-center relative overflow-hidden shadow-sm">
+             {/* Abstract QRIS/Payment UI representation */}
+             <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-white"></div>
+             <div className="relative z-10 w-64 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex flex-col items-center">
+                <div className="w-12 h-4 bg-slate-200 rounded-full mb-6"></div>
+                <div className="w-40 h-40 border-8 border-slate-900 rounded-xl flex items-center justify-center mb-6 relative">
+                  <div className="w-20 h-20 bg-slate-900 rounded-sm"></div>
+                  <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-yellow-400"></div>
+                  <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-yellow-400"></div>
+                </div>
+                <div className="w-full h-10 bg-slate-900 text-white flex items-center justify-center rounded-xl text-xs font-medium gap-2">
+                  <Check className="w-3 h-3" /> Payment Verified
+                </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Value Proposition (Typography focus) */}
       <section id="benefits" className="py-32 px-6 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-slate-800 pt-16">
@@ -211,7 +256,7 @@ export default function Home() {
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Up to 5 Doctors', 'AI Skin Scanner', 'Advanced Analytics', 'Inventory Management', 'Priority Support'].map((feature, i) => (
+                {['Up to 5 Doctors', 'AI Skin Scanner (1000 scans/mo)', 'Advanced Analytics', 'Inventory Management', 'Priority Support'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-900 font-medium">
                     <Check className="w-4 h-4 text-yellow-600 mt-0.5 shrink-0" /> {feature}
                   </li>
@@ -228,7 +273,7 @@ export default function Home() {
                 <span className="text-4xl font-serif">Custom</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Unlimited Doctors', 'Full White-label App', 'Custom Integrations', 'Dedicated Account Manager'].map((feature, i) => (
+                {['Unlimited Doctors', 'Custom AI Scan Quota', 'White-label Patient App', 'Dedicated Account Manager', 'Custom API Access'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>

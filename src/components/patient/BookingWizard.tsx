@@ -11,7 +11,7 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
   const { setBookingData, bookingData } = useStore();
 
   const handleNext = () => {
-    if (step < 3) setStep(step + 1);
+    if (step < 4) setStep(step + 1);
     else onComplete();
   };
 
@@ -26,9 +26,9 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
           <ArrowLeft className="w-5 h-5" />
         </button>
         <div className="font-serif font-medium text-primary">
-          {step === 1 ? 'Select Treatment' : step === 2 ? 'Choose Expert' : 'Schedule'}
+          {step === 1 ? 'Select Treatment' : step === 2 ? 'Choose Expert' : step === 3 ? 'Schedule' : 'Secure Checkout'}
         </div>
-        <div className="w-9 text-xs font-medium text-muted-foreground">{step}/3</div>
+        <div className="w-9 text-xs font-medium text-muted-foreground">{step}/4</div>
       </div>
 
       {/* Progress Bar */}
@@ -36,8 +36,8 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
         <div className="h-1 bg-border/50 rounded-full overflow-hidden">
           <motion.div 
             className="h-full bg-accent"
-            initial={{ width: '33%' }}
-            animate={{ width: `${(step / 3) * 100}%` }}
+            initial={{ width: '25%' }}
+            animate={{ width: `${(step / 4) * 100}%` }}
             transition={{ duration: 0.3 }}
           />
         </div>
@@ -173,6 +173,42 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
             </motion.div>
           )}
 
+          {/* STEP 4: Payment */}
+          {step === 4 && (
+            <motion.div
+              key="step4"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="space-y-6 flex flex-col items-center pt-4"
+            >
+              <div className="text-center mb-2">
+                <h3 className="text-xl font-serif text-primary mb-1">Down Payment</h3>
+                <p className="text-sm text-muted-foreground">Selesaikan pembayaran untuk mengonfirmasi jadwal Anda.</p>
+              </div>
+              
+              <div className="glass-panel w-full rounded-3xl p-6 flex flex-col items-center border border-border/50 shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Total DP (20%)</div>
+                <div className="text-3xl font-serif text-primary mb-6 text-accent">Rp 250.000</div>
+                
+                <div className="w-48 h-48 border-[6px] border-slate-900 rounded-2xl flex items-center justify-center relative mb-6 shadow-sm bg-white">
+                  <div className="w-24 h-24 bg-slate-900 rounded-sm"></div>
+                  {/* Decorative corners */}
+                  <div className="absolute -top-1 -left-1 w-8 h-8 border-t-[6px] border-l-[6px] border-yellow-400"></div>
+                  <div className="absolute -top-1 -right-1 w-8 h-8 border-t-[6px] border-r-[6px] border-yellow-400"></div>
+                  <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-[6px] border-l-[6px] border-yellow-400"></div>
+                  <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-[6px] border-r-[6px] border-yellow-400"></div>
+                </div>
+                
+                <div className="w-full bg-white rounded-xl p-3 border border-border/40 text-center mb-2">
+                   <p className="text-xs text-primary font-medium">Aura Aesthetics - Kemang</p>
+                   <p className="text-[10px] text-muted-foreground mt-0.5">NMID: ID1029384756</p>
+                </div>
+                <p className="text-[10px] text-muted-foreground text-center">Scan QRIS ini menggunakan m-BCA, GoPay, OVO, atau Dana.</p>
+              </div>
+            </motion.div>
+          )}
+
         </AnimatePresence>
       </div>
 
@@ -182,7 +218,7 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
           onClick={handleNext}
           className="w-full py-4 bg-primary text-white rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2"
         >
-          {step === 3 ? 'Confirm Booking' : 'Continue'} <ChevronRight className="w-4 h-4" />
+          {step === 4 ? 'Saya Sudah Bayar' : step === 3 ? 'Continue to Payment' : 'Continue'} <ChevronRight className="w-4 h-4" />
         </button>
       </div>
     </div>
