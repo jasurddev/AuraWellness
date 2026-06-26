@@ -18,7 +18,7 @@ export function PatientDashboard({ onBack }: { onBack: () => void }) {
   const nightRx = prescriptions.filter(p => p.time === 'Night');
 
   return (
-    <div className="min-h-full flex flex-col bg-[#F9F8F6]">
+    <div className="h-full flex flex-col bg-[#F9F8F6]">
       {/* Header */}
       <div className="pt-12 pb-4 px-6 flex items-center justify-between sticky top-0 bg-[#F9F8F6]/80 backdrop-blur-md z-20">
         <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-secondary text-primary transition-colors">
