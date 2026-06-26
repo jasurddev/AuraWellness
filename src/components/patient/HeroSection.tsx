@@ -17,20 +17,22 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
       <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#EFECE5] to-transparent pointer-events-none" />
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
       
-      <div className="px-6 pt-12 pb-6 flex flex-col items-center z-10 min-h-max">
+      <div className="px-6 pt-6 pb-12 flex flex-col items-center z-10 min-h-max">
         
         {/* Aura Logo */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 relative flex items-center justify-center shrink-0"
+          className="mb-4 relative flex items-center justify-center shrink-0"
         >
-          <img 
-            src="/logo.png" 
-            alt="Aura Wellness by Studio Satu Akun" 
-            className="w-32 h-auto object-contain mix-blend-darken"
-          />
+          <div className="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center">
+            <img 
+              src="/logo.png" 
+              alt="Aura Wellness by Studio Satu Akun" 
+              className="w-full h-full object-cover scale-110"
+            />
+          </div>
         </motion.div>
 
         {/* Typography */}
@@ -38,16 +40,16 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center space-y-4 mb-8 shrink-0"
+          className="text-center space-y-3 mb-6 shrink-0"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white text-xs font-medium tracking-wider text-primary border border-primary/10 shadow-sm uppercase">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white text-[10px] font-medium tracking-wider text-primary border border-primary/10 shadow-sm uppercase">
             Happy Aging Philosophy
           </span>
           <h1 className="text-3xl font-serif font-medium text-primary leading-tight">
             Holistic <br />
             <span className="italic text-accent">Beauty</span> Care
           </h1>
-          <p className="text-xs text-muted-foreground px-4 leading-relaxed max-w-[260px] mx-auto">
+          <p className="text-[11px] text-muted-foreground px-4 leading-relaxed max-w-[260px] mx-auto">
             Klinik kecantikan premium di Jakarta Selatan. Nikmati perawatan holistik dan inovatif.
           </p>
         </motion.div>
