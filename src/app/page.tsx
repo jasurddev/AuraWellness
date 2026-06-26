@@ -174,18 +174,38 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="flex-1 w-full aspect-square md:aspect-[4/3] bg-slate-50 border border-slate-200 rounded-3xl p-8 flex items-center justify-center relative overflow-hidden shadow-sm">
-             {/* Abstract QRIS/Payment UI representation */}
-             <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 to-white"></div>
-             <div className="relative z-10 w-64 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex flex-col items-center">
-                <div className="w-12 h-4 bg-slate-200 rounded-full mb-6"></div>
-                <div className="w-40 h-40 border-8 border-slate-900 rounded-xl flex items-center justify-center mb-6 relative">
-                  <div className="w-20 h-20 bg-slate-900 rounded-sm"></div>
-                  <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-yellow-400"></div>
-                  <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-yellow-400"></div>
+          <div className="flex-1 w-full aspect-square md:aspect-[4/3] bg-slate-50 rounded-3xl p-8 flex items-center justify-center relative overflow-hidden">
+             {/* Decorative background elements */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-100/50 rounded-full blur-3xl"></div>
+             
+             {/* Modern Sleek Receipt UI */}
+             <div className="relative z-10 w-full max-w-sm bg-white/90 backdrop-blur-xl p-8 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white flex flex-col items-center transform transition-transform hover:scale-105 duration-500">
+                <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                    <Check className="w-6 h-6 text-emerald-600" />
+                  </div>
                 </div>
-                <div className="w-full h-10 bg-slate-900 text-white flex items-center justify-center rounded-xl text-xs font-medium gap-2">
-                  <Check className="w-3 h-3" /> Payment Verified
+                <h4 className="text-2xl font-serif text-slate-900 mb-1">Payment Received</h4>
+                <p className="text-sm text-slate-500 mb-8 font-medium">Aura Aesthetics - Kemang</p>
+                
+                <div className="w-full border-t border-dashed border-slate-200 mb-6 relative">
+                  <div className="absolute -left-10 -top-3 w-6 h-6 rounded-full bg-slate-50"></div>
+                  <div className="absolute -right-10 -top-3 w-6 h-6 rounded-full bg-slate-50"></div>
+                </div>
+                
+                <div className="w-full flex justify-between items-center mb-6">
+                  <span className="text-sm text-slate-500">Total Amount</span>
+                  <span className="text-xl font-medium text-slate-900">Rp 1.250.000</span>
+                </div>
+                
+                <div className="w-full bg-slate-50 rounded-2xl p-4 flex items-center gap-4 border border-slate-100">
+                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
+                    <Zap className="w-5 h-5 text-yellow-500" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-0.5">Auto-Reconciled</span>
+                    <span className="text-[11px] text-slate-500">Instantly settled to Bank Account</span>
+                  </div>
                 </div>
              </div>
           </div>
