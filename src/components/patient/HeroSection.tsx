@@ -1,0 +1,126 @@
+"use client";
+
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, Droplets, Activity, History } from 'lucide-react';
+
+interface HeroProps {
+  onStartScan: () => void;
+  onStartBooking: () => void;
+  onStartPainTracker: () => void;
+  onStartDashboard: () => void;
+}
+
+export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, onStartDashboard }: HeroProps) {
+  return (
+    <div className="min-h-full flex flex-col relative bg-[#F9F8F6] overflow-y-auto pb-6 scrollbar-hide">
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#EFECE5] to-transparent pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="px-6 pt-12 pb-6 flex flex-col items-center z-10 min-h-max">
+        
+        {/* Aura Logo */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8 w-24 h-24 relative flex items-center justify-center bg-white rounded-full shadow-sm border border-border/50 shrink-0"
+        >
+          <img 
+            src="https://nalluraclinic.com/cdn/shop/files/Logo_Nallura.png?v=1772940413" 
+            alt="Aura Wellness by Studio Satu Akun" 
+            className="w-16 h-16 object-contain"
+          />
+        </motion.div>
+
+        {/* Typography */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-center space-y-4 mb-8 shrink-0"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white text-xs font-medium tracking-wider text-primary border border-primary/10 shadow-sm uppercase">
+            Happy Aging Philosophy
+          </span>
+          <h1 className="text-3xl font-serif font-medium text-primary leading-tight">
+            Holistic <br />
+            <span className="italic text-accent">Beauty</span> Care
+          </h1>
+          <p className="text-xs text-muted-foreground px-4 leading-relaxed max-w-[260px] mx-auto">
+            Klinik kecantikan premium di Jakarta Selatan. Nikmati perawatan holistik dan inovatif.
+          </p>
+        </motion.div>
+
+        {/* Action Buttons Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-full grid grid-cols-1 gap-3 shrink-0"
+        >
+          <button
+            onClick={onStartScan}
+            className="group relative w-full flex items-center justify-between p-4 bg-primary text-primary-foreground rounded-2xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="font-medium text-sm">AI Skin Analyzer</div>
+                <div className="text-[10px] text-white/80">Analisa wajah & kesehatan</div>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+          <button
+            onClick={onStartPainTracker}
+            className="group relative w-full flex items-center justify-between p-4 bg-accent text-white rounded-2xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-md">
+                <Activity className="w-5 h-5 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="font-medium text-sm">Body Pain Tracker</div>
+                <div className="text-[10px] text-white/80">Manajemen nyeri inovatif</div>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+          <div className="grid grid-cols-2 gap-3 mt-1">
+            <button
+              onClick={onStartBooking}
+              className="group flex flex-col items-center justify-center p-4 bg-white text-primary border border-border/60 rounded-2xl shadow-sm hover:border-primary/30 transition-all active:scale-[0.98] gap-2"
+            >
+              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                <Droplets className="w-5 h-5 text-primary" />
+              </div>
+              <div className="text-center">
+                <div className="font-medium text-xs">Book Appt</div>
+              </div>
+            </button>
+
+            <button
+              onClick={onStartDashboard}
+              className="group flex flex-col items-center justify-center p-4 bg-white text-primary border border-border/60 rounded-2xl shadow-sm hover:border-primary/30 transition-all active:scale-[0.98] gap-2"
+            >
+              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                <History className="w-5 h-5 text-primary" />
+              </div>
+              <div className="text-center">
+                <div className="font-medium text-xs">My Journey</div>
+              </div>
+            </button>
+          </div>
+        </motion.div>
+
+      </div>
+    </div>
+  );
+}

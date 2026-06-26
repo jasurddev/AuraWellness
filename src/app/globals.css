@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme inline {
+  --color-background: #F9F8F6;
+  --color-foreground: #2A2D24;
+  
+  --color-primary: #545743;
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #EFECE5;
+  --color-secondary-foreground: #545743;
+
+  --color-accent: #C5A880;
+  --color-accent-foreground: #ffffff;
+
+  --color-muted: #F5F3ED;
+  --color-muted-foreground: #737664;
+
+  --color-border: #E2DFD8;
+  --color-card: #ffffff;
+
+  /* Custom utility colors for Admin and Home page */
+  --color-charcoal: #2A2D24;
+  --color-gold: #C5A880;
+  --color-blush: #EFECE5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+:root {
+  --background: #F9F8F6;
+  --foreground: #2A2D24;
+  --primary: #545743;
+  --border: #E2DFD8;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilities for glassmorphism with light earthy tones */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(84, 87, 67, 0.05);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #434635;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(84, 87, 67, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #545743 0%, #C5A880 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
