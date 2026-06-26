@@ -24,12 +24,12 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 w-24 h-24 relative flex items-center justify-center bg-white rounded-full shadow-sm border border-border/50 shrink-0"
+          className="mb-8 relative flex items-center justify-center shrink-0"
         >
           <img 
             src="/logo.png" 
             alt="Aura Wellness by Studio Satu Akun" 
-            className="w-16 h-16 object-contain"
+            className="w-32 h-auto object-contain mix-blend-darken"
           />
         </motion.div>
 
