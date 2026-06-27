@@ -45,7 +45,7 @@ export default function DoctorProfilePage({ params }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
         
         {/* Back Button */}
-        <Link href="/patient" className="absolute top-6 left-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+        <Link href="/demo/patient" className="absolute top-6 left-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
           <ChevronLeft className="w-6 h-6 -ml-1" />
         </Link>
         

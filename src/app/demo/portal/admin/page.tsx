@@ -24,7 +24,7 @@ export default function AdminPortal() {
     setAdminDoctorId(doctorId);
     setActiveTab(tab);
     setAdminRole(role);
-    router.push("/admin");
+    router.push("/demo/admin");
   };
 
   return (

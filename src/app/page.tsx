@@ -369,7 +369,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
             <Link 
-              href="/portal/patient"
+              href="/demo/portal/patient"
               className="group bg-white border border-slate-200 p-8 hover:border-slate-900 transition-all flex flex-col justify-between min-h-[240px]"
             >
               <div>
@@ -383,7 +383,7 @@ export default function Home() {
             </Link>
 
             <Link 
-              href="/portal/admin"
+              href="/demo/portal/admin"
               className="group bg-slate-900 text-white p-8 hover:bg-slate-800 transition-all flex flex-col justify-between min-h-[240px]"
             >
               <div>

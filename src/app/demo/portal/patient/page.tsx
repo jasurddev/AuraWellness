@@ -18,12 +18,12 @@ export default function PatientPortal() {
   const handleLaunchFresh = () => {
     resetPatientData();
     clearCart();
-    router.push("/patient");
+    router.push("/demo/patient");
   };
 
   const handleLaunchStore = () => {
     // Optionally pre-fill some data if needed, but for now just navigate to patient app
-    router.push("/patient");
+    router.push("/demo/patient");
   };
 
   return (
