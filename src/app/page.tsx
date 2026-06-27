@@ -80,41 +80,19 @@ export default function Home() {
       <section className="pt-10 pb-32 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           
-          {/* Live Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-24 border-y border-slate-200 py-16 relative">
+          {/* Trusted By Logos */}
+          <div className="mb-24 border-y border-slate-200 py-10 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-50 to-transparent opacity-50 -z-10"></div>
             
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center text-center"
-            >
-              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">Rp 50B<span className="text-yellow-500">+</span></span>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Payments Processed</span>
-            </motion.div>
+            <p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by Forward-Thinking Clinics</p>
             
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="flex flex-col items-center text-center"
-            >
-              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">1.2M<span className="text-yellow-500">+</span></span>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">AI Skin Scans</span>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="flex flex-col items-center text-center"
-            >
-              <span className="text-5xl md:text-6xl font-serif text-slate-900 mb-4">99.9<span className="text-yellow-500">%</span></span>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Uptime & Reliability</span>
-            </motion.div>
+            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+              <span className="font-serif text-2xl md:text-3xl font-medium tracking-tight">LUMIÈRE</span>
+              <span className="font-sans text-xl md:text-2xl font-light tracking-[0.2em] uppercase">Aesthetica</span>
+              <span className="font-serif text-2xl md:text-3xl italic">DermaHaus</span>
+              <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter">SKIN<span className="font-light">CLINIC</span></span>
+              <span className="font-serif text-2xl md:text-3xl font-light">E l e v a t e</span>
+            </div>
           </div>
 
           {/* Live AI Scanner Demo */}
