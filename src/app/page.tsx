@@ -399,9 +399,21 @@ export default function Home() {
       </section>
 
       {/* 7. Footer */}
-      <footer className="py-12 px-6 border-t border-slate-200 text-center">
-        <span className="font-serif text-lg tracking-tight text-slate-900 block mb-2">Aura<span className="text-yellow-600">OS</span></span>
-        <p className="text-xs text-slate-400 uppercase tracking-widest">© 2026 Studio Satu Akun.</p>
+      <footer className="py-16 px-6 border-t border-slate-200 bg-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-center md:text-left">
+            <span className="font-serif text-2xl tracking-tight text-slate-900 block mb-2">Aura<span className="text-yellow-600">OS</span></span>
+            <p className="text-sm text-slate-500 font-medium mb-1">Built for scale. Designed for excellence.</p>
+            <p className="text-xs text-slate-400 mt-2">© 2026 PT Studio Satu Akun. All rights reserved.</p>
+            <p className="text-xs text-slate-400 mt-1">auraos.com</p>
+          </div>
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm font-medium text-slate-500">
+            <Link href="#" className="hover:text-yellow-600 transition-colors">Terms & Conditions</Link>
+            <Link href="#" className="hover:text-yellow-600 transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-yellow-600 transition-colors">Refund Policy</Link>
+            <Link href="#" className="hover:text-yellow-600 transition-colors">Contact Us</Link>
+          </div>
+        </div>
       </footer>
     </div>
   );
