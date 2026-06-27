@@ -15,14 +15,8 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
   const [localSleep, setLocalSleep] = useState(3);
 
   // Helper functions for score colors
-  const getScoreColor = (metric: string, score: number) => {
-    // For hydration: higher is better
-    if (metric === 'Hydration') {
-      if (score >= 70) return 'text-green-600 bg-green-50';
-      if (score >= 40) return 'text-yellow-600 bg-yellow-50';
-      return 'text-red-600 bg-red-50';
-    }
-    // For others (Acne, Pigmentation, Wrinkles): lower is better
+  const getScoreColor = (score: number) => {
+    // All metrics: lower is better (green), higher is worse (red)
     if (score <= 30) return 'text-green-600 bg-green-50';
     if (score <= 60) return 'text-yellow-600 bg-yellow-50';
     return 'text-red-600 bg-red-50';
@@ -361,13 +355,13 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       {[
                         { label: 'Acne Score', value: scanResult.hautAiMetrics.metrics.acne },
-                        { label: 'Hydration', value: scanResult.hautAiMetrics.metrics.hydration },
+                        { label: 'Dehydration', value: 100 - scanResult.hautAiMetrics.metrics.hydration },
                         { label: 'Pigmentation', value: scanResult.hautAiMetrics.metrics.pigmentation },
                         { label: 'Wrinkles', value: scanResult.hautAiMetrics.metrics.wrinkles }
                       ].map((metric) => (
                         <div key={metric.label} className="bg-white rounded-xl p-3 border border-border/50 shadow-sm">
                           <div className="text-xs text-muted-foreground mb-1">{metric.label}</div>
-                          <div className={`font-semibold text-sm inline-block px-2 py-0.5 rounded-md ${getScoreColor(metric.label, metric.value)}`}>
+                          <div className={`font-semibold text-sm inline-block px-2 py-0.5 rounded-md ${getScoreColor(metric.value)}`}>
                             {metric.value}/100
                           </div>
                         </div>
