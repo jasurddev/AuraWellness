@@ -231,16 +231,29 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                 Ambil foto wajah Anda di tempat dengan pencahayaan yang cukup.
               </p>
 
-              <label className="w-full relative group cursor-pointer">
-                <input type="file" accept="image/*" className="hidden" onChange={handleFileUpload} />
-                <div className="glass-panel rounded-[2rem] p-8 flex flex-col items-center justify-center border-dashed border-2 border-primary/20 group-hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Upload className="w-6 h-6 text-primary" />
+              <div className="grid grid-cols-2 gap-4 w-full">
+                <label className="w-full relative group cursor-pointer">
+                  <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleFileUpload} />
+                  <div className="glass-panel rounded-3xl p-6 flex flex-col items-center justify-center border-dashed border-2 border-primary/20 group-hover:border-primary/50 transition-colors h-full text-center">
+                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                      <ScanFace className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="font-medium text-primary text-sm">Kamera</span>
+                    <span className="text-[10px] text-muted-foreground mt-1">Foto Langsung</span>
                   </div>
-                  <span className="font-medium text-primary">Upload Photo</span>
-                  <span className="text-xs text-muted-foreground mt-1">PNG, JPG up to 10MB</span>
-                </div>
-              </label>
+                </label>
+
+                <label className="w-full relative group cursor-pointer">
+                  <input type="file" accept="image/*" className="hidden" onChange={handleFileUpload} />
+                  <div className="glass-panel rounded-3xl p-6 flex flex-col items-center justify-center border-dashed border-2 border-primary/20 group-hover:border-primary/50 transition-colors h-full text-center">
+                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                      <Upload className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="font-medium text-primary text-sm">Galeri</span>
+                    <span className="text-[10px] text-muted-foreground mt-1">Pilih dari HP</span>
+                  </div>
+                </label>
+              </div>
             </motion.div>
           )}
 
