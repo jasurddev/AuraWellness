@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useState, useEffect } from 'react';
-import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, ShoppingCart, Menu, X } from 'lucide-react';
+import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MOCK_DOCTORS } from '@/lib/mockData';
@@ -27,6 +27,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { id: 'sales', label: 'Online Sales', icon: ShoppingCart },
     { id: 'analytics', label: 'Analytics', icon: Activity },
     { id: 'inventory', label: 'Inventory', icon: PackageOpen },
+    { id: 'profile', label: 'My Profile', icon: User },
   ];
 
   const handleTabClick = (tabId: any) => {

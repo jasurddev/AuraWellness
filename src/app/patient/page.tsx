@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HeroSection } from '@/components/patient/HeroSection';
 import { AIScannerFlow } from '@/components/patient/AIScannerFlow';
 import { BookingWizard } from '@/components/patient/BookingWizard';
@@ -18,6 +18,17 @@ export default function PatientPage() {
   const [view, setView] = useState<ViewState>('home');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { setBookingData, setScanResult, setPainAreas, setWellnessData } = useStore();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const doctorId = params.get('doctorId');
+      if (doctorId) {
+        setBookingData({ treatmentId: undefined, doctorId, date: undefined, time: undefined });
+        setView('booking');
+      }
+    }
+  }, []);
 
   const handleStartScan = () => {
     setWellnessData(null);

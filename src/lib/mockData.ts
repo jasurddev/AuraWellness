@@ -1,8 +1,13 @@
 export type Doctor = {
   id: string;
   name: string;
+  slug: string;
   specialty: string;
-  imageUrl: string; // Changed from avatar to imageUrl to match components
+  imageUrl: string; 
+  bio: string;
+  rating: number;
+  reviewsCount: number;
+  gallery: string[];
 };
 
 export type Product = {
@@ -41,21 +46,45 @@ export type Patient = {
 export const MOCK_DOCTORS: Doctor[] = [
   { 
     id: 'd1', 
-    name: 'Dr. Sarah Lee', 
+    name: 'Dr. Sarah Lee',
+    slug: 'dr-sarah-lee',
     specialty: 'Aesthetic Dermatologist', 
-    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=250&h=250' 
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=250&h=250',
+    bio: 'With over 10 years of experience in aesthetic dermatology, Dr. Sarah Lee specializes in non-invasive skin rejuvenation and advanced laser treatments. She believes in enhancing natural beauty through holistic approaches.',
+    rating: 4.9,
+    reviewsCount: 1240,
+    gallery: [
+      'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=400',
+      'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=400',
+    ]
   },
   { 
     id: 'd2', 
     name: 'Dr. James Chen', 
+    slug: 'dr-james-chen',
     specialty: 'Pain Management & Holistic', 
-    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=250&h=250' 
+    imageUrl: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=250&h=250',
+    bio: 'Dr. James Chen is a pioneer in combining traditional pain management with modern technological therapies. His holistic approach aims not just to treat pain, but to restore overall body alignment and vitality.',
+    rating: 4.8,
+    reviewsCount: 890,
+    gallery: [
+      'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&q=80&w=400',
+      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=400',
+    ]
   },
   { 
     id: 'd3', 
     name: 'Dr. Emily Carter', 
+    slug: 'dr-emily-carter',
     specialty: 'Anti-Aging Specialist', 
-    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=250&h=250' 
+    imageUrl: 'https://images.unsplash.com/photo-1594824432258-29406085a6e6?auto=format&fit=crop&q=80&w=250&h=250',
+    bio: 'Dedicated to the science of longevity and cellular health, Dr. Emily Carter focuses on preventative anti-aging treatments. She creates bespoke regimens tailored to each patient\'s unique genetic makeup.',
+    rating: 5.0,
+    reviewsCount: 1532,
+    gallery: [
+      'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=400',
+      'https://images.unsplash.com/photo-1608248593842-8d76e4c25603?auto=format&fit=crop&q=80&w=400',
+    ]
   },
 ];
 

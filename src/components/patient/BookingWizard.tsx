@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, CheckCircle2, ChevronRight, Calendar as CalendarIcon, Clock, Leaf } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronRight, Calendar as CalendarIcon, Clock, Leaf, ExternalLink } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 import { MOCK_TREATMENTS, MOCK_DOCTORS } from '@/lib/mockData';
+import Link from 'next/link';
 
 export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, onBack: () => void }) {
   const [step, setStep] = useState(1);
@@ -105,11 +106,21 @@ export function BookingWizard({ onComplete, onBack }: { onComplete: () => void, 
                         </div>
                       )}
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <h4 className="font-medium text-primary text-sm">{doc.name}</h4>
                       <p className="text-xs text-muted-foreground">{doc.specialty}</p>
-                      <div className="flex items-center gap-1 mt-1 text-[10px] font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full w-fit">
-                        <Leaf className="w-3 h-3" /> Expert
+                      <div className="flex items-center gap-2 mt-2">
+                        <div className="flex items-center gap-1 text-[10px] font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full w-fit">
+                          <Leaf className="w-3 h-3" /> Expert
+                        </div>
+                        <Link 
+                          href={`/doctor/${doc.slug}`} 
+                          target="_blank" 
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center gap-1 text-[10px] font-medium text-primary bg-secondary/80 hover:bg-secondary px-2 py-0.5 rounded-full w-fit transition-colors"
+                        >
+                          View Profile <ExternalLink className="w-3 h-3" />
+                        </Link>
                       </div>
                     </div>
                   </div>

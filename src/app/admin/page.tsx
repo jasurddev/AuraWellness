@@ -7,6 +7,7 @@ import { EMRTab } from '@/components/admin/EMRTab';
 import { AnalyticsTab } from '@/components/admin/AnalyticsTab';
 import { InventoryTab } from '@/components/admin/InventoryTab';
 import { SalesTab } from '@/components/admin/SalesTab';
+import { ProfileTab } from '@/components/admin/ProfileTab';
 
 export default function AdminPage() {
   const { activeTab } = useStore();
@@ -19,6 +20,7 @@ export default function AdminPage() {
       {activeTab === 'sales' && <SalesTab />}
       {activeTab === 'analytics' && <AnalyticsTab />}
       {activeTab === 'inventory' && <InventoryTab />}
+      {activeTab === 'profile' && <ProfileTab />}
     </div>
   );
 }

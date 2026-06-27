@@ -49,8 +49,8 @@ type AppState = {
   clearCart: () => void;
   
   // Admin dashboard state
-  activeTab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales';
-  setActiveTab: (tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales') => void;
+  activeTab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile';
+  setActiveTab: (tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile') => void;
   
   // Clear data
   resetPatientData: () => void;
