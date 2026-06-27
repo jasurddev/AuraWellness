@@ -10,7 +10,7 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
   const [step, setStep] = useState<'wellness' | 'upload' | 'scanning' | 'results'>('wellness');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   
-  const { setScanResult, wellnessData, setWellnessData } = useStore();
+  const { scanResult, setScanResult, wellnessData, setWellnessData } = useStore();
   const [localStress, setLocalStress] = useState(3);
   const [localSleep, setLocalSleep] = useState(3);
 
@@ -19,13 +19,51 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
     setStep('upload');
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const url = URL.createObjectURL(file);
       setImagePreview(url);
       setStep('scanning');
-      simulateScanning(url);
+      
+      try {
+        const reader = new FileReader();
+        reader.onloadend = async () => {
+          const base64String = reader.result as string;
+          await processRealScan(url, base64String);
+        };
+        reader.readAsDataURL(file);
+      } catch (err) {
+        console.error(err);
+        simulateScanning(url);
+      }
+    }
+  };
+
+  const processRealScan = async (imageUrl: string, base64String: string) => {
+    try {
+      const res = await fetch('/api/scanner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageBase64: base64String }),
+      });
+      
+      if (!res.ok) throw new Error('API Failed');
+      
+      const data = await res.json();
+      
+      const realResult = {
+        imageUrl,
+        issues: data.detected_concerns || ['Dehidrasi Ringan'],
+        recommendedTreatments: [MOCK_TREATMENTS[0], MOCK_TREATMENTS[1]],
+        hautAiMetrics: data,
+      };
+      
+      setScanResult(realResult);
+      setStep('results');
+    } catch (err) {
+      console.error('Real scan failed, falling back to mock:', err);
+      simulateScanning(imageUrl);
     }
   };
 
@@ -256,9 +294,36 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                 )}
 
                 <div className="glass-panel rounded-2xl p-5">
-                  <h4 className="text-sm font-medium text-primary mb-3">Identified Concerns</h4>
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-sm font-medium text-primary">Identified Concerns</h4>
+                    {scanResult?.hautAiMetrics && (
+                      <span className="text-[10px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full">AI Confidence: {scanResult.hautAiMetrics.overall_score}%</span>
+                    )}
+                  </div>
+                  
+                  {scanResult?.hautAiMetrics && (
+                    <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
+                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
+                        <div className="text-muted-foreground mb-1">Acne Score</div>
+                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.acne}/100</div>
+                      </div>
+                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
+                        <div className="text-muted-foreground mb-1">Hydration</div>
+                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.hydration}/100</div>
+                      </div>
+                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
+                        <div className="text-muted-foreground mb-1">Pigmentation</div>
+                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.pigmentation}/100</div>
+                      </div>
+                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
+                        <div className="text-muted-foreground mb-1">Wrinkles</div>
+                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.wrinkles}/100</div>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex flex-wrap gap-2">
-                    {['Dehidrasi Ringan', 'Garis Halus', 'Tanda Kelelahan'].map((issue, i) => (
+                    {(scanResult?.issues || ['Dehidrasi Ringan', 'Garis Halus', 'Tanda Kelelahan']).map((issue, i) => (
                       <span key={i} className="px-3 py-1 bg-white rounded-full text-xs font-medium text-primary shadow-sm border border-border/50">
                         {issue}
                       </span>
