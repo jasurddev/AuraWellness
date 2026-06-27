@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useStore } from '@/store/useStore';
-import { MOCK_PATIENTS, Patient } from '@/lib/mockData';
-import { Search, FileText, ImageIcon, Activity, CheckCircle } from 'lucide-react';
+import { MOCK_PATIENTS, Patient, MOCK_DOCTORS } from '@/lib/mockData';
+import { Search, FileText, ImageIcon, Activity, CheckCircle, User } from 'lucide-react';
 
 export function EMRTab() {
   const { scanResult, wellnessData, bookingData, resetPatientData } = useStore();
@@ -42,29 +42,39 @@ export function EMRTab() {
           </div>
         </div>
         <div className="flex-1 overflow-y-auto">
-          {allPatients.map(patient => (
-            <div 
-              key={patient.id}
-              onClick={() => setSelectedPatientId(patient.id)}
-              className={`p-4 border-b border-border/50 cursor-pointer transition-colors flex items-center space-x-3 ${selectedPatientId === patient.id ? 'bg-gold/5 border-l-4 border-l-gold' : 'hover:bg-muted/30 border-l-4 border-l-transparent'} ${patient.id === 'demo-live' ? 'bg-blue-50/50 hover:bg-blue-50' : ''}`}
-            >
-              <div className="relative">
-                <img 
-                  src={patient.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250'} 
-                  alt={patient.name} 
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250' }}
-                  className="w-10 h-10 rounded-full object-cover bg-slate-100" 
-                />
-                {patient.id === 'demo-live' && (
-                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></span>
-                )}
+          {allPatients.map((patient, index) => {
+            const assignedDoctor = MOCK_DOCTORS[index % MOCK_DOCTORS.length];
+            return (
+              <div 
+                key={patient.id}
+                onClick={() => setSelectedPatientId(patient.id)}
+                className={`p-4 border-b border-border/50 cursor-pointer transition-colors flex items-center space-x-3 ${selectedPatientId === patient.id ? 'bg-gold/5 border-l-4 border-l-gold' : 'hover:bg-muted/30 border-l-4 border-l-transparent'} ${patient.id === 'demo-live' ? 'bg-blue-50/50 hover:bg-blue-50' : ''}`}
+              >
+                <div className="relative">
+                  <img 
+                    src={patient.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250'} 
+                    alt={patient.name} 
+                    onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250' }}
+                    className="w-10 h-10 rounded-full object-cover bg-slate-100" 
+                  />
+                  {patient.id === 'demo-live' && (
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></span>
+                  )}
+                </div>
+                <div>
+                  <div className={`font-medium text-sm ${patient.id === 'demo-live' ? 'text-blue-700' : 'text-charcoal'}`}>
+                    {patient.name}
+                  </div>
+                  <div className="flex items-center gap-1 mt-1">
+                    <span className="text-[9px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-md flex items-center gap-1 border border-slate-200">
+                      <User className="w-2.5 h-2.5" /> {assignedDoctor.name}
+                    </span>
+                  </div>
+                  <div className="text-xs text-foreground/50 mt-1">Last visit: {patient.lastVisit}</div>
+                </div>
               </div>
-              <div>
-                <div className={`font-medium text-sm ${patient.id === 'demo-live' ? 'text-blue-700' : 'text-charcoal'}`}>{patient.name}</div>
-                <div className="text-xs text-foreground/50 mt-0.5">Last visit: {patient.lastVisit}</div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -86,6 +96,10 @@ export function EMRTab() {
                   {isLiveDemo && <span className="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full uppercase tracking-wider">Live</span>}
                 </h2>
                 <div className="flex items-center space-x-4 mt-2 text-sm text-foreground/60">
+                  <span className="text-[11px] font-medium bg-slate-100 text-slate-600 px-2 py-1 rounded-md flex items-center gap-1 border border-slate-200">
+                    <User className="w-3.5 h-3.5" /> 
+                    Handled by: {MOCK_DOCTORS[allPatients.findIndex(p => p.id === selectedPatient.id) % MOCK_DOCTORS.length]?.name}
+                  </span>
                   <span>ID: #{isLiveDemo ? '99999' : selectedPatient.id.padStart(5, '0')}</span>
                   <span>DOB: 12 Oct 1988</span>
                 </div>
