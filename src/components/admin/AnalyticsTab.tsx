@@ -1,4 +1,4 @@
-import { TrendingUp, Users, DollarSign, Activity } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Activity, UserPlus, RefreshCw } from 'lucide-react';
 
 export function AnalyticsTab() {
   return (
@@ -32,7 +32,7 @@ export function AnalyticsTab() {
       </div>
 
       {/* Charts Dummy */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Revenue Trend */}
         <div className="bg-white p-6 rounded-2xl border border-border shadow-sm flex flex-col">
           <h3 className="font-semibold text-charcoal mb-6">Revenue Trend (6 Months)</h3>
@@ -76,6 +76,38 @@ export function AnalyticsTab() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Patient Acquisition */}
+        <div className="bg-white p-6 rounded-2xl border border-border shadow-sm flex flex-col">
+          <h3 className="font-semibold text-charcoal mb-6">Patient Retention</h3>
+          <div className="flex-1 flex flex-col justify-center space-y-8">
+            <div>
+              <div className="flex justify-between text-xs mb-2">
+                <span className="font-medium text-charcoal flex items-center gap-2">
+                  <UserPlus className="w-4 h-4 text-emerald-500" /> New Patients
+                </span>
+                <span className="text-muted-foreground font-semibold text-sm">45%</span>
+              </div>
+              <div className="w-full bg-muted/40 h-3 rounded-full overflow-hidden">
+                <div className="h-full rounded-full bg-emerald-400" style={{ width: '45%' }}></div>
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-2">124 pasien baru bulan ini</p>
+            </div>
+            
+            <div>
+              <div className="flex justify-between text-xs mb-2">
+                <span className="font-medium text-charcoal flex items-center gap-2">
+                  <RefreshCw className="w-4 h-4 text-blue-500" /> Repeat Patients
+                </span>
+                <span className="text-muted-foreground font-semibold text-sm">55%</span>
+              </div>
+              <div className="w-full bg-muted/40 h-3 rounded-full overflow-hidden">
+                <div className="h-full rounded-full bg-blue-400" style={{ width: '55%' }}></div>
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-2">152 pasien kembali bulan ini</p>
+            </div>
           </div>
         </div>
       </div>
