@@ -1,4 +1,4 @@
-import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 
@@ -30,9 +30,9 @@ export async function POST(req: Request) {
       ? imageBase64 
       : `data:image/jpeg;base64,${imageBase64}`;
 
-    // Call GPT-4o-mini to analyze the image and return the structured JSON
+    // Call Gemini 2.5 Flash to analyze the image and return the structured JSON
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: google('gemini-2.5-flash'),
       schema: HautAiSchema,
       messages: [
         {
