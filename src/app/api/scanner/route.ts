@@ -30,9 +30,9 @@ export async function POST(req: Request) {
       ? imageBase64 
       : `data:image/jpeg;base64,${imageBase64}`;
 
-    // Call Gemini 1.5 Flash to analyze the image and return the structured JSON
+    // Call Gemini 2.5 Flash to analyze the image and return the structured JSON
     const { object } = await generateObject({
-      model: google('gemini-1.5-flash'),
+      model: google('gemini-2.5-flash'),
       schema: HautAiSchema,
       messages: [
         {

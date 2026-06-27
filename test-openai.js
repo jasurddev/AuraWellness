@@ -1,11 +1,11 @@
 const { generateObject } = require('ai');
-const { openai } = require('@ai-sdk/openai');
+const { google } = require('@ai-sdk/google');
 const { z } = require('zod');
 
 async function test() {
   try {
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: google('gemini-1.5-pro'),
       schema: z.object({
         test: z.string()
       }),
