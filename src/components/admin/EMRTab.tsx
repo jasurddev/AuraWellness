@@ -6,23 +6,26 @@ import { MOCK_PATIENTS, Patient } from '@/lib/mockData';
 import { Search, FileText, ImageIcon, Activity, CheckCircle } from 'lucide-react';
 
 export function EMRTab() {
-  const { scanResult, wellnessData, resetPatientData } = useStore();
+  const { scanResult, wellnessData, bookingData, resetPatientData } = useStore();
   
-  // Inject live demo patient if scanResult exists
-  const allPatients: Patient[] = scanResult ? [
+  // Inject live demo patient if scanResult OR bookingData exists
+  const hasLivePatient = scanResult || bookingData?.treatmentId;
+  const allPatients: Patient[] = hasLivePatient ? [
     {
       id: 'demo-live',
-      name: 'New Patient (Live AI Scan)',
-      avatar: scanResult.imageUrl,
+      name: scanResult ? 'New Patient (Live AI Scan)' : 'New Patient (Live Booking)',
+      avatar: scanResult ? scanResult.imageUrl : 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250',
       lastVisit: 'Just Now',
-      notes: 'Patient completed AI Face Scan from mobile app. Awaiting expert review.',
+      notes: scanResult 
+        ? 'Patient completed AI Face Scan from mobile app. Awaiting expert review.' 
+        : 'Patient booked an appointment via mobile app. No AI scan provided.',
     },
     ...MOCK_PATIENTS
   ] : MOCK_PATIENTS;
 
   const [selectedPatientId, setSelectedPatientId] = useState(allPatients[0].id);
   const selectedPatient = allPatients.find(p => p.id === selectedPatientId) || allPatients[0];
-  const isLiveDemo = selectedPatient.id === 'demo-live' && scanResult;
+  const isLiveDemo = selectedPatient.id === 'demo-live' && hasLivePatient;
 
   return (
     <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden flex h-[700px]">
@@ -163,12 +166,12 @@ export function EMRTab() {
               </div>
               
               <div className="bg-white border border-border p-4 rounded-xl shadow-sm">
-                <div className="text-sm font-medium text-charcoal mb-4">{isLiveDemo ? 'AI Scan Capture' : 'Before / After'}</div>
+                <div className="text-sm font-medium text-charcoal mb-4">{isLiveDemo && scanResult ? 'AI Scan Capture' : 'Clinical Photos'}</div>
                 
-                {isLiveDemo ? (
+                {isLiveDemo && scanResult ? (
                   <div className="relative group overflow-hidden rounded-lg">
                     <img 
-                      src={scanResult?.imageUrl} 
+                      src={scanResult.imageUrl} 
                       alt="Live Scan" 
                       className="w-full aspect-square md:aspect-[3/4] object-cover"
                     />
@@ -207,15 +210,17 @@ export function EMRTab() {
                   </div>
                 )}
                 
-                {isLiveDemo ? (
+                {isLiveDemo && scanResult ? (
                   <div className="mt-4 space-y-2">
                     <p className="text-xs font-semibold text-charcoal">AI Recommended Treatment:</p>
-                    {scanResult?.recommendedTreatments.map(t => (
+                    {scanResult.recommendedTreatments.map(t => (
                       <div key={t.id} className="text-xs bg-muted/30 p-2 rounded border border-border">
                         {t.name}
                       </div>
                     ))}
                   </div>
+                ) : isLiveDemo && !scanResult ? (
+                  <p className="text-xs text-foreground/50 text-center mt-3">Patient booked without AI Scan. Please request photos upon arrival.</p>
                 ) : (
                   <p className="text-xs text-foreground/50 text-center mt-3">Treatment: Laser Rejuvenation</p>
                 )}

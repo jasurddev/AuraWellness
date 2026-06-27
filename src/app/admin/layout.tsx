@@ -1,7 +1,7 @@
 "use client";
 
-import { ReactNode, useState } from 'react';
-import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, Menu, X } from 'lucide-react';
+import { ReactNode, useState, useEffect } from 'react';
+import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, ShoppingCart, Menu, X } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MOCK_DOCTORS } from '@/lib/mockData';
@@ -9,14 +9,22 @@ import { MOCK_DOCTORS } from '@/lib/mockData';
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const { activeTab, setActiveTab, bookingData } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  const loggedInDoctor = MOCK_DOCTORS.find(d => d.id === bookingData?.doctorId) || MOCK_DOCTORS[0];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const loggedInDoctor = (mounted && bookingData?.doctorId) 
+    ? (MOCK_DOCTORS.find(d => d.id === bookingData.doctorId) || MOCK_DOCTORS[0])
+    : MOCK_DOCTORS[0];
   const doctorInitials = loggedInDoctor.name.replace('Dr. ', '').split(' ').map(n => n[0]).join('');
 
   const navItems = [
     { id: 'overview', label: 'Dashboard', icon: PieChart },
     { id: 'schedule', label: 'Schedule', icon: CalendarDays },
     { id: 'emr', label: 'Patients (EMR)', icon: FolderHeart },
+    { id: 'sales', label: 'Online Sales', icon: ShoppingCart },
     { id: 'analytics', label: 'Analytics', icon: Activity },
     { id: 'inventory', label: 'Inventory', icon: PackageOpen },
   ];
