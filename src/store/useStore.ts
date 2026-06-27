@@ -51,6 +51,8 @@ type AppState = {
   // Admin dashboard state
   activeTab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile';
   setActiveTab: (tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile') => void;
+  adminDoctorId: string | null;
+  setAdminDoctorId: (id: string | null) => void;
   
   // Clear data
   resetPatientData: () => void;
@@ -100,6 +102,9 @@ export const useStore = create<AppState>()(
       activeTab: 'overview',
       setActiveTab: (tab) => set({ activeTab: tab }),
 
+      adminDoctorId: null,
+      setAdminDoctorId: (id) => set({ adminDoctorId: id }),
+
       resetPatientData: () => set({ 
         bookingData: {}, 
         wellnessData: null, 
@@ -115,6 +120,7 @@ export const useStore = create<AppState>()(
         scanResult: state.scanResult,
         painAreas: state.painAreas,
         cartItems: state.cartItems,
+        adminDoctorId: state.adminDoctorId,
       }), // Persist everything except activeTab
     }
   )

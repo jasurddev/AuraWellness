@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MOCK_DOCTORS } from '@/lib/mockData';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const { activeTab, setActiveTab, bookingData } = useStore();
+  const { activeTab, setActiveTab, adminDoctorId } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -15,8 +15,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     setMounted(true);
   }, []);
 
-  const loggedInDoctor = (mounted && bookingData?.doctorId) 
-    ? (MOCK_DOCTORS.find(d => d.id === bookingData.doctorId) || MOCK_DOCTORS[0])
+  const loggedInDoctor = (mounted && adminDoctorId) 
+    ? (MOCK_DOCTORS.find(d => d.id === adminDoctorId) || MOCK_DOCTORS[0])
     : MOCK_DOCTORS[0];
   const doctorInitials = loggedInDoctor.name.replace('Dr. ', '').split(' ').map(n => n[0]).join('');
 

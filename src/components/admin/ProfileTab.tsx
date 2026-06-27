@@ -6,7 +6,7 @@ import { MOCK_DOCTORS } from '@/lib/mockData';
 import { Copy, CheckCircle2, User, Share2, UploadCloud, Save } from 'lucide-react';
 
 export function ProfileTab() {
-  const { bookingData } = useStore();
+  const { adminDoctorId } = useStore();
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -15,8 +15,8 @@ export function ProfileTab() {
     setMounted(true);
   }, []);
 
-  const loggedInDoctor = (mounted && bookingData?.doctorId) 
-    ? (MOCK_DOCTORS.find(d => d.id === bookingData.doctorId) || MOCK_DOCTORS[0])
+  const loggedInDoctor = (mounted && adminDoctorId) 
+    ? (MOCK_DOCTORS.find(d => d.id === adminDoctorId) || MOCK_DOCTORS[0])
     : MOCK_DOCTORS[0];
 
   const shareUrl = `https://auraos.com/doctor/${loggedInDoctor.slug}`;
