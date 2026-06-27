@@ -8,7 +8,22 @@ import clsx from "clsx";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = (useChat() as any);
+  const chat = (useChat() as any) || {};
+  const messages = chat.messages || [];
+  const [localInput, setLocalInput] = useState("");
+  const input = chat.input !== undefined ? chat.input : localInput;
+  const handleInputChange = chat.handleInputChange || ((e: any) => setLocalInput(e.target.value));
+  const handleSubmit = chat.handleSubmit || ((e: any) => {
+    e.preventDefault();
+    if (chat.sendMessage && localInput.trim()) {
+       chat.sendMessage({ content: localInput });
+       setLocalInput("");
+    } else if (chat.append && localInput.trim()) {
+       chat.append({ role: 'user', content: localInput });
+       setLocalInput("");
+    }
+  });
+  const isLoading = chat.isLoading || false;
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
