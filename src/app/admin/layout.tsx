@@ -4,10 +4,14 @@ import { ReactNode, useState } from 'react';
 import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, Menu, X } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MOCK_DOCTORS } from '@/lib/mockData';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const { activeTab, setActiveTab } = useStore();
+  const { activeTab, setActiveTab, bookingData } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const loggedInDoctor = MOCK_DOCTORS.find(d => d.id === bookingData?.doctorId) || MOCK_DOCTORS[0];
+  const doctorInitials = loggedInDoctor.name.replace('Dr. ', '').split(' ').map(n => n[0]).join('');
 
   const navItems = [
     { id: 'overview', label: 'Dashboard', icon: PieChart },
@@ -82,9 +86,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <div className="font-serif font-medium text-lg text-charcoal capitalize tracking-wide">{activeTab}</div>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:block text-sm font-medium text-foreground/80">Dr. Sarah Lee</div>
+            <div className="hidden sm:block text-sm font-medium text-foreground/80">{loggedInDoctor.name}</div>
             <div className="w-9 h-9 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold font-medium text-sm shadow-sm cursor-pointer hover:bg-gold/20 transition-colors">
-              SL
+              {doctorInitials}
             </div>
           </div>
         </header>
