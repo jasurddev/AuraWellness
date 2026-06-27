@@ -10,7 +10,6 @@ export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   // @ts-ignore
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: "/api/chat",
     initialMessages: [
       {
         id: "1",
