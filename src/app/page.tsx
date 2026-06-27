@@ -80,19 +80,36 @@ export default function Home() {
       <section className="pt-10 pb-32 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           
-          {/* Trusted By Logos */}
-          <div className="mb-24 border-y border-slate-200 py-10 relative overflow-hidden">
+          {/* Logo Marquee */}
+          <div className="mb-24 border-y border-slate-200 py-10 relative overflow-hidden flex items-center">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-50 to-transparent opacity-50 -z-10"></div>
             
-            <p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by Forward-Thinking Clinics</p>
-            
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-              <Image src="/logo.png" alt="Aura Aesthetic" width={160} height={40} className="h-10 md:h-12 w-auto object-contain brightness-0" />
-              <span className="font-serif text-2xl md:text-3xl font-medium tracking-tight">LUMIÈRE</span>
-              <span className="font-sans text-xl md:text-2xl font-light tracking-[0.2em] uppercase">Aesthetica</span>
-              <span className="font-serif text-2xl md:text-3xl italic">DermaHaus</span>
-              <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter">SKIN<span className="font-light">CLINIC</span></span>
-            </div>
+            {/* Gradient masks for smooth fade at edges */}
+            <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#F9F8F6] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#F9F8F6] to-transparent z-10 pointer-events-none"></div>
+
+            <motion.div 
+              className="flex whitespace-nowrap items-center w-max opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
+              animate={{ x: ['-50%', '0%'] }}
+              transition={{ ease: 'linear', duration: 30, repeat: Infinity }}
+            >
+              {/* Set 1 */}
+              <div className="flex gap-16 md:gap-28 items-center shrink-0 px-8 md:px-14">
+                <Image src="/logo.png" alt="Aura Aesthetic" width={280} height={80} className="h-14 md:h-16 w-auto object-contain brightness-0 shrink-0" />
+                <span className="font-serif text-3xl md:text-4xl font-medium tracking-tight shrink-0">LUMIÈRE</span>
+                <span className="font-sans text-2xl md:text-3xl font-light tracking-[0.2em] uppercase shrink-0">Aesthetica</span>
+                <span className="font-serif text-3xl md:text-4xl italic shrink-0">DermaHaus</span>
+                <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter shrink-0">SKIN<span className="font-light">CLINIC</span></span>
+              </div>
+              {/* Set 2 (Duplicate for infinite loop) */}
+              <div className="flex gap-16 md:gap-28 items-center shrink-0 px-8 md:px-14">
+                <Image src="/logo.png" alt="Aura Aesthetic" width={280} height={80} className="h-14 md:h-16 w-auto object-contain brightness-0 shrink-0" />
+                <span className="font-serif text-3xl md:text-4xl font-medium tracking-tight shrink-0">LUMIÈRE</span>
+                <span className="font-sans text-2xl md:text-3xl font-light tracking-[0.2em] uppercase shrink-0">Aesthetica</span>
+                <span className="font-serif text-3xl md:text-4xl italic shrink-0">DermaHaus</span>
+                <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter shrink-0">SKIN<span className="font-light">CLINIC</span></span>
+              </div>
+            </motion.div>
           </div>
 
           {/* Live AI Scanner Demo */}
