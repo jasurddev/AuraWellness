@@ -1,5 +1,5 @@
-import { MOCK_TIME_SLOTS, MOCK_PATIENTS } from '@/lib/mockData';
-import { Calendar as CalendarIcon, Clock, MoreVertical } from 'lucide-react';
+import { MOCK_TIME_SLOTS, MOCK_PATIENTS, MOCK_DOCTORS } from '@/lib/mockData';
+import { Calendar as CalendarIcon, Clock, MoreVertical, User } from 'lucide-react';
 
 export function ScheduleTab() {
   return (
@@ -21,6 +21,7 @@ export function ScheduleTab() {
           const isBooked = !slot.available;
           // Assign mock patients to booked slots for visual effect
           const patient = isBooked ? MOCK_PATIENTS[index % MOCK_PATIENTS.length] : null;
+          const assignedDoctor = isBooked ? MOCK_DOCTORS[index % MOCK_DOCTORS.length] : null;
 
           return (
             <div key={slot.id} className="flex space-x-4">
@@ -35,9 +36,21 @@ export function ScheduleTab() {
                   {isBooked && patient ? (
                     <>
                       <div className="flex items-center space-x-4">
-                        <img src={patient.avatar} alt={patient.name} className="w-10 h-10 rounded-full object-cover" />
+                        <img 
+                          src={patient.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250'} 
+                          alt={patient.name} 
+                          onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250' }}
+                          className="w-10 h-10 rounded-full object-cover" 
+                        />
                         <div>
-                          <div className="font-medium text-charcoal">{patient.name}</div>
+                          <div className="font-medium text-charcoal flex items-center gap-2">
+                            {patient.name}
+                            {assignedDoctor && (
+                              <span className="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full flex items-center gap-1 border border-slate-200">
+                                <User className="w-3 h-3" /> {assignedDoctor.name}
+                              </span>
+                            )}
+                          </div>
                           <div className="text-xs text-foreground/50 flex items-center space-x-1 mt-0.5">
                             <Clock className="w-3 h-3" />
                             <span>45 mins</span>

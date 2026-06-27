@@ -49,7 +49,12 @@ export function EMRTab() {
               className={`p-4 border-b border-border/50 cursor-pointer transition-colors flex items-center space-x-3 ${selectedPatientId === patient.id ? 'bg-gold/5 border-l-4 border-l-gold' : 'hover:bg-muted/30 border-l-4 border-l-transparent'} ${patient.id === 'demo-live' ? 'bg-blue-50/50 hover:bg-blue-50' : ''}`}
             >
               <div className="relative">
-                <img src={patient.avatar} alt={patient.name} className="w-10 h-10 rounded-full object-cover" />
+                <img 
+                  src={patient.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250'} 
+                  alt={patient.name} 
+                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250' }}
+                  className="w-10 h-10 rounded-full object-cover bg-slate-100" 
+                />
                 {patient.id === 'demo-live' && (
                   <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></span>
                 )}
@@ -69,7 +74,12 @@ export function EMRTab() {
           {/* Header */}
           <div className="p-8 border-b border-border flex items-start justify-between bg-muted/10">
             <div className="flex items-center space-x-6">
-              <img src={selectedPatient.avatar} alt={selectedPatient.name} className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md" />
+              <img 
+                src={selectedPatient.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250'} 
+                alt={selectedPatient.name} 
+                onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=250&h=250' }}
+                className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md bg-slate-100" 
+              />
               <div>
                 <h2 className="text-2xl font-medium text-charcoal flex items-center gap-2">
                   {selectedPatient.name}
@@ -171,9 +181,10 @@ export function EMRTab() {
                 {isLiveDemo && scanResult ? (
                   <div className="relative group overflow-hidden rounded-lg">
                     <img 
-                      src={scanResult.imageUrl} 
+                      src={scanResult.imageUrl || 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400'} 
                       alt="Live Scan" 
-                      className="w-full aspect-square md:aspect-[3/4] object-cover"
+                      onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400' }}
+                      className="w-full aspect-square md:aspect-[3/4] object-cover bg-slate-100"
                     />
                     <div className="absolute bottom-2 left-2 bg-blue-600/90 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">AI Analyzed</div>
                     
