@@ -8,7 +8,7 @@ import clsx from "clsx";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = (useChat({
     initialMessages: [
       {
         id: "1",
@@ -16,7 +16,7 @@ export default function Chatbot() {
         content: "Halo! Saya TwakAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik TwakOS hari ini?",
       },
     ],
-  } as any);
+  }) as any);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
