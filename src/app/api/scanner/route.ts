@@ -33,12 +33,9 @@ export async function POST(req: Request) {
     // Call Gemini 2.5 Flash to analyze the image and return the structured JSON
     const { object } = await generateObject({
       model: google('gemini-2.5-flash'),
+      system: 'You are an advanced AI dermatologist engine acting as a proxy for Haut.AI. Analyze the patient\'s face image carefully and return a JSON object strictly following the required schema.',
       schema: HautAiSchema,
       messages: [
-        {
-          role: 'system',
-          content: 'You are an advanced AI dermatologist engine acting as a proxy for Haut.AI. Analyze the patient\'s face image carefully and return a JSON object strictly following the required schema. Be realistic and precise in your scoring based on visual evidence.',
-        },
         {
           role: 'user',
           content: [
