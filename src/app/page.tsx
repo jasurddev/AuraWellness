@@ -87,11 +87,11 @@ export default function Home() {
             <p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by Forward-Thinking Clinics</p>
             
             <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+              <Image src="/logo.png" alt="Aura Aesthetic" width={160} height={40} className="h-10 md:h-12 w-auto object-contain brightness-0" />
               <span className="font-serif text-2xl md:text-3xl font-medium tracking-tight">LUMIÈRE</span>
               <span className="font-sans text-xl md:text-2xl font-light tracking-[0.2em] uppercase">Aesthetica</span>
               <span className="font-serif text-2xl md:text-3xl italic">DermaHaus</span>
               <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter">SKIN<span className="font-light">CLINIC</span></span>
-              <span className="font-serif text-2xl md:text-3xl font-light">E l e v a t e</span>
             </div>
           </div>
 
