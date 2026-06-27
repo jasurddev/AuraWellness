@@ -1,10 +1,24 @@
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+
 export default function PatientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen lg:bg-[#EFECE5] bg-[#F9F8F6] flex items-center justify-center lg:p-8 font-sans">
+    <div className="min-h-screen lg:bg-[#EFECE5] bg-[#F9F8F6] flex items-center justify-center lg:p-8 font-sans relative">
+      
+      {/* Back to Homepage Button */}
+      <Link 
+        href="/" 
+        className="fixed top-4 left-4 lg:top-8 lg:left-8 z-[100] flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm hover:shadow-md transition-all text-sm font-medium text-slate-700 hover:text-slate-900 border border-slate-200/50"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        <span className="hidden lg:inline">Back to Website</span>
+        <span className="lg:hidden">Back</span>
+      </Link>
+
       {/* Device Frame (Only visible on Desktop, Fullscreen on Mobile/Tablet) */}
       <div className="relative w-full h-screen lg:h-[90vh] lg:max-h-[850px] lg:w-auto lg:aspect-[393/852] bg-[#F9F8F6] lg:rounded-[3rem] shadow-none lg:shadow-[0_20px_50px_rgba(84,87,67,0.15)] overflow-hidden lg:border-[10px] lg:border-[#2A2D24] ring-1 ring-border/50">
         
