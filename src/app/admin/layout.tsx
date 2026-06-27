@@ -36,7 +36,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       return ['overview', 'schedule', 'emr', 'sales'].includes(item.id);
     }
     if (adminRole === 'doctor') {
-      return ['schedule', 'emr', 'profile'].includes(item.id);
+      return ['schedule', 'emr', 'analytics', 'profile'].includes(item.id);
     }
     if (adminRole === 'manager') {
       return ['overview', 'analytics', 'sales', 'inventory'].includes(item.id);
@@ -84,6 +84,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
+            
+            // Dynamic Labeling
+            let displayLabel = item.label;
+            if (item.id === 'analytics' && adminRole === 'doctor') {
+              displayLabel = 'My Performance';
+            }
+
             return (
               <div 
                 key={item.id}
@@ -91,7 +98,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                 className={`flex items-center space-x-3 px-4 py-3 rounded-xl cursor-pointer transition-all active:scale-[0.98] ${isActive ? 'bg-white/10 text-white shadow-sm' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
               >
                 <Icon className={`w-5 h-5 ${isActive ? 'text-gold' : ''}`} strokeWidth={isActive ? 2 : 1.5} />
-                <span className="font-medium">{item.label}</span>
+                <span className="font-medium text-sm">{displayLabel}</span>
               </div>
             );
           })}
