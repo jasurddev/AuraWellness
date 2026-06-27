@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingBag, TrendingUp, Package, Clock, ExternalLink } from 'lucide-react';
+import { ShoppingBag, TrendingUp, Package, Clock, ExternalLink, Activity } from 'lucide-react';
 import { MOCK_PRODUCTS } from '@/lib/mockData';
 
 export function SalesTab() {
