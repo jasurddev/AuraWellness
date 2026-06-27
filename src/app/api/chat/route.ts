@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { streamText, convertToCoreMessages } from 'ai';
+import { streamText } from 'ai';
 
 export const maxDuration = 60;
 
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       4. Selalu arahkan pengguna untuk "Melihat Demo" atau menghubungi tim untuk mencoba langsung.
       5. Jangan bahas topik di luar klinik estetika atau manajemen SaaS.
       6. Jangan gunakan kata "Sales", perkenalkan diri sebagai "TwakAI Advisor".`,
-      messages: convertToCoreMessages(messages),
+      messages: messages,
     });
 
     return result.toDataStreamResponse();
