@@ -8,15 +8,7 @@ import clsx from "clsx";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = (useChat({
-    initialMessages: [
-      {
-        id: "1",
-        role: "assistant",
-        content: "Halo! Saya TwakAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik TwakOS hari ini?",
-      },
-    ],
-  }) as any);
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = (useChat() as any);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -77,7 +69,17 @@ export default function Chatbot() {
 
             {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4 scroll-smooth">
-              {messages.map((message) => (
+              {messages.length === 0 && (
+                <div className="flex gap-3 max-w-[85%] mr-auto">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-yellow-50">
+                    <Bot className="w-4 h-4 text-yellow-600" />
+                  </div>
+                  <div className="px-4 py-3 rounded-2xl text-sm leading-relaxed bg-white border border-slate-100 text-slate-700 shadow-sm rounded-tl-sm">
+                    Halo! Saya TwakAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik TwakOS hari ini?
+                  </div>
+                </div>
+              )}
+              {messages.map((message: any) => (
                 <div
                   key={message.id}
                   className={clsx(
