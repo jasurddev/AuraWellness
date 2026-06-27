@@ -79,10 +79,10 @@ const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
       initial={{ opacity: 0, scale: 0.9, x: 50 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
-      className="relative w-[320px] shrink-0 bg-[#F9F8F6] rounded-[2.5rem] overflow-hidden shadow-2xl border-[8px] border-slate-900 h-[650px] flex flex-col group snap-center"
+      className="relative w-[320px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[8px] border-white/50 h-[650px] flex flex-col group snap-center"
     >
       {/* Top Header (Phone Notch & App Header) */}
-      <div className="pt-6 pb-4 px-6 flex items-center justify-between bg-[#F9F8F6] z-20 relative">
+      <div className="pt-6 pb-4 px-6 flex items-center justify-between bg-transparent z-20 relative border-b border-white/40">
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-xl z-30"></div>
         <ArrowLeft className="w-5 h-5 text-slate-400 mt-4" />
         <div className="font-serif font-medium text-slate-800 mt-4 text-sm">Holistic AI Scan</div>
@@ -146,7 +146,7 @@ const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
                 </div>
               </div>
 
-              <div className="bg-white mx-4 rounded-2xl p-4 shadow-sm border border-slate-100 mb-4 flex-1">
+              <div className="bg-white/50 backdrop-blur-md mx-4 rounded-2xl p-4 shadow-sm border border-white/60 mb-4 flex-1">
                 <div className="text-xs text-slate-800 font-medium mb-3">Identified Concerns</div>
                 
                 <div className="grid grid-cols-2 gap-2">
@@ -174,10 +174,9 @@ const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
                 </div>
               </div>
 
-              {/* Treatment Recommendation */}
               <div className="px-4 mt-auto">
                 <div className="text-xs font-medium text-slate-800 mb-2 px-1">Rekomendasi Treatment</div>
-                <div className="bg-white p-3 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-3">
+                <div className="bg-white/50 backdrop-blur-md p-3 rounded-2xl shadow-sm border border-white/60 flex items-center gap-3">
                   <div className="w-12 h-12 bg-slate-100 rounded-xl overflow-hidden relative shrink-0">
                     <Image src="/images/bento-smart-booking.png" alt="Treatment" fill className="object-cover opacity-80" />
                   </div>
@@ -214,10 +213,15 @@ export default function LiveAIScannerDemo() {
   }, [visibleCount]);
 
   return (
-    <div className="w-full w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-slate-900/5 py-12 md:py-20 mt-10 md:mt-0 overflow-hidden">
-      {/* Scrollable Container for Mobile, Centered Flex for Desktop */}
-      <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-12 md:justify-center items-center pb-8 scrollbar-hide">
+    <div className="w-full relative py-12 md:py-20 mt-10 md:mt-0 overflow-hidden">
+      
+      {/* Background Glowing Orbs for Glassmorphism */}
+      <div className="absolute top-20 left-1/4 w-72 h-72 bg-yellow-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+      <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
+
+      {/* Container */}
+      <div className="w-full mx-auto relative z-10">
+        <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 md:justify-center items-center pb-12 scrollbar-hide w-full">
           <AnimatePresence>
             {PATIENTS.slice(0, visibleCount).map((patient) => (
               <ScannerPhone key={patient.id} patient={patient} />
