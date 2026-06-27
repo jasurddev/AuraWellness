@@ -19,6 +19,38 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
     setStep('upload');
   };
 
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          
+          // Max width/height to 800px to avoid Payload Too Large error
+          const MAX_SIZE = 800;
+          if (width > height && width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          } else if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/jpeg', 0.7)); // Compress to 70% quality JPEG
+        };
+        img.src = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -27,12 +59,9 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
       setStep('scanning');
       
       try {
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          const base64String = reader.result as string;
-          await processRealScan(url, base64String);
-        };
-        reader.readAsDataURL(file);
+        // Compress image first to avoid Vercel 413 Payload Too Large error
+        const compressedBase64 = await compressImage(file);
+        await processRealScan(url, compressedBase64);
       } catch (err) {
         console.error(err);
         simulateScanning(url);
