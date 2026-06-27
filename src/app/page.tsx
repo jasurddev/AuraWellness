@@ -95,16 +95,18 @@ export default function Home() {
             >
               {/* Set 1 */}
               <div className="flex gap-16 md:gap-28 items-center shrink-0 px-8 md:px-14">
-                <Image src="/logo.png" alt="Aura Aesthetic" width={280} height={80} className="h-14 md:h-16 w-auto object-contain brightness-0 shrink-0" />
+                <Image src="/logo.png" alt="Aura Aesthetic" width={300} height={100} className="h-20 md:h-28 w-auto object-contain brightness-0 shrink-0 scale-125 md:scale-150" />
                 <span className="font-serif text-3xl md:text-4xl font-medium tracking-tight shrink-0">LUMIÈRE</span>
+                <Image src="/liceria.png" alt="Liceria" width={300} height={100} className="h-20 md:h-28 w-auto object-contain brightness-0 shrink-0 scale-125 md:scale-150" />
                 <span className="font-sans text-2xl md:text-3xl font-light tracking-[0.2em] uppercase shrink-0">Aesthetica</span>
                 <span className="font-serif text-3xl md:text-4xl italic shrink-0">DermaHaus</span>
                 <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter shrink-0">SKIN<span className="font-light">CLINIC</span></span>
               </div>
               {/* Set 2 (Duplicate for infinite loop) */}
               <div className="flex gap-16 md:gap-28 items-center shrink-0 px-8 md:px-14">
-                <Image src="/logo.png" alt="Aura Aesthetic" width={280} height={80} className="h-14 md:h-16 w-auto object-contain brightness-0 shrink-0" />
+                <Image src="/logo.png" alt="Aura Aesthetic" width={300} height={100} className="h-20 md:h-28 w-auto object-contain brightness-0 shrink-0 scale-125 md:scale-150" />
                 <span className="font-serif text-3xl md:text-4xl font-medium tracking-tight shrink-0">LUMIÈRE</span>
+                <Image src="/liceria.png" alt="Liceria" width={300} height={100} className="h-20 md:h-28 w-auto object-contain brightness-0 shrink-0 scale-125 md:scale-150" />
                 <span className="font-sans text-2xl md:text-3xl font-light tracking-[0.2em] uppercase shrink-0">Aesthetica</span>
                 <span className="font-serif text-3xl md:text-4xl italic shrink-0">DermaHaus</span>
                 <span className="font-sans text-2xl md:text-3xl font-bold tracking-tighter shrink-0">SKIN<span className="font-light">CLINIC</span></span>
