@@ -44,7 +44,7 @@ export default function PatientPortal() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="font-serif font-medium text-4xl tracking-tight text-slate-900">Aura<span className="text-yellow-600">OS</span></span>
+            <span className="font-serif font-medium text-4xl tracking-tight text-slate-900">Twak<span className="text-yellow-600">OS</span></span>
             <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ml-2">
               B2C
             </span>
@@ -130,7 +130,7 @@ export default function PatientPortal() {
           className="mt-24 text-center"
         >
           <p className="text-xs text-slate-400">
-            AuraOS Demo Portal © 2026 PT Studio Satu Akun
+            TwakOS Demo Portal © 2026 PT Studio Satu Akun
           </p>
         </motion.div>
 

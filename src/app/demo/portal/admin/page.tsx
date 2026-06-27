@@ -45,7 +45,7 @@ export default function AdminPortal() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="font-serif font-medium text-4xl tracking-tight text-slate-900">Aura<span className="text-yellow-600">OS</span></span>
+            <span className="font-serif font-medium text-4xl tracking-tight text-slate-900">Twak<span className="text-yellow-600">OS</span></span>
             <span className="bg-yellow-100 text-yellow-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ml-2">
               B2B
             </span>
@@ -140,11 +140,13 @@ export default function AdminPortal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="mt-24 text-center"
+          className="mt-24"
         >
-          <p className="text-xs text-slate-400">
-            AuraOS Demo Portal © 2026 PT Studio Satu Akun
-          </p>
+          <div className="text-center">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            TwakOS Demo Portal © 2026 PT Studio Satu Akun
+            </span>
+          </div>
         </motion.div>
 
       </div>
