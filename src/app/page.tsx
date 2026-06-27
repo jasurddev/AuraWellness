@@ -6,24 +6,8 @@ import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, ShieldCheck, Zap, Smartphone, Check, ArrowUpRight, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
 import LiveAIScannerDemo from '@/components/home/LiveAIScannerDemo';
-import { useStore } from '@/store/useStore';
-import { MOCK_DOCTORS } from '@/lib/mockData';
 
 export default function Home() {
-  const router = useRouter();
-  const { setAdminDoctorId, resetPatientData } = useStore();
-
-  const handleLaunchPatientApp = () => {
-    resetPatientData();
-    useStore.getState().clearCart();
-    router.push('/patient');
-  };
-
-  const handleLaunchAdmin = (doctorId: string | null) => {
-    setAdminDoctorId(doctorId);
-    router.push('/admin');
-  };
-
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-slate-900 font-sans selection:bg-yellow-400/30">
       
@@ -383,90 +367,34 @@ export default function Home() {
             Cobain langsung interaksi aplikasinya. Rasakan betapa <i>smooth</i>-nya alur pasien dan kepraktisan tim medis Anda dalam satu ekosistem.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
-            <div className="flex flex-col h-full">
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm flex-1 flex flex-col hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div className="absolute -right-12 -top-12 w-40 h-40 bg-yellow-50 rounded-full blur-3xl group-hover:bg-yellow-100 transition-colors pointer-events-none"></div>
-                
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 border border-slate-100 group-hover:scale-105 transition-transform">
-                    <Smartphone className="w-7 h-7 text-yellow-600" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-serif text-slate-900 mb-2">Patient App</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed mb-8 flex-1">
-                    Booking treatment & AI Scanner dari sisi pandang pasien.
-                  </p>
-
-                  <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4 mb-8">
-                    <h4 className="text-xs font-bold text-yellow-800 uppercase tracking-widest mb-1">Auto-Reset</h4>
-                    <p className="text-xs text-yellow-700/70">State otomatis dibersihkan saat simulasi dimulai.</p>
-                  </div>
-
-                  <button 
-                    onClick={handleLaunchPatientApp}
-                    className="w-full flex items-center justify-between p-4 bg-slate-900 text-white rounded-xl shadow-lg hover:bg-slate-800 transition-all active:scale-[0.98] group/btn"
-                  >
-                    <span className="font-medium text-sm">Launch Portal</span>
-                    <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </button>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+            <Link 
+              href="/portal/patient"
+              className="group bg-white border border-slate-200 p-8 hover:border-slate-900 transition-all flex flex-col justify-between min-h-[240px]"
+            >
+              <div>
+                <Smartphone className="w-6 h-6 text-slate-400 mb-6 group-hover:text-yellow-600 transition-colors" />
+                <h3 className="text-2xl font-serif text-slate-900 mb-2">Patient App</h3>
+                <p className="text-xs text-slate-500 leading-relaxed">Booking treatment & AI Scanner dari sisi pandang pasien.</p>
               </div>
-            </div>
-
-            <div className="flex flex-col h-full">
-              <div className="bg-slate-900 text-white border border-slate-800 rounded-3xl p-8 shadow-xl flex-1 flex flex-col relative overflow-hidden">
-                <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-slate-800 rounded-full blur-3xl pointer-events-none"></div>
-
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mb-8 border border-slate-700">
-                    <LayoutDashboard className="w-7 h-7 text-yellow-400" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-serif text-white mb-2">Clinic Admin</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-8">
-                    Manajemen EMR, jadwal dokter, dan laporan finansial klinik.
-                  </p>
-
-                  <div className="space-y-3 mt-auto">
-                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Login As Role:</div>
-                    
-                    {MOCK_DOCTORS.map((doctor) => (
-                      <button 
-                        key={doctor.id}
-                        onClick={() => handleLaunchAdmin(doctor.id)}
-                        className="w-full flex items-center justify-between p-3 bg-slate-800/50 hover:bg-slate-700 border border-slate-700/50 rounded-xl transition-all active:scale-[0.98] group/role"
-                      >
-                        <div className="flex items-center gap-3">
-                          <img src={doctor.imageUrl} alt={doctor.name} className="w-8 h-8 rounded-full object-cover border border-slate-600 grayscale group-hover/role:grayscale-0 transition-all" />
-                          <div className="text-left">
-                            <div className="text-sm font-medium text-white">{doctor.name}</div>
-                            <div className="text-[10px] text-slate-400">{doctor.specialty}</div>
-                          </div>
-                        </div>
-                        <ArrowUpRight className="w-4 h-4 text-slate-500 group-hover/role:text-yellow-400 group-hover/role:translate-x-1 group-hover/role:-translate-y-1 transition-transform" />
-                      </button>
-                    ))}
-
-                    <button 
-                      onClick={() => handleLaunchAdmin(null)}
-                      className="w-full flex items-center justify-between p-3 bg-transparent hover:bg-slate-800 border border-slate-700 border-dashed rounded-xl transition-all active:scale-[0.98] group/role mt-2"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700">
-                          <ShieldCheck className="w-4 h-4 text-slate-400 group-hover/role:text-emerald-400" />
-                        </div>
-                        <div className="text-left">
-                          <div className="text-sm font-medium text-slate-300">Front Desk / Admin</div>
-                          <div className="text-[10px] text-slate-500">Default View</div>
-                        </div>
-                      </div>
-                      <ArrowUpRight className="w-4 h-4 text-slate-600 group-hover/role:text-emerald-400 group-hover/role:translate-x-1 group-hover/role:-translate-y-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
+              <div className="mt-8 text-xs font-bold uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                Launch Portal <ArrowUpRight className="w-4 h-4" />
               </div>
-            </div>
+            </Link>
+
+            <Link 
+              href="/portal/admin"
+              className="group bg-slate-900 text-white p-8 hover:bg-slate-800 transition-all flex flex-col justify-between min-h-[240px]"
+            >
+              <div>
+                <LayoutDashboard className="w-6 h-6 text-slate-500 mb-6 group-hover:text-yellow-500 transition-colors" />
+                <h3 className="text-2xl font-serif text-white mb-2">Clinic Admin</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">Manajemen EMR, jadwal dokter, dan laporan finansial klinik.</p>
+              </div>
+              <div className="mt-8 text-xs font-bold text-yellow-500 uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                Open Dashboard <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
