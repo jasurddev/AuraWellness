@@ -5,6 +5,21 @@ export type Doctor = {
   imageUrl: string; // Changed from avatar to imageUrl to match components
 };
 
+export type Product = {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  imageUrl: string;
+  rating: number;
+};
+
+export type CartItem = {
+  product: Product;
+  quantity: number;
+};
+
 export type Treatment = {
   id: string;
   name: string;
@@ -118,4 +133,43 @@ export const MOCK_TIME_SLOTS: TimeSlot[] = [
   { id: 'ts5', time: '02:00 PM', available: true },
   { id: 'ts6', time: '03:00 PM', available: false },
   { id: 'ts7', time: '04:00 PM', available: true },
+];
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: 'prod1',
+    name: 'Aura Glowing Serum 15%',
+    category: 'Serum',
+    price: 350000,
+    description: 'Serum pencerah intensif dengan Vitamin C 15% dan Ferulic Acid.',
+    imageUrl: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=300',
+    rating: 4.8
+  },
+  {
+    id: 'prod2',
+    name: 'Happy Aging Peptide Cream',
+    category: 'Moisturizer',
+    price: 450000,
+    description: 'Krim malam anti-aging dengan matrixyl peptides dan ceramide kompleks.',
+    imageUrl: 'https://images.unsplash.com/photo-1608248593842-8d76e4c25603?auto=format&fit=crop&q=80&w=300',
+    rating: 4.9
+  },
+  {
+    id: 'prod3',
+    name: 'Invisible Shield SPF 50+',
+    category: 'Sunscreen',
+    price: 220000,
+    description: 'Tabir surya ringan tanpa whitecast, cocok untuk kulit berjerawat.',
+    imageUrl: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=300',
+    rating: 4.7
+  },
+  {
+    id: 'prod4',
+    name: 'Gentle Clarifying Cleanser',
+    category: 'Cleanser',
+    price: 180000,
+    description: 'Pembersih wajah pH seimbang dengan kandungan Salicylic Acid ringan.',
+    imageUrl: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=300',
+    rating: 4.5
+  }
 ];

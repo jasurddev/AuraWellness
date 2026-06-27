@@ -7,13 +7,16 @@ import { BookingWizard } from '@/components/patient/BookingWizard';
 import { PainTrackerFlow } from '@/components/patient/PainTrackerFlow';
 import { PatientDashboard } from '@/components/patient/PatientDashboard';
 import { AIConciergeChat } from '@/components/patient/AIConciergeChat';
+import { SkincareShop } from '@/components/patient/SkincareShop';
+import { CartDrawer } from '@/components/patient/CartDrawer';
 import { useStore } from '@/store/useStore';
 import { AnimatePresence, motion } from 'framer-motion';
 
-type ViewState = 'home' | 'scanner' | 'booking' | 'pain-tracker' | 'dashboard';
+type ViewState = 'home' | 'scanner' | 'booking' | 'pain-tracker' | 'dashboard' | 'shop';
 
 export default function PatientPage() {
   const [view, setView] = useState<ViewState>('home');
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { setBookingData, setScanResult, setPainAreas, setWellnessData } = useStore();
 
   const handleStartScan = () => {
@@ -35,6 +38,10 @@ export default function PatientPage() {
 
   const handleStartDashboard = () => {
     setView('dashboard');
+  };
+
+  const handleStartShop = () => {
+    setView('shop');
   };
 
   const handleCompleteToBooking = () => {
@@ -61,6 +68,7 @@ export default function PatientPage() {
               onStartBooking={handleStartBooking}
               onStartPainTracker={handleStartPainTracker}
               onStartDashboard={handleStartDashboard}
+              onStartShop={handleStartShop}
             />
           </motion.div>
         )}
@@ -115,7 +123,27 @@ export default function PatientPage() {
             />
           </motion.div>
         )}
+
+        {view === 'shop' && (
+          <motion.div 
+            key="shop" 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            exit={{ opacity: 0, y: -20 }}
+            className="h-full"
+          >
+            <SkincareShop onBack={handleBackToHome} onOpenCart={() => setIsCartOpen(true)} />
+          </motion.div>
+        )}
       </AnimatePresence>
+
+      <CartDrawer 
+        isOpen={isCartOpen} 
+        onClose={() => setIsCartOpen(false)} 
+        onCheckoutSuccess={() => {
+          handleBackToHome();
+        }} 
+      />
 
       <AIConciergeChat />
     </div>

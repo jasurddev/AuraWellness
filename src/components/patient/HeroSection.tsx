@@ -8,9 +8,10 @@ interface HeroProps {
   onStartBooking: () => void;
   onStartPainTracker: () => void;
   onStartDashboard: () => void;
+  onStartShop: () => void;
 }
 
-export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, onStartDashboard }: HeroProps) {
+export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, onStartDashboard, onStartShop }: HeroProps) {
   return (
     <div className="min-h-full flex flex-col relative bg-[#F9F8F6] overflow-y-auto pb-6 scrollbar-hide">
       {/* Abstract Background Elements */}
@@ -120,6 +121,23 @@ export function HeroSection({ onStartScan, onStartBooking, onStartPainTracker, o
               </div>
             </button>
           </div>
+
+          <button
+            onClick={onStartShop}
+            className="group mt-1 relative w-full flex items-center justify-between p-4 bg-white border border-border/60 text-primary rounded-2xl shadow-sm hover:shadow-md transition-all active:scale-[0.98] overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-secondary/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center border border-border/50">
+                <span className="text-xl">🛍️</span>
+              </div>
+              <div className="text-left">
+                <div className="font-medium text-sm text-primary">Aura Skincare Shop</div>
+                <div className="text-[10px] text-muted-foreground">Buy recommended products</div>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 relative z-10 text-muted-foreground group-hover:translate-x-1 group-hover:text-primary transition-all" />
+          </button>
         </motion.div>
 
       </div>
