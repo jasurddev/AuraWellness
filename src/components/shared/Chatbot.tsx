@@ -9,8 +9,10 @@ import clsx from "clsx";
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   // @ts-ignore
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    initialMessages: [
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat(
+    // @ts-ignore
+    {
+      initialMessages: [
       {
         id: "1",
         role: "assistant",
