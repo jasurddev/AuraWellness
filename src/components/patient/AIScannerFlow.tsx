@@ -14,6 +14,20 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
   const [localStress, setLocalStress] = useState(3);
   const [localSleep, setLocalSleep] = useState(3);
 
+  // Helper functions for score colors
+  const getScoreColor = (metric: string, score: number) => {
+    // For hydration: higher is better
+    if (metric === 'Hydration') {
+      if (score >= 70) return 'text-green-600 bg-green-50';
+      if (score >= 40) return 'text-yellow-600 bg-yellow-50';
+      return 'text-red-600 bg-red-50';
+    }
+    // For others (Acne, Pigmentation, Wrinkles): lower is better
+    if (score <= 30) return 'text-green-600 bg-green-50';
+    if (score <= 60) return 'text-yellow-600 bg-yellow-50';
+    return 'text-red-600 bg-red-50';
+  };
+
   const handleWellnessSubmit = () => {
     setWellnessData({ stress: localStress, sleep: localSleep });
     setStep('upload');
@@ -331,23 +345,20 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                   </div>
                   
                   {scanResult?.hautAiMetrics && (
-                    <div className="grid grid-cols-2 gap-3 mb-4 text-xs">
-                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
-                        <div className="text-muted-foreground mb-1">Acne Score</div>
-                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.acne}/100</div>
-                      </div>
-                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
-                        <div className="text-muted-foreground mb-1">Hydration</div>
-                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.hydration}/100</div>
-                      </div>
-                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
-                        <div className="text-muted-foreground mb-1">Pigmentation</div>
-                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.pigmentation}/100</div>
-                      </div>
-                      <div className="bg-white/50 p-2 rounded-lg border border-border/40">
-                        <div className="text-muted-foreground mb-1">Wrinkles</div>
-                        <div className="font-semibold text-primary">{scanResult.hautAiMetrics.metrics.wrinkles}/100</div>
-                      </div>
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      {[
+                        { label: 'Acne Score', value: scanResult.hautAiMetrics.metrics.acne },
+                        { label: 'Hydration', value: scanResult.hautAiMetrics.metrics.hydration },
+                        { label: 'Pigmentation', value: scanResult.hautAiMetrics.metrics.pigmentation },
+                        { label: 'Wrinkles', value: scanResult.hautAiMetrics.metrics.wrinkles }
+                      ].map((metric) => (
+                        <div key={metric.label} className="bg-white rounded-xl p-3 border border-border/50 shadow-sm">
+                          <div className="text-xs text-muted-foreground mb-1">{metric.label}</div>
+                          <div className={`font-semibold text-sm inline-block px-2 py-0.5 rounded-md ${getScoreColor(metric.label, metric.value)}`}>
+                            {metric.value}/100
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )}
 
