@@ -377,7 +377,7 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                 </div>
               </div>
 
-              <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#F9F8F6] via-[#F9F8F6] to-transparent z-30">
+              <div className="fixed bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 p-6 bg-gradient-to-t from-[#F9F8F6] via-[#F9F8F6] to-transparent z-30">
                 <button
                   onClick={onComplete}
                   className="w-full py-4 bg-primary text-white rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2"
