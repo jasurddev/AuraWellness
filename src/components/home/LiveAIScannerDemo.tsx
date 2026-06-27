@@ -78,6 +78,7 @@ const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
     <motion.div 
       initial={{ opacity: 0, scale: 0.9, x: 50 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
+      exit={{ opacity: 0, scale: 0.8, x: -50 }}
       transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
       className="relative w-[320px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[8px] border-white/50 h-[650px] flex flex-col group snap-center"
     >
@@ -202,15 +203,24 @@ const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
 
 export default function LiveAIScannerDemo() {
   const [visibleCount, setVisibleCount] = useState(1);
+  const [loopCount, setLoopCount] = useState(0);
 
   useEffect(() => {
-    if (visibleCount < 3) {
-      const timer = setTimeout(() => {
-        setVisibleCount(prev => prev + 1);
-      }, 5500); // 3.5s scan + 2s view result before next phone appears
-      return () => clearTimeout(timer);
-    }
-  }, [visibleCount]);
+    // If 3 phones are visible, wait 10 seconds before resetting. Otherwise wait 7 seconds.
+    const delay = visibleCount >= 3 ? 10000 : 7000;
+    
+    const timer = setTimeout(() => {
+      setVisibleCount(prev => {
+        if (prev >= 3) {
+          // Reset back to 1 phone, increment loopCount to force remount
+          setLoopCount(c => c + 1);
+          return 1;
+        }
+        return prev + 1;
+      });
+    }, delay); 
+    return () => clearTimeout(timer);
+  }, [visibleCount, loopCount]);
 
   return (
     <div className="w-full relative py-12 md:py-20 mt-10 md:mt-0 overflow-hidden">
@@ -224,7 +234,7 @@ export default function LiveAIScannerDemo() {
         <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 md:justify-center items-center pb-12 scrollbar-hide w-full">
           <AnimatePresence>
             {PATIENTS.slice(0, visibleCount).map((patient) => (
-              <ScannerPhone key={patient.id} patient={patient} />
+              <ScannerPhone key={`${patient.id}-${loopCount}`} patient={patient} />
             ))}
           </AnimatePresence>
         </div>
