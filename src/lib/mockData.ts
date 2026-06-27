@@ -77,7 +77,7 @@ export const MOCK_DOCTORS: Doctor[] = [
     name: 'Dr. Emily Carter', 
     slug: 'dr-emily-carter',
     specialty: 'Anti-Aging Specialist', 
-    imageUrl: 'https://images.unsplash.com/photo-1594824432258-29406085a6e6?auto=format&fit=crop&q=80&w=250&h=250',
+    imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=250&h=250',
     bio: 'Dedicated to the science of longevity and cellular health, Dr. Emily Carter focuses on preventative anti-aging treatments. She creates bespoke regimens tailored to each patient\'s unique genetic makeup.',
     rating: 5.0,
     reviewsCount: 1532,
