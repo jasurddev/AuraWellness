@@ -8,18 +8,15 @@ import clsx from "clsx";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  // @ts-ignore
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat(
-    // @ts-ignore
-    {
-      initialMessages: [
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    initialMessages: [
       {
         id: "1",
         role: "assistant",
         content: "Halo! Saya TwakAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik TwakOS hari ini?",
       },
     ],
-  });
+  } as any);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
