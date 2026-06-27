@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MOCK_DOCTORS } from '@/lib/mockData';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const { activeTab, setActiveTab, adminDoctorId } = useStore();
+  const { activeTab, setActiveTab, adminDoctorId, adminRole } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -21,7 +21,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     : MOCK_DOCTORS[0];
   const doctorInitials = loggedInDoctor.name.replace('Dr. ', '').split(' ').map(n => n[0]).join('');
 
-  const navItems = [
+  const allNavItems = [
     { id: 'overview', label: 'Dashboard', icon: PieChart },
     { id: 'schedule', label: 'Schedule', icon: CalendarDays },
     { id: 'emr', label: 'Patients (EMR)', icon: FolderHeart },
@@ -30,6 +30,19 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { id: 'inventory', label: 'Inventory', icon: PackageOpen },
     { id: 'profile', label: 'My Profile', icon: User },
   ];
+
+  const navItems = allNavItems.filter(item => {
+    if (adminRole === 'frontdesk') {
+      return ['overview', 'schedule', 'emr', 'sales'].includes(item.id);
+    }
+    if (adminRole === 'doctor') {
+      return ['schedule', 'emr', 'profile'].includes(item.id);
+    }
+    if (adminRole === 'manager') {
+      return ['overview', 'analytics', 'sales', 'inventory'].includes(item.id);
+    }
+    return true; // Fallback
+  });
 
   const handleTabClick = (tabId: any) => {
     setActiveTab(tabId);

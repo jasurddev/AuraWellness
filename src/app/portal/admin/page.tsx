@@ -14,11 +14,16 @@ import { MOCK_DOCTORS } from "@/lib/mockData";
 
 export default function AdminPortal() {
   const router = useRouter();
-  const { setAdminDoctorId, setActiveTab } = useStore();
+  const { setAdminDoctorId, setActiveTab, setAdminRole } = useStore();
 
-  const handleLogin = (doctorId: string | null, tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile' = 'overview') => {
+  const handleLogin = (
+    doctorId: string | null, 
+    tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory' | 'sales' | 'profile' = 'overview',
+    role: 'frontdesk' | 'manager' | 'doctor' | null = null
+  ) => {
     setAdminDoctorId(doctorId);
     setActiveTab(tab);
+    setAdminRole(role);
     router.push("/admin");
   };
 
@@ -64,7 +69,7 @@ export default function AdminPortal() {
             transition={{ delay: 0.1 }}
           >
             <button 
-              onClick={() => handleLogin(null, 'overview')}
+              onClick={() => handleLogin(null, 'overview', 'frontdesk')}
               className="w-full h-full text-left bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col"
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border transition-transform group-hover:scale-105 bg-slate-50 border-slate-200`}>
@@ -87,7 +92,7 @@ export default function AdminPortal() {
             transition={{ delay: 0.2 }}
           >
             <button 
-              onClick={() => handleLogin(MOCK_DOCTORS[0].id, 'emr')} // Default ke dokter pertama
+              onClick={() => handleLogin(MOCK_DOCTORS[0].id, 'emr', 'doctor')} // Default ke dokter pertama
               className="w-full h-full text-left bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col relative overflow-hidden"
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border transition-transform group-hover:scale-105 bg-indigo-50 border-indigo-100`}>
@@ -111,7 +116,7 @@ export default function AdminPortal() {
             transition={{ delay: 0.3 }}
           >
             <button 
-              onClick={() => handleLogin(null, 'analytics')}
+              onClick={() => handleLogin(null, 'analytics', 'manager')}
               className="w-full h-full text-left bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col relative overflow-hidden"
             >
               <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 border transition-transform group-hover:scale-105 bg-emerald-50 border-emerald-100`}>
