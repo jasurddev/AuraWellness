@@ -21,18 +21,25 @@ export default function Chatbot() {
     <>
       {/* Floating Button */}
       <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
         className={clsx(
-          "fixed bottom-6 right-6 p-4 rounded-full shadow-2xl z-50 transition-all",
-          "bg-slate-900 text-white hover:bg-slate-800",
-          isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+          "fixed bottom-8 right-8 px-6 py-3.5 rounded-full shadow-2xl z-50 transition-all",
+          "bg-slate-900 text-white hover:bg-slate-800 flex items-center gap-3 border border-slate-700/50",
+          isOpen ? "opacity-0 pointer-events-none translate-y-4" : "opacity-100 translate-y-0"
         )}
       >
-        <MessageCircle className="w-6 h-6" />
+        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-500">
+          <Bot className="w-4 h-4" />
+        </div>
+        <span className="font-medium text-sm tracking-wide">Ask TwakAI</span>
+        <span className="flex h-2 w-2 relative ml-1">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+        </span>
       </motion.button>
 
       {/* Chat Panel */}
