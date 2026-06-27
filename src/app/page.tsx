@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, ShieldCheck, Zap, Smartphone, Check, ArrowUpRight, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
 import LiveAIScannerDemo from '@/components/home/LiveAIScannerDemo';
+import Chatbot from "@/components/shared/Chatbot";
 
 export default function Home() {
   return (
@@ -416,6 +417,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <Chatbot />
     </div>
   );
 }
