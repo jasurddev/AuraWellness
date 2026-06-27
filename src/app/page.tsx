@@ -15,7 +15,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full bg-[#F9F8F6]/90 backdrop-blur-md z-50 border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-medium text-2xl tracking-tight">Aura<span className="text-yellow-600">OS</span></span>
+            <span className="font-serif font-medium text-2xl tracking-tight">Twak<span className="text-yellow-600">OS</span></span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-widest text-slate-500">
             <a href="#features" className="hover:text-slate-900 transition-colors">Features</a>
@@ -60,7 +60,7 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="text-sm text-slate-600 mb-8 leading-relaxed"
               >
-                Tingkatkan <i>patient experience</i> dan efisiensi operasional klinik Anda dengan platform <i>all-in-one</i>. Menggabungkan AI terkini dengan keanggunan desain minimalis.
+                Berakar dari kata Sansekerta <b>"Twak"</b> yang berarti <i>Kulit</i>, <b>TwakOS</b> hadir sebagai detak jantung operasional klinik Anda. Menggabungkan kedalaman filosofi kecantikan holistik dengan ekosistem digital <i>all-in-one</i> berbasis AI.
               </motion.p>
               
               <motion.div 
@@ -136,7 +136,7 @@ export default function Home() {
                Built for scale.<br/>Designed for <i className="text-yellow-600">beauty.</i>
              </h2>
              <p className="max-w-sm text-sm text-slate-500 leading-relaxed">
-               Didesain khusus buat klinik estetika modern. AuraOS mengeliminasi sistem konvensional yang kaku menjadi ekosistem digital yang <i>seamless</i>.
+               Didesain khusus buat klinik estetika modern. TwakOS mengeliminasi sistem konvensional yang kaku menjadi ekosistem digital yang <i>seamless</i>.
              </p>
           </div>
 
@@ -209,7 +209,7 @@ export default function Home() {
               Frictionless Payment, <br/>Zero No-Shows.
             </h2>
             <p className="text-slate-600 leading-relaxed max-w-lg">
-              Ubah cara pasien bertransaksi. AuraOS dilengkapi infrastruktur Payment Gateway terintegrasi atas nama klinik Anda. Terapkan sistem Down Payment (DP) otomatis via QRIS & Virtual Account untuk mengeliminasi pembatalan sepihak. Rekonsiliasi keuangan berjalan otomatis, dan dana cair langsung ke rekening klinik Anda tanpa campur tangan manual.
+              Ubah cara pasien bertransaksi. TwakOS dilengkapi infrastruktur Payment Gateway terintegrasi atas nama klinik Anda. Terapkan sistem Down Payment (DP) otomatis via QRIS & Virtual Account untuk mengeliminasi pembatalan sepihak. Rekonsiliasi keuangan berjalan otomatis, dan dana cair langsung ke rekening klinik Anda tanpa campur tangan manual.
             </p>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -239,7 +239,7 @@ export default function Home() {
                   </div>
                 </div>
                 <h4 className="text-2xl font-serif text-slate-900 mb-1">Payment Received</h4>
-                <p className="text-sm text-slate-500 mb-8 font-medium">Aura Aesthetics - Kemang</p>
+                <p className="text-sm text-slate-500 mb-8 font-medium">Twak Aesthetics - Kemang</p>
                 
                 <div className="w-full border-t border-dashed border-slate-200 mb-6 relative">
                   <div className="absolute -left-10 -top-3 w-6 h-6 rounded-full bg-slate-50"></div>
@@ -403,10 +403,10 @@ export default function Home() {
       <footer className="py-16 px-6 border-t border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-center md:text-left">
-            <span className="font-serif text-2xl tracking-tight text-slate-900 block mb-2">Aura<span className="text-yellow-600">OS</span></span>
+            <span className="font-serif text-2xl tracking-tight text-slate-900 block mb-2">Twak<span className="text-yellow-600">OS</span></span>
             <p className="text-sm text-slate-500 font-medium mb-1">Built for scale. Designed for excellence.</p>
             <p className="text-xs text-slate-400 mt-2">© 2026 PT Studio Satu Akun. All rights reserved.</p>
-            <p className="text-xs text-slate-400 mt-1">auraos.com</p>
+            <p className="text-xs text-slate-400 mt-1">twakos.com</p>
           </div>
           <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm font-medium text-slate-500">
             <Link href="#" className="hover:text-yellow-600 transition-colors">Terms & Conditions</Link>
