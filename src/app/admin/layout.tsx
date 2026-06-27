@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useState, useEffect } from 'react';
+import Link from 'next/link';
 import { PieChart, CalendarDays, FolderHeart, Activity, PackageOpen, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -60,7 +61,9 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <X className="w-5 h-5" />
           </button>
           <div className="flex items-center mb-1 mt-2">
-            <img src="/logo.png" alt="Aura Logo" className="w-32 h-auto object-contain brightness-0 invert" />
+            <Link href="/" className="inline-block hover:opacity-80 transition-opacity">
+              <img src="/logo.png" alt="Aura Logo" className="w-32 h-auto object-contain brightness-0 invert" />
+            </Link>
           </div>
           <span className="text-[10px] text-white/50 tracking-wide uppercase mt-3">by Studio Satu Akun</span>
         </div>
