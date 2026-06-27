@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { Treatment, Doctor } from '@/lib/mockData';
 
 type AppState = {
@@ -44,29 +45,52 @@ type AppState = {
   // Admin dashboard state
   activeTab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory';
   setActiveTab: (tab: 'overview' | 'schedule' | 'emr' | 'analytics' | 'inventory') => void;
+  
+  // Clear data
+  resetPatientData: () => void;
 };
 
-export const useStore = create<AppState>((set) => ({
-  bookingData: {},
-  setBookingData: (data) => set((state) => ({ 
-    bookingData: { ...state.bookingData, ...data } 
-  })),
-  
-  wellnessData: null,
-  setWellnessData: (data) => set({ wellnessData: data }),
+export const useStore = create<AppState>()(
+  persist(
+    (set) => ({
+      bookingData: {},
+      setBookingData: (data) => set((state) => ({ 
+        bookingData: { ...state.bookingData, ...data } 
+      })),
+      
+      wellnessData: null,
+      setWellnessData: (data) => set({ wellnessData: data }),
 
-  scanResult: null,
-  setScanResult: (result) => set({ scanResult: result }),
+      scanResult: null,
+      setScanResult: (result) => set({ scanResult: result }),
 
-  painAreas: [],
-  setPainAreas: (areas) => set({ painAreas: areas }),
-  togglePainArea: (area) => set((state) => {
-    if (state.painAreas.includes(area)) {
-      return { painAreas: state.painAreas.filter(a => a !== area) };
+      painAreas: [],
+      setPainAreas: (areas) => set({ painAreas: areas }),
+      togglePainArea: (area) => set((state) => {
+        if (state.painAreas.includes(area)) {
+          return { painAreas: state.painAreas.filter(a => a !== area) };
+        }
+        return { painAreas: [...state.painAreas, area] };
+      }),
+      
+      activeTab: 'overview',
+      setActiveTab: (tab) => set({ activeTab: tab }),
+
+      resetPatientData: () => set({ 
+        bookingData: {}, 
+        wellnessData: null, 
+        scanResult: null, 
+        painAreas: [] 
+      }),
+    }),
+    {
+      name: 'aura-patient-storage', // unique name
+      partialize: (state) => ({
+        bookingData: state.bookingData,
+        wellnessData: state.wellnessData,
+        scanResult: state.scanResult,
+        painAreas: state.painAreas,
+      }), // Persist everything except activeTab
     }
-    return { painAreas: [...state.painAreas, area] };
-  }),
-  
-  activeTab: 'overview',
-  setActiveTab: (tab) => set({ activeTab: tab }),
-}));
+  )
+);

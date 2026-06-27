@@ -1,12 +1,28 @@
 "use client";
 
 import { useState } from 'react';
-import { MOCK_PATIENTS } from '@/lib/mockData';
-import { Search, FileText, ImageIcon, Activity } from 'lucide-react';
+import { useStore } from '@/store/useStore';
+import { MOCK_PATIENTS, Patient } from '@/lib/mockData';
+import { Search, FileText, ImageIcon, Activity, CheckCircle } from 'lucide-react';
 
 export function EMRTab() {
-  const [selectedPatientId, setSelectedPatientId] = useState(MOCK_PATIENTS[0].id);
-  const selectedPatient = MOCK_PATIENTS.find(p => p.id === selectedPatientId);
+  const { scanResult, wellnessData, resetPatientData } = useStore();
+  
+  // Inject live demo patient if scanResult exists
+  const allPatients: Patient[] = scanResult ? [
+    {
+      id: 'demo-live',
+      name: 'New Patient (Live AI Scan)',
+      avatar: scanResult.imageUrl,
+      lastVisit: 'Just Now',
+      notes: 'Patient completed AI Face Scan from mobile app. Awaiting expert review.',
+    },
+    ...MOCK_PATIENTS
+  ] : MOCK_PATIENTS;
+
+  const [selectedPatientId, setSelectedPatientId] = useState(allPatients[0].id);
+  const selectedPatient = allPatients.find(p => p.id === selectedPatientId) || allPatients[0];
+  const isLiveDemo = selectedPatient.id === 'demo-live' && scanResult;
 
   return (
     <div className="bg-white rounded-2xl border border-border shadow-sm overflow-hidden flex h-[700px]">
@@ -23,15 +39,20 @@ export function EMRTab() {
           </div>
         </div>
         <div className="flex-1 overflow-y-auto">
-          {MOCK_PATIENTS.map(patient => (
+          {allPatients.map(patient => (
             <div 
               key={patient.id}
               onClick={() => setSelectedPatientId(patient.id)}
-              className={`p-4 border-b border-border/50 cursor-pointer transition-colors flex items-center space-x-3 ${selectedPatientId === patient.id ? 'bg-gold/5 border-l-4 border-l-gold' : 'hover:bg-muted/30 border-l-4 border-l-transparent'}`}
+              className={`p-4 border-b border-border/50 cursor-pointer transition-colors flex items-center space-x-3 ${selectedPatientId === patient.id ? 'bg-gold/5 border-l-4 border-l-gold' : 'hover:bg-muted/30 border-l-4 border-l-transparent'} ${patient.id === 'demo-live' ? 'bg-blue-50/50 hover:bg-blue-50' : ''}`}
             >
-              <img src={patient.avatar} alt={patient.name} className="w-10 h-10 rounded-full object-cover" />
+              <div className="relative">
+                <img src={patient.avatar} alt={patient.name} className="w-10 h-10 rounded-full object-cover" />
+                {patient.id === 'demo-live' && (
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></span>
+                )}
+              </div>
               <div>
-                <div className="font-medium text-sm text-charcoal">{patient.name}</div>
+                <div className={`font-medium text-sm ${patient.id === 'demo-live' ? 'text-blue-700' : 'text-charcoal'}`}>{patient.name}</div>
                 <div className="text-xs text-foreground/50 mt-0.5">Last visit: {patient.lastVisit}</div>
               </div>
             </div>
@@ -47,16 +68,26 @@ export function EMRTab() {
             <div className="flex items-center space-x-6">
               <img src={selectedPatient.avatar} alt={selectedPatient.name} className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md" />
               <div>
-                <h2 className="text-2xl font-medium text-charcoal">{selectedPatient.name}</h2>
+                <h2 className="text-2xl font-medium text-charcoal flex items-center gap-2">
+                  {selectedPatient.name}
+                  {isLiveDemo && <span className="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full uppercase tracking-wider">Live</span>}
+                </h2>
                 <div className="flex items-center space-x-4 mt-2 text-sm text-foreground/60">
-                  <span>ID: #{selectedPatient.id.padStart(5, '0')}</span>
+                  <span>ID: #{isLiveDemo ? '99999' : selectedPatient.id.padStart(5, '0')}</span>
                   <span>DOB: 12 Oct 1988</span>
                 </div>
               </div>
             </div>
-            <button className="bg-charcoal text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:bg-charcoal/90 transition-colors active:scale-95">
-              New Note
-            </button>
+            <div className="flex gap-2">
+              <button className="bg-white border border-border text-charcoal px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:bg-slate-50 transition-colors active:scale-95">
+                New Note
+              </button>
+              {isLiveDemo && (
+                <button onClick={resetPatientData} className="bg-charcoal flex items-center gap-2 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-sm hover:bg-charcoal/90 transition-colors active:scale-95">
+                  <CheckCircle className="w-4 h-4" /> Finish Appointment
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Content Grid */}
@@ -82,18 +113,41 @@ export function EMRTab() {
               </div>
               <div className="bg-blush/30 border border-blush p-5 rounded-xl space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="text-foreground/50 block text-xs">Hydration</span>
-                    <span className="font-medium text-charcoal">45% (Low)</span>
-                  </div>
-                  <div>
-                    <span className="text-foreground/50 block text-xs">Acne</span>
-                    <span className="font-medium text-charcoal">Mild</span>
-                  </div>
-                  <div>
-                    <span className="text-foreground/50 block text-xs">Pigmentation</span>
-                    <span className="font-medium text-charcoal">Moderate</span>
-                  </div>
+                  {isLiveDemo ? (
+                    <>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Acne Score</span>
+                        <span className="font-medium text-charcoal">{scanResult?.hautAiMetrics?.metrics.acne ?? 0}/100</span>
+                      </div>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Hydration</span>
+                        <span className="font-medium text-charcoal">{scanResult?.hautAiMetrics?.metrics.hydration ?? 0}/100</span>
+                      </div>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Pigmentation</span>
+                        <span className="font-medium text-charcoal">{scanResult?.hautAiMetrics?.metrics.pigmentation ?? 0}/100</span>
+                      </div>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Stress Level (Reported)</span>
+                        <span className="font-medium text-charcoal">{wellnessData?.stress ?? 0}/5</span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Hydration</span>
+                        <span className="font-medium text-charcoal">45% (Low)</span>
+                      </div>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Acne</span>
+                        <span className="font-medium text-charcoal">Mild</span>
+                      </div>
+                      <div>
+                        <span className="text-foreground/50 block text-xs">Pigmentation</span>
+                        <span className="font-medium text-charcoal">Moderate</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -109,26 +163,62 @@ export function EMRTab() {
               </div>
               
               <div className="bg-white border border-border p-4 rounded-xl shadow-sm">
-                <div className="text-sm font-medium text-charcoal mb-4">Before / After</div>
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="relative group">
+                <div className="text-sm font-medium text-charcoal mb-4">{isLiveDemo ? 'AI Scan Capture' : 'Before / After'}</div>
+                
+                {isLiveDemo ? (
+                  <div className="relative group overflow-hidden rounded-lg">
                     <img 
-                      src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400" 
-                      alt="Before" 
-                      className="w-full aspect-[3/4] object-cover rounded-lg filter sepia-[0.2]"
+                      src={scanResult?.imageUrl} 
+                      alt="Live Scan" 
+                      className="w-full aspect-square md:aspect-[3/4] object-cover"
                     />
-                    <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">Before</div>
+                    <div className="absolute bottom-2 left-2 bg-blue-600/90 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">AI Analyzed</div>
+                    
+                    {/* Render bounding boxes if issues exist */}
+                    {scanResult?.issues.map((issue, idx) => (
+                      <div 
+                        key={idx}
+                        className="absolute w-8 h-8 md:w-12 md:h-12 border-2 border-red-500 rounded-full animate-pulse"
+                        style={{
+                          top: `${30 + (idx * 15)}%`,
+                          left: `${40 + (idx % 2 === 0 ? 10 : -10)}%`
+                        }}
+                      ></div>
+                    ))}
                   </div>
-                  <div className="relative group">
-                    <img 
-                      src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400" 
-                      alt="After" 
-                      className="w-full aspect-[3/4] object-cover rounded-lg"
-                    />
-                    <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">After</div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400" 
+                        alt="Before" 
+                        className="w-full aspect-[3/4] object-cover rounded-lg filter sepia-[0.2]"
+                      />
+                      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">Before</div>
+                    </div>
+                    <div className="relative group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=300&h=400" 
+                        alt="After" 
+                        className="w-full aspect-[3/4] object-cover rounded-lg"
+                      />
+                      <div className="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">After</div>
+                    </div>
                   </div>
-                </div>
-                <p className="text-xs text-foreground/50 text-center mt-3">Treatment: Laser Rejuvenation</p>
+                )}
+                
+                {isLiveDemo ? (
+                  <div className="mt-4 space-y-2">
+                    <p className="text-xs font-semibold text-charcoal">AI Recommended Treatment:</p>
+                    {scanResult?.recommendedTreatments.map(t => (
+                      <div key={t.id} className="text-xs bg-muted/30 p-2 rounded border border-border">
+                        {t.name}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-foreground/50 text-center mt-3">Treatment: Laser Rejuvenation</p>
+                )}
               </div>
             </div>
           </div>
