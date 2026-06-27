@@ -77,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* 2.5 Live Metrics & Grand Reveal */}
-      <section className="pt-10 pb-32 px-6 overflow-hidden">
+      <section className="pt-10 pb-10 md:pb-16 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           
           {/* Logo Marquee */}
@@ -127,9 +127,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Refined Features Showcase */}
-      <section id="features" className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* 3. Features Bento Grid */}
+      <section id="features" className="py-16 md:py-20 bg-white relative">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
              <h2 className="text-4xl md:text-6xl font-serif leading-tight">
                Built for scale.<br/>Designed for <i className="text-yellow-600">beauty.</i>

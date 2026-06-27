@@ -223,7 +223,7 @@ export default function LiveAIScannerDemo() {
   }, [visibleCount, loopCount]);
 
   return (
-    <div className="w-full relative py-12 md:py-20 mt-10 md:mt-0 overflow-hidden">
+    <div className="w-full relative pt-12 md:pt-20 pb-4 md:pb-8 mt-10 md:mt-0 overflow-hidden">
       
       {/* Background Glowing Orbs for Glassmorphism */}
       <div className="absolute top-20 left-1/4 w-72 h-72 bg-yellow-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
@@ -231,7 +231,7 @@ export default function LiveAIScannerDemo() {
 
       {/* Container */}
       <div className="w-full mx-auto relative z-10">
-        <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 md:justify-center items-center pb-12 scrollbar-hide w-full">
+        <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 md:justify-center items-center pb-4 scrollbar-hide w-full">
           <AnimatePresence>
             {PATIENTS.slice(0, visibleCount).map((patient) => (
               <ScannerPhone key={`${patient.id}-${loopCount}`} patient={patient} />
