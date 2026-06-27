@@ -1,4 +1,4 @@
-import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { generateObject } from 'ai';
 import { z } from 'zod';
 
@@ -15,6 +15,8 @@ const HautAiSchema = z.object({
   recommended_ingredients: z.array(z.string()).describe('List of 2-3 recommended skincare active ingredients, e.g. "Salicylic Acid", "Niacinamide"'),
 });
 
+export const maxDuration = 60; // Extend Vercel timeout to 60s
+
 export async function POST(req: Request) {
   try {
     const { imageBase64 } = await req.json();
@@ -28,9 +30,9 @@ export async function POST(req: Request) {
       ? imageBase64 
       : `data:image/jpeg;base64,${imageBase64}`;
 
-    // Call GPT-4o-mini to analyze the image and return the structured JSON
+    // Call Gemini 1.5 Flash to analyze the image and return the structured JSON
     const { object } = await generateObject({
-      model: openai('gpt-4o-mini'),
+      model: google('gemini-1.5-flash'),
       schema: HautAiSchema,
       messages: [
         {
