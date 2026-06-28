@@ -25,9 +25,9 @@
   --color-blush: #EFECE5;
 
   /* Typography */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-plus-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-lora);
 }
 
 :root {
@@ -36,9 +36,9 @@
   --primary: #545743;
   --border: #E2DFD8;
 
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-plus-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-lora);
 }
 
 body {
