@@ -133,29 +133,21 @@ export default function Home() {
 
       {/* 2.7 Manifesto Section */}
       <section className="py-24 md:py-32 px-6 bg-slate-900 text-white selection:bg-yellow-500/30">
-        <div className="max-w-4xl mx-auto font-serif text-2xl md:text-5xl leading-snug md:leading-tight space-y-8 md:space-y-12">
+        <div className="max-w-4xl mx-auto flex flex-col space-y-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 block">VERTICAL INTELLIGENCE</span>
-            <p className="text-slate-400">AI is everywhere.</p>
-            <p>But it doesn't know how to run your clinic.</p>
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 block">AESTHETIC-NATIVE AI</span>
+            <h2 className="font-serif text-4xl md:text-6xl leading-tight">
+              Pertumbuhan tidak terjadi <br className="hidden md:block"/>
+              <i className="text-yellow-500">dengan bekerja lebih keras.</i>
+            </h2>
           </motion.div>
           
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-base md:text-xl font-sans font-light tracking-wide text-slate-400 space-y-6 max-w-3xl">
-            <p>AI generik hanya bisa membaca teks. Ia tidak memahami SOP Anda. Ia tidak tahu alur <i>treatment</i>, riwayat medis, atau manajemen <i>inventory</i> Anda.</p>
-            <p>RonaOS dibangun dengan <b>Vertical AI</b>. Ia tidak sekadar memproses data, melainkan memahami <i>proprietary knowledge base</i> Anda untuk menggerakkan seluruh ekosistem klinik secara otonom.</p>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base font-sans font-medium tracking-wide text-slate-300 py-8 border-t border-b border-slate-800">
-            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Ingesting Clinical SOPs</div>
-            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Mapping Patient Journeys</div>
-            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Orchestrating Financials</div>
-            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Managing Live Inventory</div>
-            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Analyzing Medical Records</div>
-          </motion.div>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl md:text-3xl font-sans font-light mt-8">
-            <p>This is a Vertical AI Operating System.</p>
-            <p className="text-yellow-500 italic mt-2">Operating in a class of its own.</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-lg md:text-2xl font-sans font-light tracking-wide text-slate-300 space-y-8 max-w-3xl leading-relaxed">
+            <p>Pertumbuhan terjadi ketika seluruh operasional bekerja sebagai satu ekosistem.</p>
+            <p><b>RonaOS</b> adalah Kecerdasan Buatan yang didesain secara spesifik, eksklusif, dan mendalam hanya untuk menguasai industri klinik estetika. Kami menghubungkan setiap pasien, dokter, <i>treatment</i>, transaksi, dan <i>inventory</i> ke dalam satu <i>AI Operating System</i>.</p>
+            <p className="text-xl md:text-3xl font-serif text-white pt-8 border-t border-slate-800">
+              Dirancang untuk membantu klinik Anda beroperasi lebih efisien, berekspansi lebih cerdas, dan menetapkan <i className="text-yellow-500">benchmark baru</i> di industri.
+            </p>
           </motion.div>
         </div>
       </section>
