@@ -238,9 +238,9 @@ export function EMRTab() {
                 {isLiveDemo && scanResult ? (
                   <div className="mt-4 space-y-2">
                     <p className="text-xs font-semibold text-charcoal">AI Recommended Treatment:</p>
-                    {scanResult.recommendedTreatments.map(t => (
-                      <div key={t.id} className="text-xs bg-muted/30 p-2 rounded border border-border">
-                        {t.name}
+                    {scanResult.recommendedTreatments.map((t, idx) => (
+                      <div key={typeof t === 'string' ? t + idx : t.id} className="text-xs bg-muted/30 p-2 rounded border border-border">
+                        {typeof t === 'string' ? t : t.name}
                       </div>
                     ))}
                   </div>
