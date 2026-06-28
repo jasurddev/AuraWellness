@@ -82,7 +82,10 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
       const res = await fetch('/api/scanner', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageBase64: base64String }),
+        body: JSON.stringify({ 
+          imageBase64: base64String,
+          wellnessData: { stress: localStress, sleep: localSleep }
+        }),
       });
       
       if (!res.ok) throw new Error('API Failed');
@@ -92,7 +95,7 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
       const realResult = {
         imageUrl,
         issues: data.detected_concerns || ['Dehidrasi Ringan'],
-        recommendedTreatments: [MOCK_TREATMENTS[0], MOCK_TREATMENTS[1]],
+        recommendedTreatments: data.treatment_recommendations || ['Basic Facial'],
         hautAiMetrics: data,
       };
       
@@ -347,17 +350,24 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="text-sm font-medium text-primary">Identified Concerns</h4>
                     {scanResult?.hautAiMetrics && (
-                      <span className="text-[10px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full">AI Confidence: {scanResult.hautAiMetrics.overall_score}%</span>
+                      <div className="flex items-center gap-2">
+                        {scanResult.hautAiMetrics.confidence_score < 70 && (
+                          <span className="text-[10px] font-bold bg-red-100 text-red-600 px-2 py-0.5 rounded-full">Low Confidence</span>
+                        )}
+                        <span className="text-[10px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full">AI Confidence: {scanResult.hautAiMetrics.confidence_score}%</span>
+                      </div>
                     )}
                   </div>
                   
                   {scanResult?.hautAiMetrics && (
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       {[
-                        { label: 'Acne Score', value: scanResult.hautAiMetrics.metrics.acne },
-                        { label: 'Dehydration', value: 100 - scanResult.hautAiMetrics.metrics.hydration },
+                        { label: 'Acne', value: scanResult.hautAiMetrics.metrics.acne },
+                        { label: 'Scarring', value: scanResult.hautAiMetrics.metrics.scarring },
                         { label: 'Pigmentation', value: scanResult.hautAiMetrics.metrics.pigmentation },
-                        { label: 'Wrinkles', value: scanResult.hautAiMetrics.metrics.wrinkles }
+                        { label: 'Dehydration', value: 100 - scanResult.hautAiMetrics.metrics.hydration },
+                        { label: 'Texture', value: scanResult.hautAiMetrics.metrics.texture },
+                        { label: 'Oiliness', value: scanResult.hautAiMetrics.metrics.oiliness }
                       ].map((metric) => (
                         <div key={metric.label} className="bg-white rounded-xl p-3 border border-border/50 shadow-sm">
                           <div className="text-xs text-muted-foreground mb-1">{metric.label}</div>
@@ -379,18 +389,53 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-medium text-primary mb-3 px-1">Rekomendasi Treatment</h4>
-                  <div className="space-y-3">
-                    {MOCK_TREATMENTS.slice(0,2).map((t) => (
-                      <div key={t.id} className="bg-white rounded-2xl p-4 shadow-sm border border-border/40 flex gap-4">
-                        <img src={t.imageUrl} alt={t.name} className="w-20 h-20 rounded-xl object-cover" />
-                        <div className="flex-1">
-                          <h5 className="font-medium text-primary text-sm mb-1">{t.name}</h5>
-                          <p className="text-[10px] text-muted-foreground line-clamp-2 mb-2">{t.description}</p>
-                          <div className="text-sm font-semibold text-accent">{t.price}</div>
-                        </div>
+                  <h4 className="text-sm font-medium text-primary mb-3 px-1">Rekomendasi Treatment & Skincare</h4>
+                  
+                  {scanResult?.hautAiMetrics?.recommended_ingredients && (
+                    <div className="mb-4 px-1">
+                      <p className="text-xs text-muted-foreground mb-2">Bahan Aktif yang Disarankan:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {scanResult.hautAiMetrics.recommended_ingredients.map((ing: string, i: number) => (
+                          <span key={i} className="px-2 py-1 bg-green-50 text-green-700 rounded-md text-[10px] font-medium border border-green-200">
+                            {ing}
+                          </span>
+                        ))}
                       </div>
-                    ))}
+                    </div>
+                  )}
+
+                  <div className="space-y-3">
+                    {/* Map the AI treatment recommendations to UI cards */}
+                    {(scanResult?.recommendedTreatments || ['Basic Facial']).map((t: any, idx: number) => {
+                      // Try to find a mock treatment that matches, otherwise just show the text
+                      const matchedMock = MOCK_TREATMENTS.find(mock => typeof t === 'string' && mock.name.toLowerCase().includes(t.toLowerCase()));
+                      
+                      if (matchedMock) {
+                        return (
+                          <div key={idx} className="bg-white rounded-2xl p-4 shadow-sm border border-border/40 flex gap-4">
+                            <img src={matchedMock.imageUrl} alt={matchedMock.name} className="w-20 h-20 rounded-xl object-cover" />
+                            <div className="flex-1">
+                              <h5 className="font-medium text-primary text-sm mb-1">{matchedMock.name}</h5>
+                              <p className="text-[10px] text-muted-foreground line-clamp-2 mb-2">{matchedMock.description}</p>
+                              <div className="text-sm font-semibold text-accent">{matchedMock.price}</div>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      // Fallback for AI recommendations that don't match our hardcoded catalog
+                      return (
+                        <div key={idx} className="bg-white rounded-2xl p-4 shadow-sm border border-border/40 flex gap-4 items-center">
+                          <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                            <Sparkles className="w-5 h-5 text-accent" />
+                          </div>
+                          <div className="flex-1">
+                            <h5 className="font-medium text-primary text-sm">{typeof t === 'string' ? t : t.name}</h5>
+                            <p className="text-[10px] text-muted-foreground mt-1">Direkomendasikan oleh RonaAI berdasarkan hasil scan Anda.</p>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
