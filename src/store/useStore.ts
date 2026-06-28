@@ -38,6 +38,7 @@ type AppState = {
       detected_concerns: string[];
       treatment_recommendations: string[];
       recommended_ingredients: string[];
+      wellness_insight?: string;
     };
   } | null;
   setScanResult: (result: AppState['scanResult']) => void;

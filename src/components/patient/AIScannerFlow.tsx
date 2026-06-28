@@ -336,12 +336,12 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
               </div>
 
               <div className="space-y-6">
-                {wellnessData && wellnessData.stress >= 4 && (
+                {scanResult?.hautAiMetrics?.wellness_insight && (
                   <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex gap-3">
                     <Activity className="w-5 h-5 text-amber-600 shrink-0" />
                     <div>
-                      <h4 className="text-sm font-medium text-amber-900">Indikasi Stres Tinggi</h4>
-                      <p className="text-xs text-amber-700 mt-1">Stres memicu hormon kortisol yang dapat membuat kulit kusam dan rentan inflamasi. Kami menyarankan treatment dengan relaksasi ekstra.</p>
+                      <h4 className="text-sm font-medium text-amber-900">Holistic Insight</h4>
+                      <p className="text-xs text-amber-700 mt-1">{scanResult.hautAiMetrics.wellness_insight}</p>
                     </div>
                   </div>
                 )}

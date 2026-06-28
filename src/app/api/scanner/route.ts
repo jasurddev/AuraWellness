@@ -18,6 +18,7 @@ const HautAiSchema = z.object({
   detected_concerns: z.array(z.string()).describe('List of 3-5 short, specific skin concerns detected, e.g. "Mild Dehydration", "Moderate Acne", "Post-Inflammatory Hyperpigmentation"'),
   treatment_recommendations: z.array(z.string()).describe('List of 2-3 specific clinical treatments recommended, e.g. "Acne Peeling", "Laser Fractional", "Hydrafacial"'),
   recommended_ingredients: z.array(z.string()).describe('List of 2-3 recommended skincare active ingredients, e.g. "Salicylic Acid", "Niacinamide"'),
+  wellness_insight: z.string().describe('A 1-2 sentence personalized insight correlating their skin condition with their reported stress and sleep levels.'),
 });
 
 export const maxDuration = 60; // Extend Vercel timeout to 60s
@@ -65,6 +66,7 @@ For Hydration:
 2. Look for acne scarring (ice pick, boxcar, rolling scars) and score under 'scarring'.
 3. 'Confidence Score' should reflect how clear the image is. If blurry, dark, or obscured, lower this score.
 4. 'Treatment Recommendations' should match the primary concerns (e.g. if high acne, recommend "Acne Peeling"; if high scarring, recommend "Laser Fractional").
+5. 'Wellness Insight' MUST explicitly mention their stress (${stressLevel}/5) and sleep (${sleepLevel}/5) and how it scientifically correlates to their visible skin issues.
 `;
 
     // Call Gemini 2.5 Flash to analyze the image and return the structured JSON
