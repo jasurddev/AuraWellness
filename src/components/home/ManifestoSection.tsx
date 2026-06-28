@@ -120,7 +120,7 @@ function Card({ point, index, total, progress }: any) {
       className="sticky w-full flex flex-col justify-center"
       style={{ 
         top: `calc(15vh + ${index * 20}px)`, // Tighter vertical spacing for the stack header
-        marginBottom: index === total - 1 ? '5vh' : '75vh', // 7th card has very little margin so it pulls the section up
+        marginBottom: index === total - 1 ? '40vh' : '75vh', // Card 7 needs enough margin to reach its sticky top before section ends
         zIndex: 10 + index
       }}
     >
