@@ -12,7 +12,7 @@ import Chatbot from "@/components/shared/Chatbot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F9F8F6] text-slate-900 font-sans selection:bg-yellow-400/30">
+    <div className="min-h-screen bg-[#F9F8F6] text-slate-900 font-sans selection:bg-yellow-400/30 overflow-x-hidden">
       
       {/* 1. Minimalist Navbar */}
       <nav className="fixed top-0 w-full bg-[#F9F8F6]/90 backdrop-blur-md z-50 border-b border-slate-200/50">
@@ -49,7 +49,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-6xl md:text-8xl font-serif text-slate-900 leading-[1.05] tracking-tight mb-8"
+                className="text-5xl md:text-8xl font-serif text-slate-900 leading-[1.05] tracking-tight mb-8"
               >
                 The Intelligence <br /> Behind Every <br />
                 <span className="italic text-yellow-700">Exceptional Clinic.</span>

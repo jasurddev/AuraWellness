@@ -91,7 +91,7 @@ export default function ManifestoSection() {
       </div>
       
       {/* Global Decorative Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-yellow-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] max-w-[100vw] h-[800px] bg-yellow-900/10 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
   );
 }
