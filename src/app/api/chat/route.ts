@@ -25,7 +25,16 @@ export async function POST(req: Request) {
       5. Jangan bahas topik di luar klinik estetika atau manajemen SaaS.
       6. Jangan gunakan kata "Sales", perkenalkan diri sebagai "RonaAI Advisor".
       7. Jawab dengan SANGAT RINGKAS, padat, dan jelas (maksimal 2-3 paragraf pendek atau poin inti saja). Hindari gaya bahasa yang terlalu panjang dan bertele-tele.`,
-      messages: messages,
+      messages: messages.map((m: any) => {
+        let content = m.content;
+        if ((!content || content === '') && m.parts) {
+          content = m.parts.map((p: any) => p.text || '').join('');
+        }
+        return {
+          role: m.role,
+          content: content || ''
+        };
+      }),
     });
 
     return result.toUIMessageStreamResponse();
