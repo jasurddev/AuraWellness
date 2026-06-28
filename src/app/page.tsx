@@ -206,14 +206,19 @@ export default function Home() {
       <section id="fintech" className="pt-10 md:pt-16 pb-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1 space-y-8">
-            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase block">INVISIBLE COMMERCE</span>
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-              Transactions should be felt, <br/>not seen.
+            <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase block">FINANCIAL INFRASTRUCTURE</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
+              Zero Friction. <br/>Absolute <i className="text-yellow-600 font-light">Conversion.</i>
             </h2>
-            <p className="text-slate-600 leading-relaxed max-w-lg">
-              RonaOS mengubah proses pembayaran menjadi pengalaman tak kasat mata. Infrastruktur Payment Gateway terintegrasi penuh atas nama klinik Anda. Terapkan sistem auto-deposit dan rekonsiliasi instan untuk memusnahkan potensi <i>no-shows</i>. Uang Anda mengalir semulus pengalaman pasien Anda.
-            </p>
-            <ul className="space-y-4">
+            <div className="space-y-4">
+              <p className="text-lg text-slate-700 leading-relaxed max-w-lg font-light">
+                Pasien Anda tidak datang untuk mengantri di kasir. Mereka datang untuk sebuah pengalaman. 
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed max-w-lg font-light">
+                RonaOS mengintegrasikan <i>Payment Gateway</i> dan <i>Deposit System</i> secara <i>native</i>. Mengeliminasi <i>no-shows</i>, mengamankan <i>cash flow</i>, dan menjadikan setiap transaksi terasa seolah-olah tidak pernah terjadi (<i>Invisible Commerce</i>).
+              </p>
+            </div>
+            <ul className="space-y-4 pt-4">
               <li className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
                 <span className="text-slate-900 text-sm font-medium">100% White-labeled (Transaksi masuk atas nama klinik Anda)</span>
