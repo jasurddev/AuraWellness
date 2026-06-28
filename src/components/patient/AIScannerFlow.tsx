@@ -290,22 +290,49 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
                   <div className="absolute inset-0 bg-white/50 blur-[1px]" />
                 </motion.div>
                 
-                {/* Sparkles Effect */}
-                <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center">
-                  <motion.div 
-                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_#fff]"
+                {/* Advanced Facial Tracking Effect */}
+                <div className="absolute inset-0 z-30 pointer-events-none">
+                  {/* Corner brackets */}
+                  <motion.div
+                    animate={{ opacity: [0.3, 0.8, 0.3], scale: [0.95, 1, 0.95] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-4 border-2 border-white/20 rounded-full"
+                    style={{ clipPath: 'polygon(0 0, 20% 0, 20% 100%, 0 100%, 0 0, 100% 0, 100% 20%, 0 20%, 0 80%, 100% 80%, 100% 100%, 80% 100%, 80% 0)' }}
                   />
-                  <motion.div 
-                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.5, 0.8] }}
-                    transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                    className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_10px_#C5A880]"
-                  />
-                  <motion.div 
-                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                    transition={{ duration: 2.5, repeat: Infinity, delay: 1.5 }}
-                    className="absolute top-1/2 left-2/3 w-1 h-1 bg-white rounded-full shadow-[0_0_10px_#fff]"
+
+                  {/* Tracking Points (simulating facial landmarks) */}
+                  {[
+                    { top: '35%', left: '35%' }, // Left eye
+                    { top: '35%', right: '35%' }, // Right eye
+                    { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }, // Nose
+                    { top: '65%', left: '40%' }, // Left lip
+                    { top: '65%', right: '40%' }, // Right lip
+                    { top: '45%', left: '20%' }, // Left cheek
+                    { top: '45%', right: '20%' }, // Right cheek
+                    { top: '80%', left: '50%', transform: 'translate(-50%, 0)' }, // Chin
+                  ].map((pos, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: [0, 1, 0.5, 1, 0], scale: [0, 1.2, 1, 1.2, 0] }}
+                      transition={{ 
+                        duration: 3, 
+                        repeat: Infinity, 
+                        delay: idx * 0.3,
+                        times: [0, 0.2, 0.5, 0.8, 1]
+                      }}
+                      className="absolute w-1.5 h-1.5 bg-yellow-400 rounded-full shadow-[0_0_8px_#facc15]"
+                      style={pos}
+                    >
+                      <div className="absolute inset-0 w-full h-full border border-yellow-400 rounded-full animate-ping opacity-50" />
+                    </motion.div>
+                  ))}
+
+                  {/* Scanning Crosshair */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 border-[1px] border-dashed border-white/10 rounded-full"
                   />
                 </div>
               </div>
