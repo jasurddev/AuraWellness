@@ -148,7 +148,7 @@ function Card({ point, index, total, progress }: any) {
             {point.id}
           </div>
 
-          <div className="relative z-10 p-8 md:p-16 lg:p-20 max-w-3xl">
+          <div className="relative z-10 p-8 md:p-16 lg:p-20 max-w-3xl flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-6 mb-8 md:mb-12">
               <span className="text-sm md:text-base font-bold text-slate-500 font-mono tracking-widest">
                 <span className="text-white">{point.id}</span> <span className="opacity-40">/ 07</span>

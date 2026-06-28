@@ -35,11 +35,11 @@ export default function Home() {
       <section className="pt-40 pb-24 px-6 relative border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8 text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-4"
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center justify-center lg:justify-start gap-4"
               >
                 <span className="w-8 h-[1px] bg-yellow-500"></span>
                 AI Operating System for Aesthetic & Wellness
@@ -56,7 +56,7 @@ export default function Home() {
               </motion.h1>
             </div>
             
-            <div className="lg:col-span-4 pb-4">
+            <div className="lg:col-span-4 pb-4 text-center lg:text-left">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -71,6 +71,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
+                className="flex justify-center lg:justify-start"
               >
                 <a href="#demo" className="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-4 text-sm font-medium hover:bg-slate-800 transition-colors">
                   Explore Architecture <ArrowRight className="w-4 h-4" />
@@ -128,14 +129,14 @@ export default function Home() {
       {/* 4. The Architecture (Four Cores) */}
       <section id="features" className="pt-24 md:pt-32 pb-24 md:pb-32 bg-white relative border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-slate-200 pb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-slate-200 pb-12 text-center md:text-left">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-600 mb-6 block">THE ARCHITECTURE</span>
               <h2 className="text-4xl md:text-6xl font-serif leading-tight">
                 Four Cores.<br/>One Unified <i className="text-yellow-600">Ecosystem.</i>
               </h2>
             </div>
-            <p className="max-w-sm text-sm text-slate-500 leading-relaxed font-medium">
+            <p className="max-w-sm text-sm text-slate-500 leading-relaxed font-medium mx-auto md:mx-0">
               RonaOS dibangun di atas empat pilar arsitektur utama yang bekerja tersinkronisasi untuk menggerakkan seluruh skala bisnis estetika Anda.
             </p>
           </div>
@@ -172,26 +173,26 @@ export default function Home() {
       {/* 5. Minimalist Pricing */}
       <section id="pricing" className="py-32 px-6 bg-[#F9F8F6]">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-10">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-10 text-center md:text-left">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-600 mb-4 block">ARCHITECTURE LICENSES</span>
-              <h2 className="text-4xl md:text-5xl font-serif max-w-lg leading-tight">Choose the Right Foundation for Your Growth.</h2>
+              <h2 className="text-4xl md:text-5xl font-serif max-w-lg leading-tight mx-auto md:mx-0">Choose the Right Foundation for Your Growth.</h2>
             </div>
-            <p className="text-sm text-slate-500 max-w-sm md:text-right mt-6 md:mt-0 font-medium leading-relaxed">
+            <p className="text-sm text-slate-500 max-w-sm md:text-right mt-8 md:mt-0 font-medium leading-relaxed mx-auto md:ml-auto md:mr-0 text-center md:text-right">
               Tidak semua klinik berada pada tahap yang sama. Pilih lisensi yang sesuai dengan kebutuhan hari ini, dan biarkan RonaOS berkembang bersama bisnis Anda.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 bg-white shadow-sm">
             {/* Boutique */}
-            <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col">
+            <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col text-center md:text-left">
               <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Boutique</h3>
               <p className="text-xs text-slate-500 mb-12">For the purist independent practitioner.</p>
               <div className="mb-12">
                 <span className="text-4xl font-serif">Rp 1.5M</span>
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
-              <ul className="space-y-4 mb-12 flex-1">
+              <ul className="space-y-4 mb-12 flex-1 mx-auto md:mx-0 w-fit text-left">
                 {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Patient App', 'AI Assistant', 'Online Store', 'Standard Support'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
@@ -202,7 +203,7 @@ export default function Home() {
             </div>
 
             {/* Scale */}
-            <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50 relative flex flex-col">
+            <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50 relative flex flex-col text-center md:text-left">
               <div className="absolute top-0 right-0 bg-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1">
                 Smart Choice
               </div>
@@ -212,7 +213,7 @@ export default function Home() {
                 <span className="text-4xl font-serif">Rp 3.5M</span>
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
-              <ul className="space-y-4 mb-12 flex-1">
+              <ul className="space-y-4 mb-12 flex-1 mx-auto md:mx-0 w-fit text-left">
                 {['Up to 5 Doctor Licenses', 'AI Clinical Intelligence', 'Patient App', 'Online Store', 'Advanced Analytics Suite', 'Inventory Orchestration', 'Priority Access'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-900 font-medium">
                     <Check className="w-4 h-4 text-yellow-600 mt-0.5 shrink-0" /> {feature}
@@ -223,13 +224,13 @@ export default function Home() {
             </div>
 
             {/* Enterprise */}
-            <div className="p-10 flex flex-col">
+            <div className="p-10 flex flex-col text-center md:text-left">
               <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Enterprise</h3>
               <p className="text-xs text-slate-500 mb-12">For regional and global clinic networks.</p>
               <div className="mb-12">
                 <span className="text-4xl font-serif">Custom</span>
               </div>
-              <ul className="space-y-4 mb-12 flex-1">
+              <ul className="space-y-4 mb-12 flex-1 mx-auto md:mx-0 w-fit text-left">
                 {['Unlimited Licenses', 'Custom AI Infrastructure', 'White-label Patient App', 'Dedicated Success Manager', 'Custom API Architecture'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
@@ -263,7 +264,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <Link 
               href="/demo/portal/patient"
-              className="group bg-white border border-slate-200 p-8 hover:border-slate-900 transition-all flex flex-col justify-between min-h-[240px]"
+              className="group bg-white border border-slate-200 p-8 hover:border-slate-900 transition-all flex flex-col justify-between min-h-[240px] text-center md:text-left items-center md:items-start"
             >
               <div>
                 <Smartphone className="w-6 h-6 text-slate-400 mb-6 group-hover:text-yellow-600 transition-colors" />
@@ -277,7 +278,7 @@ export default function Home() {
 
             <Link 
               href="/demo/portal/admin"
-              className="group bg-slate-900 text-white p-8 hover:bg-slate-800 transition-all flex flex-col justify-between min-h-[240px]"
+              className="group bg-slate-900 text-white p-8 hover:bg-slate-800 transition-all flex flex-col justify-between min-h-[240px] text-center md:text-left items-center md:items-start"
             >
               <div>
                 <LayoutDashboard className="w-6 h-6 text-slate-500 mb-6 group-hover:text-yellow-500 transition-colors" />

@@ -54,7 +54,7 @@ export default function FourCoresAccordion() {
               >
                 <button 
                   onClick={() => setActiveIndex(index)}
-                  className="w-full text-left flex items-center justify-between group outline-none"
+                  className="w-full text-center md:text-left flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-0 group outline-none"
                 >
                   <div>
                     <span className={`text-[10px] font-bold tracking-widest uppercase block mb-2 transition-colors duration-300 ${isActive ? 'text-yellow-600' : 'text-slate-400 group-hover:text-yellow-600'}`}>
@@ -77,7 +77,7 @@ export default function FourCoresAccordion() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                      <p className="pt-6 text-slate-600 leading-relaxed font-sans pr-4">
+                      <p className="pt-6 text-slate-600 leading-relaxed font-sans pr-0 md:pr-4 text-center md:text-left">
                         {core.description}
                       </p>
                     </motion.div>
