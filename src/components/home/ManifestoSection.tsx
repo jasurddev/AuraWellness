@@ -7,32 +7,32 @@ const manifestoPoints = [
   {
     id: "01",
     title: "One Patient - One Journey.",
-    body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh mulai dari Assessment, Medical Records, Treatment, Products, After Care, hingga Follow Up. Semuanya terhubung dalam satu timeline yang dirancang untuk memberikan pengalaman yang konsisten di setiap kunjungan."
+    body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh—mulai dari assessment, medical records, treatment, products, after care, hingga follow-up. Semuanya terhubung dalam satu timeline yang dirancang untuk memberikan pengalaman yang konsisten di setiap kunjungan."
   },
   {
     id: "02",
     title: "Every Appointment Has Value.",
-    body: "Waktu dokter adalah aset. Setiap slot treatment adalah peluang. Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai. Lebih sedikit no-show. Lebih banyak kepastian. Lebih banyak pertumbuhan."
+    body: "Waktu dokter adalah aset, dan setiap slot treatment adalah peluang. Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai—berujung pada lebih sedikit no-show, lebih banyak kepastian, dan peningkatan pertumbuhan bisnis."
   },
   {
     id: "03",
     title: "Care Beyond The Clinic.",
-    body: "Hubungan dengan pasien tidak berakhir setelah treatment selesai. AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Karena loyalitas dibangun setelah pasien pulang."
+    body: "Hubungan dengan pasien tidak berakhir setelah treatment selesai. AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Karena loyalitas sejati dibangun setelah pasien pulang."
   },
   {
     id: "04",
     title: "One Intelligence.",
-    body: "Every Department Connected. AI memahami lebih dari sekadar percakapan. Ia memahami SOP klinik, Riwayat treatment, Data pasien, Inventory, Performa dokter, Transaksi, hingga Revenue. Semakin lama digunakan, semakin dalam pemahamannya terhadap bisnis Anda."
+    body: "Every Department Connected. AI memahami lebih dari sekadar percakapan. Ia memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya terhadap urat nadi bisnis Anda."
   },
   {
     id: "05",
     title: "Designed Around Your Brand.",
-    body: "Pasien mengenal brand Anda. Bukan brand kami. Mulai dari aplikasi pasien, komunikasi, hingga pengalaman digital, seluruhnya dibangun menggunakan identitas klinik Anda. Invisible technology. Visible excellence."
+    body: "Pasien mengenal brand Anda, bukan brand kami. Mulai dari aplikasi pasien, komunikasi, hingga pengalaman digital, seluruhnya dibangun menggunakan identitas klinik Anda secara eksklusif. Invisible technology, visible excellence."
   },
   {
     id: "06",
     title: "Enterprise by Design.",
-    body: "Keamanan. Kecepatan. Reliabilitas. Semuanya dirancang sejak awal. Bukan sebagai fitur tambahan. Tetapi sebagai fondasi. Karena klinik premium membutuhkan infrastruktur yang dapat dipercaya."
+    body: "Keamanan, kecepatan, dan reliabilitas. Semuanya dirancang sejak awal—bukan sekadar sebagai fitur tambahan, melainkan sebagai fondasi utama. Karena klinik premium membutuhkan infrastruktur yang mutlak dapat dipercaya."
   }
 ];
 
@@ -110,10 +110,10 @@ export default function ManifestoSection() {
             </div>
             <div className="md:w-2/3 border-l-0 md:border-l border-slate-700 md:pl-8">
               <p className="text-base text-slate-300 leading-relaxed font-light mb-4">
-                <strong className="text-white font-medium">Artificial Intelligence bukan sebuah fitur. Ia menjadi fondasi dari setiap keputusan.</strong>
+                <strong className="text-white font-medium">Artificial Intelligence bukan sekadar fitur sisipan, melainkan fondasi dari setiap keputusan.</strong>
               </p>
               <p className="text-sm text-slate-400 leading-relaxed font-light">
-                Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang terus belajar dari data klinik Anda.
+                Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang secara kontinu belajar dan berevolusi dari data klinik Anda.
               </p>
             </div>
           </div>
