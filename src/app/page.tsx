@@ -7,6 +7,7 @@ import { Sparkles, ArrowRight, ShieldCheck, Zap, Smartphone, Check, ArrowUpRight
 import Image from 'next/image';
 import LiveAIScannerDemo from "@/components/home/LiveAIScannerDemo";
 import FourCoresAccordion from "@/components/home/FourCoresAccordion";
+import ManifestoSection from "@/components/home/ManifestoSection";
 import Chatbot from "@/components/shared/Chatbot";
 
 export default function Home() {
@@ -202,98 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Payment Gateway (New Fintech Section) */}
-      <section id="fintech" className="pt-10 md:pt-16 pb-32 px-6 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
-          <div className="flex-1 space-y-8">
-            <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase block">FINANCIAL INFRASTRUCTURE</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">
-              Zero Friction. <br/>Absolute <i className="text-yellow-600 font-light">Conversion.</i>
-            </h2>
-            <div className="space-y-4">
-              <p className="text-lg text-slate-700 leading-relaxed max-w-lg font-light">
-                Pasien Anda tidak datang untuk mengantri di kasir. Mereka datang untuk sebuah pengalaman. 
-              </p>
-              <p className="text-lg text-slate-600 leading-relaxed max-w-lg font-light">
-                RonaOS mengintegrasikan <i>Payment Gateway</i> dan <i>Deposit System</i> secara <i>native</i>. Mengeliminasi <i>no-shows</i>, mengamankan <i>cash flow</i>, dan menjadikan setiap transaksi terasa seolah-olah tidak pernah terjadi (<i>Invisible Commerce</i>).
-              </p>
-            </div>
-            <ul className="space-y-4 pt-4">
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                <span className="text-slate-900 text-sm font-medium">100% White-labeled (Transaksi masuk atas nama klinik Anda)</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                <span className="text-slate-900 text-sm font-medium">Auto-Reconciliation (Lupakan cek mutasi manual)</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                <span className="text-slate-900 text-sm font-medium">Secure Payouts (Dana disalurkan oleh lembaga perbankan resmi)</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="flex-1 w-full aspect-square md:aspect-[4/3] bg-slate-50 rounded-3xl p-8 flex items-center justify-center relative overflow-hidden">
-             {/* Decorative background elements */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-100/50 rounded-full blur-3xl"></div>
-             
-             {/* Modern Sleek Receipt UI */}
-             <div className="relative z-10 w-full max-w-sm bg-white/90 backdrop-blur-xl p-8 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-white flex flex-col items-center transform transition-transform hover:scale-105 duration-500">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
-                    <Check className="w-6 h-6 text-emerald-600" />
-                  </div>
-                </div>
-                <h4 className="text-2xl font-serif text-slate-900 mb-1">Payment Received</h4>
-                <p className="text-sm text-slate-500 mb-8 font-medium">Rona Aesthetics - Kemang</p>
-                
-                <div className="w-full border-t border-dashed border-slate-200 mb-6 relative">
-                  <div className="absolute -left-10 -top-3 w-6 h-6 rounded-full bg-slate-50"></div>
-                  <div className="absolute -right-10 -top-3 w-6 h-6 rounded-full bg-slate-50"></div>
-                </div>
-                
-                <div className="w-full flex justify-between items-center mb-6">
-                  <span className="text-sm text-slate-500">Total Amount</span>
-                  <span className="text-xl font-medium text-slate-900">Rp 1.250.000</span>
-                </div>
-                
-                <div className="w-full bg-slate-50 rounded-2xl p-4 flex items-center gap-4 border border-slate-100">
-                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0">
-                    <Zap className="w-5 h-5 text-yellow-500" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-0.5">Auto-Reconciled</span>
-                    <span className="text-[11px] text-slate-500">Instantly settled to Bank Account</span>
-                  </div>
-                </div>
-             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Value Proposition (Typography focus) */}
-      <section id="benefits" className="py-32 px-6 bg-slate-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 border-t border-slate-800 pt-16">
-            <div>
-              <ShieldCheck className="w-6 h-6 text-yellow-500 mb-6" />
-              <h4 className="text-xl font-serif mb-4">Bank-grade Security</h4>
-              <p className="text-sm text-slate-400 leading-relaxed">Semua data pasien dienkripsi penuh (<i>at rest</i> & <i>in transit</i>). <i>Fully compliant</i> standar internasional.</p>
-            </div>
-            <div>
-              <Smartphone className="w-6 h-6 text-yellow-500 mb-6" />
-              <h4 className="text-xl font-serif mb-4">White-label Experience</h4>
-              <p className="text-sm text-slate-400 leading-relaxed"><i>Your brand, our technology</i>. Kasih pasien Anda <i>mobile web app</i> dengan logo dan warna klinik Anda sendiri.</p>
-            </div>
-            <div>
-              <Zap className="w-6 h-6 text-yellow-500 mb-6" />
-              <h4 className="text-xl font-serif mb-4">Zero Latency</h4>
-              <p className="text-sm text-slate-400 leading-relaxed">Dibangun di atas teknologi terkini. Rasakan navigasi super cepat dan sinkronisasi data <i>real-time</i>.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ManifestoSection />
 
       {/* 5. Minimalist Pricing */}
       <section id="pricing" className="py-32 px-6 bg-[#F9F8F6]">
