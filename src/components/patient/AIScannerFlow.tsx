@@ -120,7 +120,7 @@ export function AIScannerFlow({ onComplete, onBack }: { onComplete: () => void, 
   };
 
   return (
-    <div className="min-h-full flex flex-col bg-[#F9F8F6]">
+    <div className="h-full flex flex-col bg-[#F9F8F6] overflow-y-auto">
       {/* Header */}
       <div className="pt-12 pb-4 px-6 flex items-center justify-between sticky top-0 bg-[#F9F8F6]/80 backdrop-blur-md z-20">
         <button 
