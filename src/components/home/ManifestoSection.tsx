@@ -51,7 +51,7 @@ export default function ManifestoSection() {
   });
 
   return (
-    <section ref={containerRef} id="manifesto" className="bg-[#030712] relative pb-[85vh]">
+    <section ref={containerRef} id="manifesto" className="bg-[#030712] relative pb-[10vh]">
       
       {/* Header */}
       <div className="pt-24 md:pt-32 pb-16 max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -120,7 +120,7 @@ function Card({ point, index, total, progress }: any) {
       className="sticky w-full flex flex-col justify-center"
       style={{ 
         top: `calc(15vh + ${index * 20}px)`, // Tighter vertical spacing for the stack header
-        marginBottom: index === total - 1 ? '0' : '85vh', // Section padding handles the scroll space for the last card
+        marginBottom: '85vh', // All cards need this margin so the parent container extends and allows them to stick!
         zIndex: 10 + index
       }}
     >
