@@ -37,10 +37,10 @@ export default function Home() {
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-4"
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-4"
               >
                 <span className="w-8 h-[1px] bg-yellow-500"></span>
-                Software for Aesthetics
+                AI Operating System for Aesthetic & Wellness
               </motion.div>
               
               <motion.h1 
@@ -49,20 +49,22 @@ export default function Home() {
                 transition={{ delay: 0.1 }}
                 className="text-6xl md:text-8xl font-serif text-slate-900 leading-[1.05] tracking-tight mb-8"
               >
-                The operating <br /> system for premium <br />
-                <span className="italic text-slate-500">clinics.</span>
+                The Intelligence <br /> Behind Every <br />
+                <span className="italic text-yellow-700">Great Clinic.</span>
               </motion.h1>
             </div>
             
             <div className="lg:col-span-4 pb-4">
-              <motion.p 
+              <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-sm text-slate-600 mb-8 leading-relaxed"
+                className="text-sm text-slate-600 mb-8 leading-relaxed space-y-4"
               >
-                Berakar dari filosofi <b className="text-yellow-700">"Rona"</b> yang berarti <i>Kecantikan yang Terpancar</i>, <b>RonaOS</b> hadir sebagai detak jantung operasional klinik Anda. Menggabungkan kedalaman filosofi kecantikan holistik dengan ekosistem digital <i>all-in-one</i> berbasis AI.
-              </motion.p>
+                <p><b>RonaOS</b> adalah AI-native operating system yang menghubungkan seluruh perjalanan pasien dalam satu ekosistem cerdas.</p>
+                <p>Mulai dari AI Consultation, Smart Booking, Electronic Medical Records, AI Post-Care, Online Store, hingga Business Intelligence—semuanya bekerja bersama untuk membantu klinik bertumbuh lebih cepat, beroperasi lebih efisien, dan memberikan pengalaman pasien yang luar biasa.</p>
+                <p className="font-semibold text-slate-900 pt-2">One Platform. One Patient Journey. One Source of Truth.</p>
+              </motion.div>
               
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -129,6 +131,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 2.7 Manifesto Section */}
+      <section className="py-24 md:py-32 px-6 bg-slate-900 text-white selection:bg-yellow-500/30">
+        <div className="max-w-4xl mx-auto font-serif text-2xl md:text-5xl leading-snug md:leading-tight space-y-8 md:space-y-12">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            Ini yang bikin <span className="text-yellow-500">RonaOS</span> beda.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-slate-400">
+            Bukan sekadar AI.<br/>
+            Semua orang sekarang punya AI.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            Yang gak semua orang punya adalah <br/>
+            <span className="text-white italic">Vertical AI dengan proprietary knowledge base.</span>
+          </motion.p>
+          
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-lg md:text-3xl font-sans font-light tracking-wide space-y-3 text-slate-400 py-8 border-l-2 border-yellow-500/30 pl-8 ml-2">
+            <p>kita punya SOP.</p>
+            <p>kita punya treatment flow.</p>
+            <p>kita punya patient journey.</p>
+            <p>kita punya aftercare.</p>
+            <p>kita punya inventory.</p>
+            <p>kita punya booking.</p>
+            <p>kita punya payment.</p>
+            <p>kita punya EMR.</p>
+            <p>kita punya analytics.</p>
+            <p className="text-yellow-500 font-medium pt-4">kita punya AI.</p>
+          </motion.div>
+
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            Itu namanya <br/>
+            <i className="text-yellow-500">Vertical AI Operating System.</i>
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl md:text-3xl text-slate-400 font-sans font-light mt-8">
+            Dan ini kelasnya sudah berbeda dibanding software klinik biasa.
+          </motion.p>
+        </div>
+      </section>
+
       {/* 3. Features Bento Grid */}
       <section id="features" className="py-16 md:py-20 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
@@ -145,11 +185,26 @@ export default function Home() {
             {/* Feature 1 */}
             <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
-                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI Scanner</span>
-                <h3 className="text-3xl font-serif mb-4">Precision Analysis</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Analisa kondisi kulit pasien secara instan pakai <i>proprietary AI algorithm</i> kita. Otomatis menghasilkan <i>treatment plan</i> yang akurat.
-                </p>
+                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI Clinical Intelligence</span>
+                <h3 className="text-3xl font-serif mb-6">Beyond Skin Analyzer.</h3>
+                <div className="text-sm text-slate-600 leading-relaxed mb-8 max-w-sm space-y-4">
+                  <p>AI kita bukan cuma scan wajah. AI kita bisa:</p>
+                  <ul className="grid grid-cols-2 gap-y-2 gap-x-1 text-[11px] font-semibold text-slate-700">
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca wajah</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> histori treatment</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca SOP</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> cek inventory</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> baca transaksi</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> atur booking</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> saran aftercare</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> asisten dokter</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> data repeat pasien</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca pain</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> analisa lifestyle</li>
+                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> knowledge base</li>
+                  </ul>
+                  <p className="font-bold text-slate-900 border-t border-slate-200 pt-4 mt-2">Ini udah jauh di atas "AI Skin Analyzer".</p>
+                </div>
               </div>
               <div className="mt-auto pt-8">
                 <Image src="/images/bento-ai-scanner.png" alt="AI Scanner Interface" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
