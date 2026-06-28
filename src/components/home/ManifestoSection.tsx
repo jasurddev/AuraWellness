@@ -1,217 +1,225 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Stethoscope,
+  Clock,
+  HeartHandshake,
+  BrainCircuit,
+  Sparkles,
+  ShieldCheck,
+  Shield,
+} from "lucide-react";
 
 const manifestoPoints = [
   {
     id: "01",
-    title: "One Patient\nOne Journey.",
-    body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh—mulai dari assessment, medical records, treatment, products, after care, hingga follow-up. Semuanya terhubung dalam satu timeline yang dirancang untuk memberikan pengalaman yang konsisten di setiap kunjungan.",
+    title: "One Patient — One Journey",
+    body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh—mulai dari assessment, medical records, treatment, products, after care, hingga follow-up.",
+    icon: Stethoscope,
   },
   {
     id: "02",
-    title: "Every Appointment\nHas Value.",
-    body: "Waktu dokter adalah aset, dan setiap slot treatment adalah peluang. Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai—berujung pada lebih sedikit no-show, lebih banyak kepastian, dan peningkatan pertumbuhan bisnis.",
+    title: "Every Appointment Has Value",
+    body: "Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai—lebih sedikit no-show, lebih banyak kepastian.",
+    icon: Clock,
   },
   {
     id: "03",
-    title: "Care Beyond\nThe Clinic.",
-    body: "Hubungan dengan pasien tidak berakhir setelah treatment selesai. AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Karena loyalitas sejati dibangun setelah pasien pulang.",
+    title: "Care Beyond The Clinic",
+    body: "AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Loyalitas sejati dibangun setelah pasien pulang.",
+    icon: HeartHandshake,
   },
   {
     id: "04",
-    title: "One Intelligence.\nEvery Department.",
-    body: "AI memahami lebih dari sekadar percakapan. Ia memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya terhadap urat nadi bisnis Anda.",
+    title: "One Intelligence, Every Department",
+    body: "AI memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya.",
+    icon: BrainCircuit,
   },
   {
     id: "05",
-    title: "Designed Around\nYour Brand.",
-    body: "Pasien mengenal brand Anda, bukan brand kami. Mulai dari aplikasi pasien, komunikasi, hingga pengalaman digital, seluruhnya dibangun menggunakan identitas klinik Anda secara eksklusif. Invisible technology, visible excellence.",
+    title: "Designed Around Your Brand",
+    body: "Pasien mengenal brand Anda, bukan brand kami. Seluruhnya dibangun menggunakan identitas klinik Anda secara eksklusif. Invisible technology, visible excellence.",
+    icon: Sparkles,
   },
   {
     id: "06",
-    title: "Enterprise\nby Design.",
-    body: "Keamanan, kecepatan, dan reliabilitas. Semuanya dirancang sejak awal—bukan sekadar sebagai fitur tambahan, melainkan sebagai fondasi utama. Karena klinik premium membutuhkan infrastruktur yang mutlak dapat dipercaya.",
+    title: "Enterprise by Design",
+    body: "Keamanan, kecepatan, dan reliabilitas dirancang sejak awal—bukan fitur tambahan, melainkan fondasi utama. Klinik premium butuh infrastruktur yang mutlak dapat dipercaya.",
+    icon: ShieldCheck,
   },
   {
     id: "07",
-    title: "Intelligence\nEverywhere.",
-    body: "Artificial Intelligence bukan sekadar fitur sisipan, melainkan fondasi dari setiap keputusan. Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang secara kontinu belajar dan berevolusi dari data klinik Anda.",
+    title: "Intelligence Everywhere",
+    body: "AI bukan fitur sisipan, melainkan fondasi dari setiap keputusan. Dari AI Assessment hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer.",
+    icon: Shield,
   },
 ];
 
-function SlideCard({
-  point,
-  index,
-  total,
-  progress,
-}: {
-  point: (typeof manifestoPoints)[0];
-  index: number;
-  total: number;
-  progress: ReturnType<typeof useScroll>["scrollYProgress"];
-}) {
-  // Each card occupies a segment of the scroll
-  const segmentSize = 1 / total;
-  const start = index * segmentSize;
-  const fadeInEnd = start + segmentSize * 0.2;
-  const fadeOutStart = start + segmentSize * 0.7;
-  const end = start + segmentSize;
-
-  // Overlap: first card starts visible, last card stays visible
-  const isFirst = index === 0;
-  const isLast = index === total - 1;
-
-  const opacity = useTransform(
-    progress,
-    isFirst
-      ? isLast ? [0, 1] : [0, fadeOutStart, end] 
-      : isLast
-        ? [Math.max(0, start - segmentSize * 0.1), fadeInEnd, 1]
-        : [Math.max(0, start - segmentSize * 0.1), fadeInEnd, fadeOutStart, end],
-    isFirst
-      ? isLast ? [1, 1] : [1, 1, 0]
-      : isLast
-        ? [0, 1, 1]
-        : [0, 1, 1, 0]
-  );
-
-  // Y translation
-  const y = useTransform(
-    progress,
-    isFirst
-      ? [0, fadeOutStart, end]
-      : isLast
-        ? [Math.max(0, start - segmentSize * 0.1), fadeInEnd, 1]
-        : [Math.max(0, start - segmentSize * 0.1), fadeInEnd, fadeOutStart, end],
-    isFirst
-      ? [0, 0, -60]
-      : isLast
-        ? [60, 0, 0]
-        : [60, 0, 0, -60]
-  );
-
-  // Scale: slight zoom in
-  const scale = useTransform(
-    progress,
-    isFirst ? [0, 0.01] : [Math.max(0, start - segmentSize * 0.1), fadeInEnd],
-    isFirst ? [1, 1] : [0.96, 1]
-  );
-
-  return (
-    <motion.div
-      className="absolute inset-0 flex items-center justify-center"
-      style={{ opacity, y, scale }}
-    >
-      <div className="w-full max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center">
-          {/* Left: Big Number + Title */}
-          <div className="lg:col-span-7 text-center lg:text-left">
-            {/* Floating number */}
-            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
-              <span className="text-sm font-mono font-bold text-yellow-600 tracking-widest">
-                {point.id}
-              </span>
-              <div className="w-12 h-[1px] bg-yellow-600/40"></div>
-              <span className="text-[10px] font-bold text-slate-600 tracking-[0.15em] uppercase">
-                / {String(total).padStart(2, "0")}
-              </span>
-            </div>
-
-            {/* Title */}
-            <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.08] tracking-tight whitespace-pre-line">
-              {point.title}
-            </h3>
-          </div>
-
-          {/* Right: Description */}
-          <div className="lg:col-span-5 text-center lg:text-left">
-            <div className="w-16 h-[1px] bg-slate-700 mb-8 mx-auto lg:mx-0"></div>
-            <p className="text-base md:text-lg text-slate-400 leading-relaxed font-light max-w-md mx-auto lg:mx-0">
-              {point.body}
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ProgressDots({
-  total,
-  progress,
-}: {
-  total: number;
-  progress: ReturnType<typeof useScroll>["scrollYProgress"];
-}) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useMotionValueEvent(progress, "change", (latest) => {
-    const segmentSize = 1 / total;
-    const idx = Math.min(Math.floor(latest / segmentSize), total - 1);
-    setActiveIndex(idx);
-  });
-
-  return (
-    <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-30">
-      {Array.from({ length: total }).map((_, i) => (
-        <div
-          key={i}
-          className={`rounded-full transition-all duration-500 ${
-            i === activeIndex
-              ? "w-2 h-6 bg-yellow-500"
-              : "w-2 h-2 bg-slate-700 hover:bg-slate-600"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
-export default function ManifestoSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+/* ─── Desktop: Horizontal Scroll-Jacking ─── */
+function DesktopManifesto() {
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: sectionRef,
     offset: ["start start", "end end"],
   });
 
+  // 7 cards × 340px + gaps + left panel ≈ need to shift ~2800px total
+  // We translate the card track from 0 to roughly -(totalWidth - viewport)
+  // Using percentage of the flex container works best
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]);
+
   return (
     <section
-      ref={containerRef}
-      id="manifesto"
-      className="bg-[#030712] relative"
-      style={{ height: `${(manifestoPoints.length + 1) * 60}vh` }}
+      ref={sectionRef}
+      className="hidden md:block bg-[#030712] relative"
+      style={{ height: "300vh" }}
     >
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {/* Section Label - always visible */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30 text-center">
-          <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600/70 uppercase">
-            THE RonaOS MANIFESTO
-          </span>
-        </div>
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+        {/* Card track: title + cards in one horizontal flex container */}
+        <motion.div
+          style={{ x }}
+          className="flex items-center will-change-transform"
+        >
+          {/* Left Panel: Title */}
+          <div className="w-[45vw] shrink-0 px-12 lg:px-20 flex flex-col justify-center items-center text-center">
+            <div className="max-w-lg flex flex-col items-center">
+              <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600 uppercase mb-6 block">
+                THE RonaOS MANIFESTO
+              </span>
+              <h2 className="text-5xl lg:text-7xl font-serif text-white leading-[1.05] tracking-tight uppercase">
+                Excellence is an{" "}
+                <i className="text-yellow-500 font-light normal-case">
+                  Architecture.
+                </i>
+              </h2>
+            </div>
+            <p className="text-lg text-slate-400 max-w-sm leading-relaxed mt-6 mx-auto">
+              Tujuh pilar fundamental yang menjadi fondasi setiap keputusan di
+              dalam ekosistem RonaOS.
+            </p>
+          </div>
 
-        {/* Cards */}
-        {manifestoPoints.map((point, index) => (
-          <SlideCard
-            key={point.id}
-            point={point}
-            index={index}
-            total={manifestoPoints.length}
-            progress={scrollYProgress}
-          />
-        ))}
+          {/* Cards */}
+          <div className="flex gap-5 pr-[20vw] items-center">
+            {manifestoPoints.map((point) => {
+              const Icon = point.icon;
+              return (
+                <div
+                  key={point.id}
+                  className="w-[340px] shrink-0 bg-[#0B1120] border border-slate-800/60 p-8 rounded-3xl hover:border-slate-600 transition-all duration-300 group flex flex-col min-h-[420px] relative overflow-hidden cursor-default"
+                >
+                  {/* Ambient corner glow */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.02] blur-[40px] group-hover:bg-white/[0.06] transition-colors" />
 
-        {/* Progress Dots */}
-        <ProgressDots total={manifestoPoints.length} progress={scrollYProgress} />
+                  {/* Icon */}
+                  <div className="w-12 h-12 bg-slate-900/80 rounded-2xl border border-slate-800 flex items-center justify-center text-white mb-8 group-hover:border-slate-700 group-hover:rotate-6 transition-all duration-300">
+                    <Icon className="w-5 h-5 text-slate-300 group-hover:text-yellow-500 transition-colors" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-base font-bold text-white uppercase tracking-wide mb-4 leading-snug pr-4">
+                    {point.title}
+                  </h3>
+
+                  {/* Body */}
+                  <p className="text-slate-400 text-sm leading-relaxed font-light flex-grow">
+                    {point.body}
+                  </p>
+
+                  {/* Footer */}
+                  <div className="pt-6 border-t border-slate-800/60 mt-6">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 bg-yellow-600 rounded-full opacity-40 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-[9px] font-bold text-slate-600 tracking-[0.2em] uppercase">
+                        RONAOS CORE {point.id}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
 
         {/* Ambient glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-900/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-slate-800/50 to-transparent"></div>
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-yellow-900/5 blur-[120px] rounded-full mix-blend-screen pointer-events-none -translate-y-1/2" />
       </div>
     </section>
+  );
+}
+
+/* ─── Mobile: Simple Vertical Grid ─── */
+function MobileManifesto() {
+  return (
+    <section className="block md:hidden bg-[#030712] py-20 px-4">
+      {/* Header */}
+      <div className="flex flex-col items-center text-center mb-12">
+        <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600 uppercase mb-4 block">
+          THE RonaOS MANIFESTO
+        </span>
+        <h2 className="text-3xl font-serif text-white tracking-tight leading-tight">
+          Excellence is an{" "}
+          <i className="text-yellow-500 font-light">Architecture.</i>
+        </h2>
+        <p className="text-sm text-slate-500 max-w-xs leading-relaxed mt-4 mx-auto">
+          Tujuh pilar fundamental yang menjadi fondasi setiap keputusan di dalam
+          ekosistem RonaOS.
+        </p>
+      </div>
+
+      {/* Cards grid */}
+      <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
+        {manifestoPoints.map((point) => {
+          const Icon = point.icon;
+          return (
+            <motion.div
+              key={point.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+              className="bg-[#0B1120] border border-slate-800/60 p-6 rounded-2xl flex flex-col min-h-[200px] relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.02] blur-[30px]" />
+
+              <div className="w-10 h-10 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center text-white mb-4">
+                <Icon className="w-4 h-4 text-slate-300" />
+              </div>
+
+              <h3 className="text-sm font-bold text-white uppercase tracking-wide mb-2 leading-snug">
+                {point.title}
+              </h3>
+
+              <p className="text-slate-400 text-xs leading-relaxed font-light flex-grow">
+                {point.body}
+              </p>
+
+              <div className="pt-4 border-t border-slate-800/60 mt-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-yellow-600/40 rounded-full" />
+                  <span className="text-[8px] font-bold text-slate-600 tracking-[0.2em] uppercase">
+                    RONAOS CORE {point.id}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+/* ─── Main Export ─── */
+export default function ManifestoSection() {
+  return (
+    <>
+      <DesktopManifesto />
+      <MobileManifesto />
+    </>
   );
 }
