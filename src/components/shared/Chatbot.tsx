@@ -25,6 +25,16 @@ export default function Chatbot() {
   });
   const isLoading = chat.isLoading || false;
 
+  const formatMessageText = (text: string) => {
+    if (!text) return null;
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return (
+      <div className="whitespace-pre-wrap">
+        {parts.map((part, i) => i % 2 === 1 ? <strong key={i} className="font-semibold">{part}</strong> : part)}
+      </div>
+    );
+  };
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto scroll to bottom when new messages arrive
@@ -127,13 +137,13 @@ export default function Chatbot() {
                       : "bg-white border border-slate-100 text-slate-700 shadow-sm rounded-tl-sm"
                   )}>
                     {message.content && typeof message.content === 'string' ? (
-                      message.content
+                      formatMessageText(message.content)
                     ) : message.parts ? (
                       message.parts.map((part: any, i: number) => (
-                        part.type === 'text' ? <span key={i}>{part.text}</span> : null
+                        part.type === 'text' ? <span key={i}>{formatMessageText(part.text)}</span> : null
                       ))
                     ) : (
-                      message.text || ''
+                      formatMessageText(message.text || '')
                     )}
                   </div>
                 </div>
