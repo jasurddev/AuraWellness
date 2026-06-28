@@ -86,6 +86,8 @@ export default function ManifestoSection() {
             progress={scrollYProgress}
           />
         ))}
+        {/* Spacer to guarantee scroll time for the last card to stick fully */}
+        <div className="w-full h-[85vh]"></div>
       </div>
       
       {/* Global Decorative Glow */}
@@ -120,7 +122,7 @@ function Card({ point, index, total, progress }: any) {
       className="sticky w-full flex flex-col justify-center"
       style={{ 
         top: `calc(15vh + ${index * 20}px)`, // Tighter vertical spacing for the stack header
-        marginBottom: '85vh', // All cards need this margin so the parent container extends and allows them to stick!
+        marginBottom: index === total - 1 ? '0' : '85vh', 
         zIndex: 10 + index
       }}
     >
