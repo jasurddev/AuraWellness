@@ -132,23 +132,53 @@ export default function Home() {
       </section>
 
       {/* 2.7 Manifesto Section */}
-      <section className="py-24 md:py-32 px-6 bg-slate-900 text-white selection:bg-yellow-500/30">
-        <div className="max-w-4xl mx-auto flex flex-col space-y-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 block">AESTHETIC-NATIVE AI</span>
-            <h2 className="font-serif text-4xl md:text-6xl leading-tight">
-              Pertumbuhan tidak terjadi <br className="hidden md:block"/>
-              <i className="text-yellow-500">dengan bekerja lebih keras.</i>
-            </h2>
-          </motion.div>
-          
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-lg md:text-2xl font-sans font-light tracking-wide text-slate-300 space-y-8 max-w-3xl leading-relaxed">
-            <p>Pertumbuhan terjadi ketika seluruh operasional bekerja sebagai satu ekosistem.</p>
-            <p><b>RonaOS</b> adalah Kecerdasan Buatan yang didesain secara spesifik, eksklusif, dan mendalam hanya untuk menguasai industri klinik estetika. Kami menghubungkan setiap pasien, dokter, <i>treatment</i>, transaksi, dan <i>inventory</i> ke dalam satu <i>AI Operating System</i>.</p>
-            <p className="text-xl md:text-3xl font-serif text-white pt-8 border-t border-slate-800">
-              Dirancang untuk membantu klinik Anda beroperasi lebih efisien, berekspansi lebih cerdas, dan menetapkan <i className="text-yellow-500">benchmark baru</i> di industri.
-            </p>
-          </motion.div>
+      <section className="py-32 md:py-48 px-6 bg-[#0B0F19] text-white selection:bg-yellow-500/30 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-yellow-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+            
+            {/* Left side: Sticky Headline */}
+            <div className="lg:col-span-5 relative">
+              <div className="lg:sticky lg:top-32">
+                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-8 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-yellow-500"></span>
+                  AESTHETIC-NATIVE AI
+                </motion.div>
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+                  Pertumbuhan tidak terjadi <br/>
+                  <i className="text-yellow-500/90 font-light">dengan bekerja lebih keras.</i>
+                </motion.h2>
+              </div>
+            </div>
+
+            {/* Right side: Body Text */}
+            <div className="lg:col-span-6 lg:col-start-7 pt-8 lg:pt-0">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+                <p className="text-3xl md:text-4xl font-sans font-light text-slate-200 leading-snug">
+                  Pertumbuhan terjadi ketika seluruh operasional bekerja sebagai satu ekosistem.
+                </p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="py-12 border-t border-slate-800/80">
+                <p className="text-xl md:text-2xl font-sans font-light text-slate-400 leading-relaxed mb-6">
+                  <strong className="text-white font-medium">RonaOS</strong> adalah Kecerdasan Buatan yang didesain secara spesifik, eksklusif, dan mendalam hanya untuk menguasai industri klinik estetika.
+                </p>
+                <p className="text-xl md:text-2xl font-sans font-light text-slate-400 leading-relaxed">
+                  Kami menghubungkan setiap pasien, dokter, <i>treatment</i>, transaksi, dan <i>inventory</i> ke dalam satu <i>AI Operating System</i>.
+                </p>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="py-12 border-t border-slate-800/80 relative">
+                <div className="absolute left-0 top-12 w-1 h-full max-h-[80px] bg-yellow-500"></div>
+                <p className="text-2xl md:text-4xl font-serif text-white leading-snug pl-8">
+                  Dirancang untuk membantu klinik Anda beroperasi lebih efisien, berekspansi lebih cerdas, dan menetapkan <i className="text-yellow-500">benchmark baru</i> di industri.
+                </p>
+              </motion.div>
+            </div>
+
+          </div>
         </div>
       </section>
 
