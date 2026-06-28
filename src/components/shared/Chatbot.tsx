@@ -50,7 +50,7 @@ export default function Chatbot() {
         <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/20 text-yellow-500">
           <Bot className="w-4 h-4" />
         </div>
-        <span className="font-medium text-sm tracking-wide">Ask TwakAI</span>
+        <span className="font-medium text-sm tracking-wide">Ask RonaAI</span>
         <span className="flex h-2 w-2 relative ml-1">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
@@ -74,7 +74,7 @@ export default function Chatbot() {
                   <Bot className="w-4 h-4 text-yellow-700" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-medium text-slate-900 leading-none mb-1">TwakAI Advisor</h3>
+                  <h3 className="font-serif font-medium text-slate-900 leading-none mb-1">RonaAI Advisor</h3>
                   <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     Online
@@ -97,7 +97,7 @@ export default function Chatbot() {
                     <Bot className="w-4 h-4 text-yellow-600" />
                   </div>
                   <div className="px-4 py-3 rounded-2xl text-sm leading-relaxed bg-white border border-slate-100 text-slate-700 shadow-sm rounded-tl-sm">
-                    Halo! Saya TwakAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik TwakOS hari ini?
+                    Halo! Saya RonaAI Advisor. Ada yang bisa saya bantu terkait sistem manajemen klinik RonaOS hari ini?
                   </div>
                 </div>
               )}
