@@ -429,8 +429,8 @@ export default function LiveAIScannerDemo() {
       <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       {/* Container */}
-      <div className="w-full mx-auto max-w-[1400px] relative z-10">
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12 md:justify-center items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
+      <div className="w-full mx-auto max-w-[1600px] relative z-10">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 px-2 md:px-4 lg:px-6 xl:justify-center items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '16px' }}>
           <AnimatePresence mode="popLayout">
             {mockups.slice(0, visibleCount)}
           </AnimatePresence>
