@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* 3. The Architecture (Four Cores) */}
-      <section id="features" className="py-20 md:py-32 bg-white relative">
+      <section id="features" className="pt-20 md:pt-32 pb-10 md:pb-16 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-slate-200 pb-12">
             <div>
@@ -203,7 +203,7 @@ export default function Home() {
       </section>
 
       {/* 4. Payment Gateway (New Fintech Section) */}
-      <section id="fintech" className="py-32 px-6 bg-white">
+      <section id="fintech" className="pt-10 md:pt-16 pb-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1 space-y-8">
             <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase block">INVISIBLE COMMERCE</span>
