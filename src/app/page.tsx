@@ -318,7 +318,7 @@ export default function Home() {
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Patient App', 'AI Chatbot', 'Online Store', 'Standard Support'].map((feature, i) => (
+                {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Patient App', 'AI Assistant', 'Online Store', 'Standard Support'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>
