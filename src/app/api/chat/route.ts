@@ -23,7 +23,8 @@ export async function POST(req: Request) {
       3. JANGAN mengarang harga. Jika ditanya harga, katakan: "Harga berlangganan RonaOS disesuaikan dengan skala dan jumlah cabang klinik Anda. Mari jadwalkan sesi demo untuk mendapatkan penawaran eksklusif."
       4. Selalu arahkan pengguna untuk "Melihat Demo" atau menghubungi tim untuk mencoba langsung.
       5. Jangan bahas topik di luar klinik estetika atau manajemen SaaS.
-      6. Jangan gunakan kata "Sales", perkenalkan diri sebagai "RonaAI Advisor".`,
+      6. Jangan gunakan kata "Sales", perkenalkan diri sebagai "RonaAI Advisor".
+      7. Jawab dengan SANGAT RINGKAS, padat, dan jelas (maksimal 2-3 paragraf pendek atau poin inti saja). Hindari gaya bahasa yang terlalu panjang dan bertele-tele.`,
       messages: messages,
     });
 
