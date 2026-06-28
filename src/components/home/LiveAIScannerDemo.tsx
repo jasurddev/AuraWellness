@@ -1,229 +1,261 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ScanFace, ArrowLeft, ChevronRight } from 'lucide-react';
+import { ScanFace, ArrowLeft, ChevronRight, Activity, Calendar, Stethoscope, Sparkles, BarChart3, Clock, TrendingUp } from 'lucide-react';
 
-const PATIENTS = [
-  {
-    id: 1,
-    image: '/images/face_acne.png',
-    name: 'Patient A',
-    concerns: ['Acne Vulgaris', 'Inflammation'],
-    metrics: { acne: 75, dehydration: 40, pigmentation: 20, wrinkles: 15 },
-    treatment: 'Holistic Acne Clear',
-  },
-  {
-    id: 2,
-    image: '/images/face_freckles.png',
-    name: 'Patient B',
-    concerns: ['Noticeable Freckles', 'Uneven Tone'],
-    metrics: { acne: 5, dehydration: 25, pigmentation: 80, wrinkles: 10 },
-    treatment: 'Pigmentation Laser',
-  },
-  {
-    id: 3,
-    image: '/images/face_dry.png',
-    name: 'Patient C',
-    concerns: ['Severe Dehydration', 'Flaky Skin'],
-    metrics: { acne: 10, dehydration: 90, pigmentation: 15, wrinkles: 5 },
-    treatment: 'Deep Hydration Facial',
-  },
-];
-
-const AnimatedNumber = ({ value }: { value: number }) => {
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    setDisplayValue(0);
-    const duration = 1500;
-    const steps = 60;
-    const stepTime = duration / steps;
-    let current = 0;
-
-    const timer = setInterval(() => {
-      current += value / steps;
-      if (current >= value) {
-        setDisplayValue(value);
-        clearInterval(timer);
-      } else {
-        setDisplayValue(Math.floor(current));
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [value]);
-
-  return <span>{displayValue}</span>;
+const getScoreColor = (score: number) => {
+  if (score <= 30) return 'text-green-600 bg-green-50 border-green-200';
+  if (score <= 60) return 'text-yellow-600 bg-yellow-50 border-yellow-200';
+  return 'text-red-600 bg-red-50 border-red-200';
 };
 
-const ScannerPhone = ({ patient }: { patient: typeof PATIENTS[0] }) => {
-  const [step, setStep] = useState<'scanning' | 'results'>('scanning');
+const MockupContainer = ({ children }: { children: React.ReactNode }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    className="relative w-[320px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[8px] border-white/50 h-[650px] flex flex-col snap-center"
+  >
+    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-xl z-30"></div>
+    {children}
+  </motion.div>
+);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setStep('results');
-    }, 3500); // 3.5 seconds of scanning
-    return () => clearTimeout(timer);
-  }, []);
+const PatientScannerMockup = () => (
+  <MockupContainer>
+    <div className="pt-8 pb-4 px-6 flex items-center justify-between border-b border-white/40 bg-white/30">
+      <ArrowLeft className="w-5 h-5 text-slate-400" />
+      <div className="font-serif font-medium text-slate-800 text-sm">Patient App (AI)</div>
+      <div className="w-5" />
+    </div>
 
-  const getScoreColor = (score: number) => {
-    if (score <= 30) return 'text-green-600 bg-green-50 border-green-200';
-    if (score <= 60) return 'text-yellow-600 bg-yellow-50 border-yellow-200';
-    return 'text-red-600 bg-red-50 border-red-200';
-  };
-
-  return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.9, x: 50 }}
-      animate={{ opacity: 1, scale: 1, x: 0 }}
-      exit={{ opacity: 0, scale: 0.8, x: -50 }}
-      transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
-      className="relative w-[320px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[8px] border-white/50 h-[650px] flex flex-col group snap-center"
-    >
-      {/* Top Header (Phone Notch & App Header) */}
-      <div className="pt-6 pb-4 px-6 flex items-center justify-between bg-transparent z-20 relative border-b border-white/40">
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-xl z-30"></div>
-        <ArrowLeft className="w-5 h-5 text-slate-400 mt-4" />
-        <div className="font-serif font-medium text-slate-800 mt-4 text-sm">Holistic AI Scan</div>
-        <div className="w-5" />
+    <div className="flex-1 overflow-y-auto pb-6 scrollbar-hide">
+      <div className="px-6 flex items-center gap-3 mb-4 mt-4">
+        <div className="w-10 h-10 rounded-full bg-slate-200/50 flex items-center justify-center">
+          <ScanFace className="w-5 h-5 text-slate-600" />
+        </div>
+        <div>
+          <h3 className="font-serif text-lg text-slate-800 leading-none">Holistic Result</h3>
+          <p className="text-[10px] text-slate-500 mt-1">Kondisi Anda saat ini</p>
+        </div>
       </div>
 
-      <div className="flex-1 relative flex flex-col items-center">
-        <AnimatePresence mode="wait">
-          
-          {step === 'scanning' && (
-            <motion.div 
-              key="scanning"
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="flex flex-col items-center w-full mt-10 px-6"
-            >
-              {/* Circle Image Wrapper */}
-              <div className="relative w-56 h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl bg-slate-200">
-                <Image 
-                  src={patient.image} 
-                  alt={patient.name} 
-                  fill 
-                  className="object-cover"
-                />
-                
-                {/* Laser Line inside circle */}
-                <motion.div
-                  initial={{ top: '-10%' }}
-                  animate={{ top: '110%' }}
-                  transition={{ duration: 1.5, ease: "linear", repeat: Infinity }}
-                  className="absolute left-0 right-0 h-[2px] bg-white shadow-[0_0_15px_3px_rgba(255,255,255,0.8)] z-10"
-                />
-                <motion.div
-                  initial={{ top: '-10%' }}
-                  animate={{ top: '110%' }}
-                  transition={{ duration: 1.5, ease: "linear", repeat: Infinity }}
-                  className="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent to-white/30 z-0 -translate-y-full"
-                />
-              </div>
-
-              <h3 className="mt-12 text-xl font-serif text-slate-800">Menganalisa Holistik...</h3>
-              <p className="mt-2 text-xs text-slate-500 text-center leading-relaxed">
-                Mengkombinasikan data stres, tidur, dan tekstur kulit Anda.
-              </p>
-            </motion.div>
-          )}
-
-          {step === 'results' && (
-            <motion.div 
-              key="results"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col w-full h-full pb-4"
-            >
-              <div className="px-6 flex items-center gap-3 mb-6 mt-2">
-                <div className="w-10 h-10 rounded-full bg-slate-200/50 flex items-center justify-center">
-                  <ScanFace className="w-5 h-5 text-slate-600" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg text-slate-800 leading-none">Holistic Result</h3>
-                  <p className="text-[10px] text-slate-500 mt-1">Kondisi Anda saat ini</p>
-                </div>
-              </div>
-
-              <div className="bg-white/50 backdrop-blur-md mx-4 rounded-2xl p-4 shadow-sm border border-white/60 mb-4 flex-1">
-                <div className="text-xs text-slate-800 font-medium mb-3">Identified Concerns</div>
-                
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    { label: 'Acne Score', value: patient.metrics.acne },
-                    { label: 'Dehydration', value: patient.metrics.dehydration },
-                    { label: 'Pigmentation', value: patient.metrics.pigmentation },
-                    { label: 'Wrinkles', value: patient.metrics.wrinkles }
-                  ].map((metric) => (
-                    <div key={metric.label} className="bg-white rounded-xl p-2 border border-slate-100 shadow-[0_2px_8px_-4px_rgba(0,0,0,0.05)]">
-                      <div className="text-[10px] text-slate-500 mb-1">{metric.label}</div>
-                      <div className={`font-semibold text-sm inline-block px-1.5 py-0.5 rounded-md border ${getScoreColor(metric.value)}`}>
-                        <AnimatedNumber value={metric.value} /><span className="text-[10px] font-normal opacity-70">/100</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {patient.concerns.map(c => (
-                    <span key={c} className="px-2.5 py-1 bg-[#F9F8F6] text-slate-600 text-[10px] rounded-full font-medium border border-slate-200">
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="px-4 mt-auto">
-                <div className="text-xs font-medium text-slate-800 mb-2 px-1">Rekomendasi Treatment</div>
-                <div className="bg-white/50 backdrop-blur-md p-3 rounded-2xl shadow-sm border border-white/60 flex items-center gap-3">
-                  <div className="w-12 h-12 bg-slate-100 rounded-xl overflow-hidden relative shrink-0">
-                    <Image src="/images/bento-smart-booking.png" alt="Treatment" fill className="object-cover opacity-80" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-800 line-clamp-1">{patient.treatment}</div>
-                    <div className="text-[9px] text-slate-500 mt-0.5 line-clamp-1">Perawatan optimal untuk hasil maksimal.</div>
-                  </div>
-                </div>
-                
-                <button className="w-full mt-3 py-3.5 bg-[#4A5542] hover:bg-[#3D4736] text-white text-[11px] font-medium rounded-xl flex items-center justify-center gap-2 shadow-lg transition-colors">
-                  Book Recommended Treatment <ChevronRight className="w-3 h-3" />
-                </button>
-              </div>
-
-            </motion.div>
-          )}
-
-        </AnimatePresence>
+      <div className="px-4 mb-4">
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex gap-2">
+          <Activity className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+          <div>
+            <h4 className="text-[11px] font-medium text-amber-900">Holistic Insight</h4>
+            <p className="text-[9px] text-amber-700 mt-1 leading-relaxed">Tingkat stres tinggi (4/5) dan kurang tidur (2/5) memicu peningkatan sebum dan memperburuk inflamasi jerawat.</p>
+          </div>
+        </div>
       </div>
-    </motion.div>
-  );
-};
+
+      <div className="bg-white/50 backdrop-blur-md mx-4 rounded-xl p-3 shadow-sm border border-white/60 mb-4">
+        <div className="flex justify-between items-center mb-3">
+           <div className="text-[11px] text-slate-800 font-medium">Identified Concerns</div>
+           <div className="text-[9px] font-bold bg-accent/20 text-accent px-2 py-0.5 rounded-full">AI Confidence: 92%</div>
+        </div>
+        
+        <div className="grid grid-cols-2 gap-2 mb-3">
+          {[
+            { label: 'Acne', value: 65 },
+            { label: 'Scarring', value: 30 },
+            { label: 'Pigmentation', value: 55 },
+            { label: 'Dehydration', value: 50 },
+            { label: 'Texture', value: 60 },
+            { label: 'Oiliness', value: 70 }
+          ].map(m => (
+            <div key={m.label} className="bg-white rounded-lg p-2 border border-slate-100 shadow-sm">
+               <div className="text-[9px] text-slate-500 mb-1">{m.label}</div>
+               <div className={`font-semibold text-xs inline-block px-1.5 py-0.5 rounded border ${getScoreColor(m.value)}`}>
+                 {m.value}<span className="text-[8px] font-normal opacity-70">/100</span>
+               </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex flex-wrap gap-1.5">
+           {['Moderate Acne', 'PIH', 'Sebum Excess'].map(c => (
+             <span key={c} className="px-2 py-0.5 bg-[#F9F8F6] text-slate-600 text-[9px] rounded-full font-medium border border-slate-200">{c}</span>
+           ))}
+        </div>
+      </div>
+
+      <div className="px-4">
+         <div className="text-[11px] font-medium text-slate-800 mb-2 px-1">Rekomendasi Treatment</div>
+         <div className="bg-white/50 p-2.5 rounded-xl border border-white/60 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-200 relative shrink-0">
+               <Image src="/images/bento-smart-booking.png" fill alt="treatment" className="object-cover opacity-80" />
+            </div>
+            <div>
+               <div className="text-[10px] font-bold text-slate-800">Acne Peeling Series</div>
+               <div className="text-[8px] text-slate-500">Meredakan inflamasi & kontrol minyak</div>
+            </div>
+         </div>
+         
+         <button className="w-full mt-3 py-3 bg-[#4A5542] text-white text-[10px] font-medium rounded-lg flex justify-center items-center gap-2">Book Treatment <ChevronRight className="w-3 h-3"/></button>
+      </div>
+    </div>
+  </MockupContainer>
+);
+
+const FrontdeskMockup = () => (
+  <MockupContainer>
+    <div className="pt-8 pb-4 px-6 border-b border-white/40 flex justify-between items-center bg-white/30">
+      <div className="font-serif font-medium text-slate-800 text-sm">Frontdesk Portal</div>
+      <Calendar className="w-4 h-4 text-slate-400" />
+    </div>
+    <div className="p-4 bg-slate-50/50 flex-1">
+      <div className="text-[10px] font-medium text-slate-500 mb-3 flex items-center justify-between">
+        <span>Today, 28 Jun 2026</span>
+        <span className="bg-accent/10 text-accent px-2 py-0.5 rounded-full text-[8px] font-bold">12 Appointments</span>
+      </div>
+      <div className="space-y-2">
+        <div className="bg-white p-3 rounded-xl border-l-4 border-l-accent shadow-sm relative overflow-hidden">
+          <div className="flex justify-between items-center mb-1">
+            <div className="text-[10px] font-bold text-slate-800 flex items-center gap-1"><Clock className="w-3 h-3"/> 09:00 AM</div>
+            <div className="text-[8px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded font-bold">Checked In</div>
+          </div>
+          <div className="text-[11px] font-medium text-slate-800 mt-2">Sarah Johnson</div>
+          <div className="text-[9px] text-slate-500 mt-0.5">Laser Fractional • Dr. Emily</div>
+        </div>
+        
+        <div className="bg-white p-3 rounded-xl border-l-4 border-l-yellow-400 shadow-sm relative overflow-hidden opacity-70">
+          <div className="flex justify-between items-center mb-1">
+            <div className="text-[10px] font-bold text-slate-800 flex items-center gap-1"><Clock className="w-3 h-3"/> 10:30 AM</div>
+            <div className="text-[8px] bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded font-bold">Waiting</div>
+          </div>
+          <div className="text-[11px] font-medium text-slate-800 mt-2">Michael Chen</div>
+          <div className="text-[9px] text-slate-500 mt-0.5">Acne Consultation • Dr. Sarah</div>
+        </div>
+        
+        <div className="bg-white p-3 rounded-xl border-l-4 border-l-slate-300 shadow-sm relative overflow-hidden opacity-50">
+          <div className="flex justify-between items-center mb-1">
+            <div className="text-[10px] font-bold text-slate-800 flex items-center gap-1"><Clock className="w-3 h-3"/> 13:00 PM</div>
+            <div className="text-[8px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-bold">Scheduled</div>
+          </div>
+          <div className="text-[11px] font-medium text-slate-800 mt-2">Amanda Putri</div>
+          <div className="text-[9px] text-slate-500 mt-0.5">Hydrafacial • Nurse Linda</div>
+        </div>
+      </div>
+      
+      <div className="mt-6">
+         <div className="text-[10px] font-medium text-slate-800 mb-2">Quick Actions</div>
+         <div className="grid grid-cols-2 gap-2">
+            <button className="bg-white py-2 rounded-lg text-[9px] font-medium shadow-sm border border-slate-100 text-slate-700">Walk-in Patient</button>
+            <button className="bg-white py-2 rounded-lg text-[9px] font-medium shadow-sm border border-slate-100 text-slate-700">Process Payment</button>
+         </div>
+      </div>
+    </div>
+  </MockupContainer>
+);
+
+const DoctorEMRMockup = () => (
+  <MockupContainer>
+    <div className="pt-8 pb-4 px-6 border-b border-white/40 flex justify-between items-center bg-white/30">
+      <div className="font-serif font-medium text-slate-800 text-sm">Doctor EMR</div>
+      <Stethoscope className="w-4 h-4 text-slate-400" />
+    </div>
+    <div className="p-4 bg-slate-50/50 flex-1 space-y-3">
+      <div className="bg-white p-3 rounded-xl shadow-sm flex gap-3 items-center border border-slate-100">
+        <div className="w-10 h-10 bg-slate-200 rounded-full shrink-0"></div>
+        <div>
+          <div className="text-[11px] font-bold text-slate-800">Sarah Johnson</div>
+          <div className="text-[9px] text-slate-500">ID: P-9821 • Female • 28yo</div>
+        </div>
+      </div>
+      
+      <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 shadow-sm">
+        <div className="text-[10px] font-bold text-blue-900 mb-1 flex items-center gap-1">
+          <Sparkles className="w-3 h-3"/> AI Pre-Assessment
+        </div>
+        <p className="text-[9px] text-blue-800 leading-relaxed">
+          High stress level detected. AI suggests adding Hydration therapy to the Laser Fractional session due to a 50/100 dehydration score and recent sleep deprivation.
+        </p>
+      </div>
+
+      <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+        <div className="text-[10px] font-medium text-slate-800 mb-2 border-b border-slate-50 pb-2">Treatment Plan</div>
+        <div className="space-y-2 pt-1">
+           <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent"></div>
+              <div className="text-[9px] font-medium text-slate-700">Laser Fractional (Face)</div>
+           </div>
+           <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+              <div className="text-[9px] font-medium text-slate-700">Hyaluronic Acid Infusion</div>
+           </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+        <div className="text-[10px] font-medium text-slate-800 mb-2">Prescription</div>
+        <div className="flex items-center justify-between border-b border-slate-50 pb-2 mb-2">
+          <div className="text-[9px] text-slate-600">Salicylic Acid 2%</div>
+          <div className="text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded">Night</div>
+        </div>
+        <div className="flex items-center justify-between">
+          <div className="text-[9px] text-slate-600">Niacinamide 10%</div>
+          <div className="text-[8px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded">Morning</div>
+        </div>
+      </div>
+      
+      <button className="w-full mt-2 py-2.5 bg-slate-900 text-white text-[10px] font-medium rounded-lg shadow-sm">Save Medical Record</button>
+    </div>
+  </MockupContainer>
+);
+
+const AnalyticsMockup = () => (
+  <MockupContainer>
+    <div className="pt-8 pb-4 px-6 border-b border-white/40 flex justify-between items-center bg-white/30">
+      <div className="font-serif font-medium text-slate-800 text-sm">Ops & Analytics</div>
+      <BarChart3 className="w-4 h-4 text-slate-400" />
+    </div>
+    <div className="p-4 bg-slate-50/50 flex-1 space-y-3">
+      <div className="grid grid-cols-2 gap-2">
+        <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+          <div className="text-[9px] text-slate-500">Today's Revenue</div>
+          <div className="text-sm font-bold text-slate-800 mt-1">Rp 12.5M</div>
+          <div className="text-[8px] font-medium text-green-600 mt-1 flex items-center gap-0.5"><TrendingUp className="w-2 h-2"/> 15% vs ytd</div>
+        </div>
+        <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+          <div className="text-[9px] text-slate-500">Total Patients</div>
+          <div className="text-sm font-bold text-slate-800 mt-1">42</div>
+          <div className="text-[8px] font-medium text-green-600 mt-1 flex items-center gap-0.5"><TrendingUp className="w-2 h-2"/> 5 new</div>
+        </div>
+      </div>
+
+      <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+        <div className="text-[10px] font-medium text-slate-800 mb-3">Popular Treatments (This Week)</div>
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between text-[9px] mb-1 font-medium text-slate-600"><span>Laser Fractional</span> <span>65%</span></div>
+            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div className="bg-accent w-[65%] h-full rounded-full"></div></div>
+          </div>
+          <div>
+            <div className="flex justify-between text-[9px] mb-1 font-medium text-slate-600"><span>Acne Peeling</span> <span>45%</span></div>
+            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div className="bg-amber-400 w-[45%] h-full rounded-full"></div></div>
+          </div>
+          <div>
+            <div className="flex justify-between text-[9px] mb-1 font-medium text-slate-600"><span>Hydrafacial</span> <span>30%</span></div>
+            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div className="bg-blue-400 w-[30%] h-full rounded-full"></div></div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-red-50 p-3 rounded-xl shadow-sm border border-red-100">
+         <div className="text-[10px] font-bold text-red-800 mb-1 flex items-center gap-1">Inventory Alert</div>
+         <p className="text-[9px] text-red-700">Salicylic Acid 2% Serum is running low (12 units left). Reorder recommended to avoid stockout.</p>
+      </div>
+    </div>
+  </MockupContainer>
+);
 
 export default function LiveAIScannerDemo() {
-  const [visibleCount, setVisibleCount] = useState(1);
-  const [loopCount, setLoopCount] = useState(0);
-
-  useEffect(() => {
-    // If 3 phones are visible, wait 10 seconds before resetting. Otherwise wait 7 seconds.
-    const delay = visibleCount >= 3 ? 10000 : 7000;
-    
-    const timer = setTimeout(() => {
-      setVisibleCount(prev => {
-        if (prev >= 3) {
-          // Reset back to 1 phone, increment loopCount to force remount
-          setLoopCount(c => c + 1);
-          return 1;
-        }
-        return prev + 1;
-      });
-    }, delay); 
-    return () => clearTimeout(timer);
-  }, [visibleCount, loopCount]);
-
   return (
-    <div className="w-full relative pt-12 md:pt-20 pb-4 md:pb-8 mt-10 md:mt-0 overflow-hidden">
+    <div className="w-full relative pt-12 md:pt-20 pb-12 md:pb-16 mt-10 md:mt-0 overflow-hidden">
       
       {/* Background Glowing Orbs for Glassmorphism */}
       <div className="absolute top-20 left-1/4 w-72 h-72 bg-yellow-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
@@ -231,12 +263,11 @@ export default function LiveAIScannerDemo() {
 
       {/* Container */}
       <div className="w-full mx-auto relative z-10">
-        <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-0 md:justify-center items-center pb-4 scrollbar-hide w-full">
-          <AnimatePresence>
-            {PATIENTS.slice(0, visibleCount).map((patient) => (
-              <ScannerPhone key={`${patient.id}-${loopCount}`} patient={patient} />
-            ))}
-          </AnimatePresence>
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-12 items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
+          <PatientScannerMockup />
+          <FrontdeskMockup />
+          <DoctorEMRMockup />
+          <AnalyticsMockup />
         </div>
       </div>
     </div>
