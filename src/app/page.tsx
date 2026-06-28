@@ -299,9 +299,12 @@ export default function Home() {
       <section id="pricing" className="py-32 px-6 bg-[#F9F8F6]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-10">
-            <h2 className="text-4xl md:text-5xl font-serif">Transparent by design.</h2>
-            <p className="text-sm text-slate-500 max-w-xs md:text-right mt-4 md:mt-0 font-medium">
-              Pilih arsitektur yang paling sesuai dengan skala visi klinik Anda.
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-600 mb-4 block">ARCHITECTURE LICENSES</span>
+              <h2 className="text-4xl md:text-5xl font-serif">Scalability, Engineered.</h2>
+            </div>
+            <p className="text-sm text-slate-500 max-w-sm md:text-right mt-4 md:mt-0 font-medium leading-relaxed">
+              RonaOS tidak menyewakan software. Kami melisensikan arsitektur sistem. Pilih infrastruktur yang sesuai dengan skala dan ambisi pertumbuhan klinik Anda.
             </p>
           </div>
 
@@ -315,7 +318,7 @@ export default function Home() {
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Standard Support'].map((feature, i) => (
+                {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Patient App', 'AI Chatbot', 'Online Store', 'Standard Support'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>
@@ -336,7 +339,7 @@ export default function Home() {
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Up to 5 Doctor Licenses', 'AI Clinical Intelligence', 'Advanced Analytics Suite', 'Inventory Orchestration', 'Priority Access'].map((feature, i) => (
+                {['Up to 5 Doctor Licenses', 'AI Clinical Intelligence', 'Patient App', 'Advanced Analytics Suite', 'Inventory Orchestration', 'Priority Access'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-900 font-medium">
                     <Check className="w-4 h-4 text-yellow-600 mt-0.5 shrink-0" /> {feature}
                   </li>
@@ -353,7 +356,7 @@ export default function Home() {
                 <span className="text-4xl font-serif">Custom</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Unlimited Licenses', 'Custom AI Infrastructure', 'White-label Patient Ecosystem', 'Dedicated Success Manager', 'Custom API Architecture'].map((feature, i) => (
+                {['Unlimited Licenses', 'Custom AI Infrastructure', 'White-label Patient App', 'Dedicated Success Manager', 'Custom API Architecture'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>
