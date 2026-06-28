@@ -5,7 +5,9 @@ export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const json = await req.json();
+    console.log("Chat API incoming:", JSON.stringify(json, null, 2));
+    const { messages } = json;
 
     const result = await streamText({
       model: google('gemini-2.5-flash'),

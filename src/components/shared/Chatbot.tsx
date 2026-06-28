@@ -123,10 +123,18 @@ export default function Chatbot() {
                   <div className={clsx(
                     "px-4 py-3 rounded-2xl text-sm leading-relaxed",
                     message.role === "user" 
-                      ? "bg-slate-900 text-white rounded-tr-sm" 
+                      ? "bg-slate-900 text-white shadow-md rounded-tr-sm" 
                       : "bg-white border border-slate-100 text-slate-700 shadow-sm rounded-tl-sm"
                   )}>
-                    {message.content}
+                    {message.content && typeof message.content === 'string' ? (
+                      message.content
+                    ) : message.parts ? (
+                      message.parts.map((part: any, i: number) => (
+                        part.type === 'text' ? <span key={i}>{part.text}</span> : null
+                      ))
+                    ) : (
+                      message.text || ''
+                    )}
                   </div>
                 </div>
               ))}
