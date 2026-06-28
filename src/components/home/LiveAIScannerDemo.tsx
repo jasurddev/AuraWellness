@@ -396,15 +396,31 @@ const AnalyticsMockup = ({ loopKey }: { loopKey: number }) => (
 );
 
 export default function LiveAIScannerDemo() {
+  const [visibleCount, setVisibleCount] = useState(1);
   const [loopKey, setLoopKey] = useState(0);
 
   useEffect(() => {
-    // Reset animations every 15 seconds to keep it feeling "alive"
-    const timer = setInterval(() => {
-      setLoopKey(prev => prev + 1);
-    }, 15000);
-    return () => clearInterval(timer);
-  }, []);
+    // If 4 mockups are visible, wait longer before resetting. Otherwise wait 5 seconds.
+    const delay = visibleCount >= 4 ? 12000 : 5000;
+    
+    const timer = setTimeout(() => {
+      setVisibleCount(prev => {
+        if (prev >= 4) {
+          setLoopKey(c => c + 1);
+          return 1;
+        }
+        return prev + 1;
+      });
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [visibleCount, loopKey]);
+
+  const mockups = [
+    <PatientScannerMockup key={`patient-${loopKey}`} loopKey={loopKey} />,
+    <FrontdeskMockup key={`fd-${loopKey}`} loopKey={loopKey} />,
+    <DoctorEMRMockup key={`emr-${loopKey}`} loopKey={loopKey} />,
+    <AnalyticsMockup key={`analytics-${loopKey}`} loopKey={loopKey} />
+  ];
 
   return (
     <div className="w-full relative pt-12 md:pt-20 pb-12 md:pb-16 mt-10 md:mt-0 overflow-hidden">
@@ -414,11 +430,10 @@ export default function LiveAIScannerDemo() {
 
       {/* Container */}
       <div className="w-full mx-auto max-w-[1400px] relative z-10">
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12 xl:justify-center items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
-          <PatientScannerMockup loopKey={loopKey} />
-          <FrontdeskMockup loopKey={loopKey} />
-          <DoctorEMRMockup loopKey={loopKey} />
-          <AnalyticsMockup loopKey={loopKey} />
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12 md:justify-center items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
+          <AnimatePresence mode="popLayout">
+            {mockups.slice(0, visibleCount)}
+          </AnimatePresence>
         </div>
       </div>
     </div>
