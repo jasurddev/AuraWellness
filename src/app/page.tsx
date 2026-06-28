@@ -197,52 +197,56 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 snap-x snap-mandatory hide-scrollbar">
+          <div className="flex overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-8 snap-x snap-mandatory hide-scrollbar">
             {/* Core 1 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
-              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI CORE</span>
+            <div className="group w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-200/60 hover:border-yellow-400/50 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(234,179,8,0.15)] transition-all duration-500 ease-out">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block group-hover:text-yellow-500 transition-colors">01 / AI CORE</span>
               <h3 className="text-3xl font-serif mb-6">Clinical Intelligence.</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm group-hover:text-slate-900 transition-colors">
                 Bukan sekadar scanner wajah. <i>Core</i> ini membaca histori, SOP, <i>pain points</i>, dan <i>lifestyle</i> pasien untuk menghasilkan diagnosis serta rekomendasi <i>treatment</i> yang presisi.
               </p>
-              <div className="mt-auto pt-8">
-                <Image src="/images/bento-ai-scanner.png" alt="AI Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+              <div className="mt-auto pt-8 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F9F8F6] via-transparent to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <Image src="/images/bento-ai-scanner.png" alt="AI Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
               </div>
             </div>
 
             {/* Core 2 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
-              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">02 / CLINICAL CORE</span>
+            <div className="group w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-200/60 hover:border-yellow-400/50 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(234,179,8,0.15)] transition-all duration-500 ease-out">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block group-hover:text-yellow-500 transition-colors">02 / CLINICAL CORE</span>
               <h3 className="text-3xl font-serif mb-6">The Living Record.</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm group-hover:text-slate-900 transition-colors">
                 Arsitektur pengelola pasien dan dokter. Rekam medis yang <i>secure</i>, <i>encrypted</i>, dan terus berevolusi seiring dengan setiap <i>treatment</i> pasien Anda.
               </p>
-              <div className="mt-auto pt-8">
-                <Image src="/images/bento-emr-system.png" alt="Clinical Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+              <div className="mt-auto pt-8 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F9F8F6] via-transparent to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <Image src="/images/bento-emr-system.png" alt="Clinical Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
               </div>
             </div>
             
             {/* Core 3 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
-              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">03 / GROWTH CORE</span>
+            <div className="group w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-200/60 hover:border-yellow-400/50 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(234,179,8,0.15)] transition-all duration-500 ease-out">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block group-hover:text-yellow-500 transition-colors">03 / GROWTH CORE</span>
               <h3 className="text-3xl font-serif mb-6">Frictionless Conversion.</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm group-hover:text-slate-900 transition-colors">
                 Infrastruktur pencetak <i>revenue</i> Anda. Memaksimalkan <i>booking</i>, mengeliminasi <i>no-shows</i> dengan presisi, dan memberikan pengalaman transaksi semulus aplikasi B2C.
               </p>
-              <div className="mt-auto pt-8">
-                <Image src="/images/bento-smart-booking.png" alt="Growth Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+              <div className="mt-auto pt-8 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F9F8F6] via-transparent to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <Image src="/images/bento-smart-booking.png" alt="Growth Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
               </div>
             </div>
 
             {/* Core 4 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
-              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">04 / BUSINESS CORE</span>
+            <div className="group w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-200/60 hover:border-yellow-400/50 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(234,179,8,0.15)] transition-all duration-500 ease-out">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block group-hover:text-yellow-500 transition-colors">04 / BUSINESS CORE</span>
               <h3 className="text-3xl font-serif mb-6">Absolute Clarity.</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm group-hover:text-slate-900 transition-colors">
                 <i>One Source of Truth</i> untuk optimasi profit. Pantau <i>revenue</i>, demografi pasien, hingga pergerakan <i>inventory</i> dengan visualisasi tingkat tinggi.
               </p>
-              <div className="mt-auto pt-8">
-                <Image src="/images/bento-ai-scanner.png" alt="Business Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+              <div className="mt-auto pt-8 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F9F8F6] via-transparent to-transparent z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <Image src="/images/bento-analytics.png" alt="Business Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
               </div>
             </div>
           </div>
