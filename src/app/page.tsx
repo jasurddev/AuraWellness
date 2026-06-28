@@ -330,7 +330,7 @@ export default function Home() {
             {/* Scale */}
             <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50 relative flex flex-col">
               <div className="absolute top-0 right-0 bg-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1">
-                Popular
+                Smart Choice
               </div>
               <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Scale</h3>
               <p className="text-xs text-slate-500 mb-12">For high-growth aesthetic centers.</p>
