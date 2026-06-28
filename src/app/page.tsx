@@ -12,7 +12,7 @@ import Chatbot from "@/components/shared/Chatbot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F9F8F6] text-slate-900 font-sans selection:bg-yellow-400/30 overflow-x-hidden">
+    <div className="min-h-screen bg-[#F9F8F6] text-slate-900 font-sans selection:bg-yellow-400/30 overflow-x-clip">
       
       {/* 1. Minimalist Navbar */}
       <nav className="fixed top-0 w-full bg-[#F9F8F6]/90 backdrop-blur-md z-50 border-b border-slate-200/50">
