@@ -2,224 +2,190 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  Stethoscope,
-  Clock,
-  HeartHandshake,
-  BrainCircuit,
-  Sparkles,
-  ShieldCheck,
-  Shield,
-} from "lucide-react";
 
 const manifestoPoints = [
   {
     id: "01",
     title: "One Patient — One Journey",
     body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh—mulai dari assessment, medical records, treatment, products, after care, hingga follow-up.",
-    icon: Stethoscope,
+    badge: "PATIENT JOURNEY",
   },
   {
     id: "02",
     title: "Every Appointment Has Value",
     body: "Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai—lebih sedikit no-show, lebih banyak kepastian.",
-    icon: Clock,
+    badge: "SMART BOOKING",
   },
   {
     id: "03",
     title: "Care Beyond The Clinic",
     body: "AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Loyalitas sejati dibangun setelah pasien pulang.",
-    icon: HeartHandshake,
+    badge: "POST-CARE AI",
   },
   {
     id: "04",
     title: "One Intelligence, Every Department",
     body: "AI memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya.",
-    icon: BrainCircuit,
+    badge: "DEEP LEARNING",
   },
   {
     id: "05",
     title: "Designed Around Your Brand",
     body: "Pasien mengenal brand Anda, bukan brand kami. Seluruhnya dibangun menggunakan identitas klinik Anda secara eksklusif. Invisible technology, visible excellence.",
-    icon: Sparkles,
+    badge: "WHITE LABEL",
   },
   {
     id: "06",
     title: "Enterprise by Design",
     body: "Keamanan, kecepatan, dan reliabilitas dirancang sejak awal—bukan fitur tambahan, melainkan fondasi utama. Klinik premium butuh infrastruktur yang mutlak dapat dipercaya.",
-    icon: ShieldCheck,
+    badge: "INFRA GRADE",
   },
   {
     id: "07",
     title: "Intelligence Everywhere",
     body: "AI bukan fitur sisipan, melainkan fondasi dari setiap keputusan. Dari AI Assessment hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer.",
-    icon: Shield,
+    badge: "AI NATIVE",
   },
 ];
 
-/* ─── Desktop: Horizontal Scroll-Jacking ─── */
-function DesktopManifesto() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const TOTAL = manifestoPoints.length;
+const TOTAL_STR = String(TOTAL).padStart(2, "0");
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  // 7 cards × 340px + gaps + left panel ≈ need to shift ~2800px total
-  // We translate the card track from 0 to roughly -(totalWidth - viewport)
-  // Using percentage of the flex container works best
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-72%"]);
-
+export default function ManifestoSection() {
   return (
-    <section
-      ref={sectionRef}
-      className="hidden md:block bg-[#030712] relative"
-      style={{ height: "300vh" }}
-    >
-      {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        {/* Card track: title + cards in one horizontal flex container */}
-        <motion.div
-          style={{ x }}
-          className="flex items-center will-change-transform"
+    <section id="manifesto" className="bg-[#030712] relative">
+      {/* Header */}
+      <div className="pt-24 md:pt-32 pb-16 max-w-4xl mx-auto px-6 text-center relative z-10">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-[10px] font-bold text-yellow-600 tracking-[0.25em] uppercase block mb-4"
         >
-          {/* Left Panel: Title */}
-          <div className="w-[45vw] shrink-0 px-12 lg:px-20 flex flex-col justify-center items-center text-center">
-            <div className="max-w-lg flex flex-col items-center">
-              <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600 uppercase mb-6 block">
-                THE RonaOS MANIFESTO
-              </span>
-              <h2 className="text-5xl lg:text-7xl font-serif text-white leading-[1.05] tracking-tight uppercase">
-                Excellence is an{" "}
-                <i className="text-yellow-500 font-light normal-case">
-                  Architecture.
-                </i>
-              </h2>
-            </div>
-            <p className="text-lg text-slate-400 max-w-sm leading-relaxed mt-6 mx-auto">
-              Tujuh pilar fundamental yang menjadi fondasi setiap keputusan di
-              dalam ekosistem RonaOS.
-            </p>
-          </div>
+          THE RonaOS MANIFESTO
+        </motion.span>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight tracking-tight"
+        >
+          Excellence is an{" "}
+          <i className="text-yellow-500 font-light">Architecture.</i>
+        </motion.h2>
+      </div>
 
-          {/* Cards */}
-          <div className="flex gap-5 pr-[20vw] items-center">
-            {manifestoPoints.map((point) => {
-              const Icon = point.icon;
-              return (
-                <div
-                  key={point.id}
-                  className="w-[340px] shrink-0 bg-[#0B1120] border border-slate-800/60 p-8 rounded-3xl hover:border-slate-600 transition-all duration-300 group flex flex-col min-h-[420px] relative overflow-hidden cursor-default"
-                >
-                  {/* Ambient corner glow */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.02] blur-[40px] group-hover:bg-white/[0.06] transition-colors" />
-
-                  {/* Icon */}
-                  <div className="w-12 h-12 bg-slate-900/80 rounded-2xl border border-slate-800 flex items-center justify-center text-white mb-8 group-hover:border-slate-700 group-hover:rotate-6 transition-all duration-300">
-                    <Icon className="w-5 h-5 text-slate-300 group-hover:text-yellow-500 transition-colors" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-base font-bold text-white uppercase tracking-wide mb-4 leading-snug pr-4">
-                    {point.title}
-                  </h3>
-
-                  {/* Body */}
-                  <p className="text-slate-400 text-sm leading-relaxed font-light flex-grow">
-                    {point.body}
-                  </p>
-
-                  {/* Footer */}
-                  <div className="pt-6 border-t border-slate-800/60 mt-6">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-yellow-600 rounded-full opacity-40 group-hover:opacity-100 transition-opacity" />
-                      <span className="text-[9px] font-bold text-slate-600 tracking-[0.2em] uppercase">
-                        RONAOS CORE {point.id}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Ambient glow */}
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-yellow-900/5 blur-[120px] rounded-full mix-blend-screen pointer-events-none -translate-y-1/2" />
+      {/* Sticky Stacking Cards */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative pb-[10vh]">
+        {manifestoPoints.map((point, index) => (
+          <StickyCard
+            key={point.id}
+            point={point}
+            index={index}
+          />
+        ))}
+        {/* Spacer for the last card to fully stick */}
+        <div className="w-full h-[80vh]" />
       </div>
     </section>
   );
 }
 
-/* ─── Mobile: Simple Vertical Grid ─── */
-function MobileManifesto() {
+function StickyCard({
+  point,
+  index,
+}: {
+  point: (typeof manifestoPoints)[0];
+  index: number;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "start start"],
+  });
+
+  // Cards below scale down slightly when they're being covered
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: exitProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Scale down as the next card covers this one (skip for last card)
+  const scale = useTransform(
+    exitProgress,
+    [0, 1],
+    index < TOTAL - 1 ? [1, 0.95] : [1, 1]
+  );
+
+  const opacity = useTransform(
+    exitProgress,
+    [0, 1],
+    index < TOTAL - 1 ? [1, 0.6] : [1, 1]
+  );
+
   return (
-    <section className="block md:hidden bg-[#030712] py-20 px-4">
-      {/* Header */}
-      <div className="flex flex-col items-center text-center mb-12">
-        <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600 uppercase mb-4 block">
-          THE RonaOS MANIFESTO
-        </span>
-        <h2 className="text-3xl font-serif text-white tracking-tight leading-tight">
-          Excellence is an{" "}
-          <i className="text-yellow-500 font-light">Architecture.</i>
-        </h2>
-        <p className="text-sm text-slate-500 max-w-xs leading-relaxed mt-4 mx-auto">
-          Tujuh pilar fundamental yang menjadi fondasi setiap keputusan di dalam
-          ekosistem RonaOS.
-        </p>
-      </div>
+    <div
+      ref={containerRef}
+      className="sticky w-full"
+      style={{
+        top: `calc(12vh + ${index * 24}px)`,
+        marginBottom: index === TOTAL - 1 ? "0" : "80vh",
+        zIndex: 10 + index,
+      }}
+    >
+      <motion.div
+        ref={cardRef}
+        style={{ scale, opacity }}
+        className="origin-top"
+      >
+        <div className="w-full rounded-3xl border border-slate-800/60 bg-[#0B1120] shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.6)] overflow-hidden relative min-h-[50vh] md:min-h-[55vh]">
+          {/* Subtle top glow line */}
+          <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-slate-700/40 to-transparent" />
 
-      {/* Cards grid */}
-      <div className="grid grid-cols-1 gap-4 max-w-md mx-auto">
-        {manifestoPoints.map((point) => {
-          const Icon = point.icon;
-          return (
-            <motion.div
-              key={point.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5 }}
-              className="bg-[#0B1120] border border-slate-800/60 p-6 rounded-2xl flex flex-col min-h-[200px] relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.02] blur-[30px]" />
+          {/* Giant Watermark Number */}
+          <div className="absolute -bottom-8 -right-4 md:right-8 text-[160px] md:text-[240px] font-bold text-white/[0.03] leading-none pointer-events-none select-none font-sans tracking-tighter">
+            {point.id}
+          </div>
 
-              <div className="w-10 h-10 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-center text-white mb-4">
-                <Icon className="w-4 h-4 text-slate-300" />
+          {/* Content */}
+          <div className="relative z-10 p-8 md:p-14 lg:p-16 max-w-2xl flex flex-col justify-between min-h-[50vh] md:min-h-[55vh]">
+            <div>
+              {/* Number indicator */}
+              <div className="flex items-center gap-4 mb-10 md:mb-14">
+                <span className="text-sm font-mono font-bold text-yellow-600 tracking-widest">
+                  {point.id}
+                </span>
+                <span className="text-slate-600 font-light">/</span>
+                <span className="text-sm font-mono text-slate-600 tracking-widest">
+                  {TOTAL_STR}
+                </span>
+                <div className="w-12 h-[1px] bg-slate-700" />
               </div>
 
-              <h3 className="text-sm font-bold text-white uppercase tracking-wide mb-2 leading-snug">
+              {/* Title */}
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight leading-[1.1] mb-6 md:mb-8">
                 {point.title}
               </h3>
 
-              <p className="text-slate-400 text-xs leading-relaxed font-light flex-grow">
+              {/* Description */}
+              <p className="text-base md:text-lg text-slate-400 leading-relaxed font-light max-w-lg">
                 {point.body}
               </p>
+            </div>
 
-              <div className="pt-4 border-t border-slate-800/60 mt-4">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-yellow-600/40 rounded-full" />
-                  <span className="text-[8px] font-bold text-slate-600 tracking-[0.2em] uppercase">
-                    RONAOS CORE {point.id}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-/* ─── Main Export ─── */
-export default function ManifestoSection() {
-  return (
-    <>
-      <DesktopManifesto />
-      <MobileManifesto />
-    </>
+            {/* Badge */}
+            <div className="mt-8 md:mt-12">
+              <span className="inline-block text-[10px] font-mono font-bold text-slate-500 tracking-[0.2em] uppercase border border-slate-800 rounded-full px-4 py-2">
+                {point.badge}
+              </span>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
