@@ -15,11 +15,11 @@ export default function Chatbot() {
   const handleInputChange = chat.handleInputChange || ((e: any) => setLocalInput(e.target.value));
   const handleSubmit = chat.handleSubmit || ((e: any) => {
     e.preventDefault();
-    if (chat.sendMessage && localInput.trim()) {
-       chat.sendMessage({ content: localInput });
-       setLocalInput("");
-    } else if (chat.append && localInput.trim()) {
+    if (chat.append && localInput.trim()) {
        chat.append({ role: 'user', content: localInput });
+       setLocalInput("");
+    } else if (chat.sendMessage && localInput.trim()) {
+       chat.sendMessage({ content: localInput });
        setLocalInput("");
     }
   });
