@@ -56,33 +56,48 @@ function SlideCard({
   // Each card occupies a segment of the scroll
   const segmentSize = 1 / total;
   const start = index * segmentSize;
-  const peakStart = start + segmentSize * 0.15;
-  const peakEnd = start + segmentSize * 0.85;
+  const fadeInEnd = start + segmentSize * 0.2;
+  const fadeOutStart = start + segmentSize * 0.7;
   const end = start + segmentSize;
 
-  // Opacity: fade in -> hold -> fade out (last card stays visible)
+  // Overlap: first card starts visible, last card stays visible
+  const isFirst = index === 0;
+  const isLast = index === total - 1;
+
   const opacity = useTransform(
     progress,
-    index === total - 1
-      ? [start, peakStart, 1]
-      : [start, peakStart, peakEnd, end],
-    index === total - 1 ? [0, 1, 1] : [0, 1, 1, 0]
+    isFirst
+      ? isLast ? [0, 1] : [0, fadeOutStart, end] 
+      : isLast
+        ? [Math.max(0, start - segmentSize * 0.1), fadeInEnd, 1]
+        : [Math.max(0, start - segmentSize * 0.1), fadeInEnd, fadeOutStart, end],
+    isFirst
+      ? isLast ? [1, 1] : [1, 1, 0]
+      : isLast
+        ? [0, 1, 1]
+        : [0, 1, 1, 0]
   );
 
-  // Y translation: slide up from below -> hold -> slide up out (last card stays)
+  // Y translation
   const y = useTransform(
     progress,
-    index === total - 1
-      ? [start, peakStart, 1]
-      : [start, peakStart, peakEnd, end],
-    index === total - 1 ? [80, 0, 0] : [80, 0, 0, -40]
+    isFirst
+      ? [0, fadeOutStart, end]
+      : isLast
+        ? [Math.max(0, start - segmentSize * 0.1), fadeInEnd, 1]
+        : [Math.max(0, start - segmentSize * 0.1), fadeInEnd, fadeOutStart, end],
+    isFirst
+      ? [0, 0, -60]
+      : isLast
+        ? [60, 0, 0]
+        : [60, 0, 0, -60]
   );
 
   // Scale: slight zoom in
   const scale = useTransform(
     progress,
-    [start, peakStart],
-    [0.95, 1]
+    isFirst ? [0, 0.01] : [Math.max(0, start - segmentSize * 0.1), fadeInEnd],
+    isFirst ? [1, 1] : [0.96, 1]
   );
 
   return (
@@ -168,7 +183,7 @@ export default function ManifestoSection() {
       ref={containerRef}
       id="manifesto"
       className="bg-[#030712] relative"
-      style={{ height: `${manifestoPoints.length * 100}vh` }}
+      style={{ height: `${(manifestoPoints.length + 1) * 60}vh` }}
     >
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen overflow-hidden">
