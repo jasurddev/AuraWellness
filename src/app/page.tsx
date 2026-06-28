@@ -24,7 +24,7 @@ export default function Home() {
             <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
           </div>
           <a href="#demo" className="text-xs font-semibold uppercase tracking-widest border-b border-slate-900 pb-1 hover:text-yellow-600 hover:border-yellow-600 transition-colors">
-            Request Access
+            Book Private Demo
           </a>
         </div>
       </nav>
@@ -40,7 +40,7 @@ export default function Home() {
                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-4"
               >
                 <span className="w-8 h-[1px] bg-yellow-500"></span>
-                AI-NATIVE CLINICAL SYSTEM
+                AI Operating System for Aesthetic & Wellness
               </motion.div>
               
               <motion.h1 
@@ -50,7 +50,7 @@ export default function Home() {
                 className="text-6xl md:text-8xl font-serif text-slate-900 leading-[1.05] tracking-tight mb-8"
               >
                 The Intelligence <br /> Behind Every <br />
-                <span className="italic text-yellow-700">Great Clinic.</span>
+                <span className="italic text-yellow-700">Exceptional Clinic.</span>
               </motion.h1>
             </div>
             
@@ -61,9 +61,9 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="text-sm text-slate-600 mb-8 leading-relaxed space-y-4"
               >
-                <p><b>RonaOS</b> is not a software. It is a singular, intelligent ecosystem designed to orchestrate every touchpoint of your clinic.</p>
-                <p>Mulai dari AI Consultation, Smart Booking, Electronic Medical Records, hingga Business Intelligence—kami mengeliminasi friksi operasional sehingga Anda dapat fokus pada hal yang paling penting: <i>the art of aesthetics.</i></p>
-                <p className="font-semibold text-slate-900 pt-2 tracking-wide">One Platform. One Patient Journey. One Source of Truth.</p>
+                <p><b>RonaOS</b> adalah AI-native Operating System yang dirancang untuk klinik <i>aesthetic & wellness</i> modern.</p>
+                <p>Menghubungkan setiap perjalanan pasien—mulai dari AI Assessment, Smart Booking, EMR, Revenue Engine, AI Post-Care, hingga Business Intelligence—dalam satu ekosistem yang bekerja secara <i>real-time</i>.</p>
+                <p className="font-semibold text-slate-900 pt-2 tracking-wide">Lebih dari sekadar software. Sebuah operating system untuk klinik yang ingin menjadi benchmark.</p>
               </motion.div>
               
               <motion.div 
@@ -134,122 +134,93 @@ export default function Home() {
       {/* 2.7 Manifesto Section */}
       <section className="py-24 md:py-32 px-6 bg-slate-900 text-white selection:bg-yellow-500/30">
         <div className="max-w-4xl mx-auto font-serif text-2xl md:text-5xl leading-snug md:leading-tight space-y-8 md:space-y-12">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            Ini yang bikin <span className="text-yellow-500">RonaOS</span> beda.
-          </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-slate-400">
-            Everybody has AI.<br/>
-            But generic AI cannot run a clinic.
-          </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            Yang kebanyakan orang tidak punya adalah <br/>
-            <span className="text-white italic">Vertical AI dengan proprietary knowledge base.</span>
-          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 block">VERTICAL INTELLIGENCE</span>
+            <p className="text-slate-400">AI is everywhere.</p>
+            <p>But it doesn't know how to run your clinic.</p>
+          </motion.div>
           
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-lg md:text-3xl font-sans font-light tracking-wide space-y-3 text-slate-400 py-8 border-l-2 border-yellow-500/30 pl-8 ml-2">
-            <p>kita punya SOP.</p>
-            <p>kita punya treatment flow.</p>
-            <p>kita punya patient journey.</p>
-            <p>kita punya aftercare.</p>
-            <p>kita punya inventory.</p>
-            <p>kita punya booking.</p>
-            <p>kita punya payment.</p>
-            <p>kita punya EMR.</p>
-            <p>kita punya analytics.</p>
-            <p className="text-yellow-500 font-medium pt-4">kita punya AI.</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-base md:text-xl font-sans font-light tracking-wide text-slate-400 space-y-6 max-w-3xl">
+            <p>AI generik hanya bisa membaca teks. Ia tidak memahami SOP Anda. Ia tidak tahu alur <i>treatment</i>, riwayat medis, atau manajemen <i>inventory</i> Anda.</p>
+            <p>RonaOS dibangun dengan <b>Vertical AI</b>. Ia tidak sekadar memproses data, melainkan memahami <i>proprietary knowledge base</i> Anda untuk menggerakkan seluruh ekosistem klinik secara otonom.</p>
           </motion.div>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            Itu namanya <br/>
-            <i className="text-yellow-500">Vertical AI Operating System.</i>
-          </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl md:text-3xl text-slate-400 font-sans font-light mt-8">
-            And this is a completely different class of intelligence.
-          </motion.p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm md:text-base font-sans font-medium tracking-wide text-slate-300 py-8 border-t border-b border-slate-800">
+            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Ingesting Clinical SOPs</div>
+            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Mapping Patient Journeys</div>
+            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Orchestrating Financials</div>
+            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Managing Live Inventory</div>
+            <div className="flex items-center gap-3"><span className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> Analyzing Medical Records</div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl md:text-3xl font-sans font-light mt-8">
+            <p>This is a Vertical AI Operating System.</p>
+            <p className="text-yellow-500 italic mt-2">Operating in a class of its own.</p>
+          </motion.div>
         </div>
       </section>
 
-      {/* 3. Features Bento Grid */}
-      <section id="features" className="py-16 md:py-20 bg-white relative">
+      {/* 3. The Architecture (Four Cores) */}
+      <section id="features" className="py-20 md:py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-             <h2 className="text-4xl md:text-6xl font-serif leading-tight">
-               Engineered for scale.<br/>Crafted for <i className="text-yellow-600">aesthetics.</i>
-             </h2>
-             <p className="max-w-sm text-sm text-slate-500 leading-relaxed">
-               Didesain eksklusif untuk klinik estetika modern. RonaOS meredefinisi sistem konvensional menjadi sebuah ekosistem digital yang <i>seamless</i>.
-             </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-slate-200 pb-12">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-600 mb-6 block">THE ARCHITECTURE</span>
+              <h2 className="text-4xl md:text-6xl font-serif leading-tight">
+                Four Cores.<br/>One Unified <i className="text-yellow-600">Ecosystem.</i>
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm text-slate-500 leading-relaxed font-medium">
+              RonaOS dibangun di atas empat pilar arsitektur utama yang bekerja tersinkronisasi untuk menggerakkan seluruh skala bisnis estetika Anda.
+            </p>
           </div>
 
-          <div className="flex md:grid md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-            {/* Feature 1 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI Clinical Intelligence</span>
-                <h3 className="text-3xl font-serif mb-6">Beyond Analysis.</h3>
-                <div className="text-sm text-slate-600 leading-relaxed mb-8 max-w-sm space-y-4">
-                  <p>AI kami bukan sekadar scanner wajah. AI kami mampu:</p>
-                  <ul className="grid grid-cols-2 gap-y-2 gap-x-1 text-[11px] font-semibold text-slate-700">
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca wajah</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> histori treatment</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca SOP</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> cek inventory</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> baca transaksi</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> atur booking</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> saran aftercare</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> asisten dokter</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> data repeat pasien</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca pain</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> analisa lifestyle</li>
-                    <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> knowledge base</li>
-                  </ul>
-                  <p className="font-bold text-slate-900 border-t border-slate-200 pt-4 mt-2">Menjadi clinical assistant & business analyst.</p>
-                </div>
-              </div>
+          <div className="flex overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 snap-x snap-mandatory hide-scrollbar">
+            {/* Core 1 */}
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI CORE</span>
+              <h3 className="text-3xl font-serif mb-6">Clinical Intelligence.</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+                Bukan sekadar scanner wajah. <i>Core</i> ini membaca histori, SOP, <i>pain points</i>, dan <i>lifestyle</i> pasien untuk menghasilkan diagnosis serta rekomendasi <i>treatment</i> yang presisi.
+              </p>
               <div className="mt-auto pt-8">
-                <Image src="/images/bento-ai-scanner.png" alt="AI Scanner Interface" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+                <Image src="/images/bento-ai-scanner.png" alt="AI Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
               </div>
             </div>
 
-            {/* Feature 2 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">02 / EMR System</span>
-                <h3 className="text-3xl font-serif mb-4">The Living Record.</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Bukan sekadar arsip mati. Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan berevolusi bersama riwayat <i>treatment</i> pasien Anda.
-                </p>
-              </div>
+            {/* Core 2 */}
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">02 / CLINICAL CORE</span>
+              <h3 className="text-3xl font-serif mb-6">The Living Record.</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+                Arsitektur pengelola pasien dan dokter. Rekam medis yang <i>secure</i>, <i>encrypted</i>, dan terus berevolusi seiring dengan setiap <i>treatment</i> pasien Anda.
+              </p>
               <div className="mt-auto pt-8">
-                <Image src="/images/bento-emr-system.png" alt="EMR System Dashboard" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+                <Image src="/images/bento-emr-system.png" alt="Clinical Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
               </div>
             </div>
             
-            {/* Feature 3 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">03 / Smart Booking</span>
-                <h3 className="text-3xl font-serif mb-4">Frictionless Flow.</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Jadwal yang mengatur dirinya sendiri. Mengeliminasi <i>no-shows</i> dengan presisi dan berikan pengalaman <i>booking</i> semulus belanja <i>online</i>.
-                </p>
-              </div>
+            {/* Core 3 */}
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">03 / GROWTH CORE</span>
+              <h3 className="text-3xl font-serif mb-6">Frictionless Conversion.</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+                Infrastruktur pencetak <i>revenue</i> Anda. Memaksimalkan <i>booking</i>, mengeliminasi <i>no-shows</i> dengan presisi, dan memberikan pengalaman transaksi semulus aplikasi B2C.
+              </p>
               <div className="mt-auto pt-8">
-                <Image src="/images/bento-smart-booking.png" alt="Smart Booking App" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+                <Image src="/images/bento-smart-booking.png" alt="Growth Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
               </div>
             </div>
 
-            {/* Feature 4 */}
-            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">04 / Analytics</span>
-                <h3 className="text-3xl font-serif mb-4">Absolute Clarity.</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Bukan sekadar deretan angka, melainkan <i>One Source of Truth</i>. Pantau <i>revenue</i>, demografi, dan <i>inventory</i> dengan visualisasi tingkat tinggi.
-                </p>
-              </div>
+            {/* Core 4 */}
+            <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col h-full border border-slate-100 hover:border-yellow-200 transition-colors">
+              <span className="text-[10px] font-bold text-yellow-600 tracking-widest uppercase mb-4 block">04 / BUSINESS CORE</span>
+              <h3 className="text-3xl font-serif mb-6">Absolute Clarity.</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
+                <i>One Source of Truth</i> untuk optimasi profit. Pantau <i>revenue</i>, demografi pasien, hingga pergerakan <i>inventory</i> dengan visualisasi tingkat tinggi.
+              </p>
               <div className="mt-auto pt-8">
-                <Image src="/images/bento-analytics.png" alt="Analytics Dashboard" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
+                <Image src="/images/bento-ai-scanner.png" alt="Business Core" width={800} height={600} className="w-full aspect-video object-cover border border-slate-200 shadow-sm" />
               </div>
             </div>
           </div>
@@ -414,16 +385,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Live Interactive Demo */}
-      <section id="demo" className="py-32 px-6 border-t border-slate-200/50">
-        <div className="max-w-5xl mx-auto text-center">
-          <span className="text-[10px] font-bold text-yellow-600 tracking-[0.2em] uppercase mb-4 block">Interactive Prototype</span>
-          <h2 className="text-5xl md:text-7xl font-serif text-slate-900 mb-8 tracking-tight">Experience the platform.</h2>
-          <p className="text-sm text-slate-500 mb-16 max-w-xl mx-auto leading-relaxed">
-            Cobain langsung interaksi aplikasinya. Rasakan betapa <i>smooth</i>-nya alur pasien dan kepraktisan tim medis Anda dalam satu ekosistem.
-          </p>
+      {/* 6. Closing Section */}
+      <section id="demo" className="py-32 px-6 border-t border-slate-200/50 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-6xl font-serif text-slate-900 mb-10 tracking-tight leading-tight">
+            The Benchmark for Modern <br/><i className="text-yellow-600">Aesthetic & Wellness Clinics.</i>
+          </h2>
+          <div className="text-lg md:text-xl text-slate-600 mb-16 max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="mb-4">RonaOS bukan sekadar membantu klinik beroperasi.</p>
+            <p>RonaOS membantu klinik bertumbuh, meredefinisi pengalaman pasien, dan menetapkan standar baru bagi industri.</p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+          <button className="bg-slate-900 text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-slate-800 transition-all">
+            Book a Private Demo
+          </button>
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-32 pt-16 border-t border-slate-200/50">
+          <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-10 font-bold">Or Explore The Interactive Prototypes</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <Link 
               href="/demo/portal/patient"
               className="group bg-white border border-slate-200 p-8 hover:border-slate-900 transition-all flex flex-col justify-between min-h-[240px]"
