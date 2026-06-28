@@ -63,9 +63,8 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="text-sm text-slate-600 mb-8 leading-relaxed space-y-4"
               >
-                <p><b>RonaOS</b> adalah AI-native Operating System yang dirancang untuk klinik <i>aesthetic & wellness</i> modern.</p>
-                <p>Menghubungkan setiap perjalanan pasien—mulai dari AI Assessment, Smart Booking, EMR, Revenue Engine, AI Post-Care, hingga Business Intelligence—dalam satu ekosistem yang bekerja secara <i>real-time</i>.</p>
-                <p className="font-semibold text-slate-900 pt-2 tracking-wide">Lebih dari sekadar software. Sebuah operating system untuk klinik yang ingin menjadi benchmark.</p>
+                <p><b>RonaOS</b> adalah AI-native Operating System yang didesain secara spesifik, eksklusif, dan mendalam hanya untuk menguasai industri klinik estetika.</p>
+                <p>Lebih dari sekadar software manajemen. Sebuah infrastruktur cerdas yang meredefinisi pengalaman pasien dan mencetak standar baru bagi pertumbuhan klinik premium Anda.</p>
               </motion.div>
               
               <motion.div 
@@ -120,72 +119,14 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Live AI Scanner Demo */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-full max-w-5xl mx-auto flex items-center justify-center mt-10 md:mt-0"
-          >
-            <LiveAIScannerDemo />
-          </motion.div>
         </div>
       </section>
 
-      {/* 2.7 Manifesto Section */}
-      <section className="py-32 md:py-48 px-6 bg-[#0B0F19] text-white selection:bg-yellow-500/30 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-yellow-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
-            
-            {/* Left side: Sticky Headline */}
-            <div className="lg:col-span-5 relative">
-              <div className="lg:sticky lg:top-32">
-                <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-yellow-500 mb-8 flex items-center gap-4">
-                  <span className="w-8 h-[1px] bg-yellow-500"></span>
-                  AESTHETIC-NATIVE AI
-                </motion.div>
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
-                  Pertumbuhan tidak terjadi <br/>
-                  <i className="text-yellow-500/90 font-light">dengan bekerja lebih keras.</i>
-                </motion.h2>
-              </div>
-            </div>
+      {/* NEW FLOW: 3. Manifesto (Sticky Cards) */}
+      <ManifestoSection />
 
-            {/* Right side: Body Text */}
-            <div className="lg:col-span-6 lg:col-start-7 pt-8 lg:pt-0">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-                <p className="text-3xl md:text-4xl font-sans font-light text-slate-200 leading-snug">
-                  Pertumbuhan terjadi ketika seluruh operasional bekerja sebagai satu ekosistem.
-                </p>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="py-12 border-t border-slate-800/80">
-                <p className="text-xl md:text-2xl font-sans font-light text-slate-400 leading-relaxed mb-6">
-                  <strong className="text-white font-medium">RonaOS</strong> adalah Kecerdasan Buatan yang didesain secara spesifik, eksklusif, dan mendalam hanya untuk menguasai industri klinik estetika.
-                </p>
-                <p className="text-xl md:text-2xl font-sans font-light text-slate-400 leading-relaxed">
-                  Kami menghubungkan setiap pasien, dokter, <i>treatment</i>, transaksi, dan <i>inventory</i> ke dalam satu <i>AI Operating System</i>.
-                </p>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="py-12 border-t border-slate-800/80 relative">
-                <div className="absolute left-0 top-12 w-1 h-full max-h-[80px] bg-yellow-500"></div>
-                <p className="text-2xl md:text-4xl font-serif text-white leading-snug pl-8">
-                  Dirancang untuk membantu klinik Anda beroperasi lebih efisien, berekspansi lebih cerdas, dan menetapkan <i className="text-yellow-500">benchmark baru</i> di industri.
-                </p>
-              </motion.div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 3. The Architecture (Four Cores) */}
-      <section id="features" className="pt-20 md:pt-32 pb-10 md:pb-16 bg-white relative">
+      {/* 4. The Architecture (Four Cores) */}
+      <section id="features" className="pt-24 md:pt-32 pb-24 md:pb-32 bg-white relative border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 border-b border-slate-200 pb-12">
             <div>
@@ -203,7 +144,30 @@ export default function Home() {
         </div>
       </section>
 
-      <ManifestoSection />
+      {/* 5. Live AI Scanner Demo (Proof of Concept) */}
+      <section className="pt-24 md:pt-32 pb-24 md:pb-32 px-6 bg-[#F9F8F6] overflow-hidden relative border-b border-slate-200">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-600/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 relative z-10">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 block">LIVE PROTOTYPE</span>
+            <h2 className="text-3xl md:text-5xl font-serif text-slate-900 leading-tight">
+              Clinical Intelligence <i className="text-yellow-600 font-light">in Action.</i>
+            </h2>
+            <p className="text-sm text-slate-500 mt-4 max-w-lg mx-auto leading-relaxed">Cobalah simulasi AI Assessment yang mampu membaca profil pasien secara instan, persis seperti yang akan digunakan oleh klinik Anda.</p>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative w-full max-w-5xl mx-auto flex items-center justify-center relative z-10"
+          >
+            <LiveAIScannerDemo />
+          </motion.div>
+        </div>
+      </section>
 
       {/* 5. Minimalist Pricing */}
       <section id="pricing" className="py-32 px-6 bg-[#F9F8F6]">
