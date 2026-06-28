@@ -146,11 +146,11 @@ export default function Home() {
       </section>
 
       {/* 5. Live AI Scanner Demo (Proof of Concept) */}
-      <section className="pt-24 md:pt-32 pb-24 md:pb-32 px-6 bg-[#F9F8F6] overflow-hidden relative border-b border-slate-200">
+      <section className="pt-24 md:pt-32 pb-24 md:pb-32 bg-[#F9F8F6] overflow-hidden relative border-b border-slate-200">
         {/* Subtle background decoration */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-600/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 relative z-10">
+        <div className="w-full">
+          <div className="text-center mb-16 relative z-10 max-w-7xl mx-auto px-6">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 block">LIVE PROTOTYPE</span>
             <h2 className="text-3xl md:text-5xl font-serif text-slate-900 leading-tight">
               Clinical Intelligence <i className="text-yellow-600 font-light">in Action.</i>
@@ -163,7 +163,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-full max-w-5xl mx-auto flex items-center justify-center relative z-10"
+            className="relative w-full mx-auto flex items-center justify-center z-10"
           >
             <LiveAIScannerDemo />
           </motion.div>
