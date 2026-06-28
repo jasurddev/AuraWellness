@@ -24,7 +24,7 @@ export default function Home() {
             <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
           </div>
           <a href="#demo" className="text-xs font-semibold uppercase tracking-widest border-b border-slate-900 pb-1 hover:text-yellow-600 hover:border-yellow-600 transition-colors">
-            View Demo
+            Request Access
           </a>
         </div>
       </nav>
@@ -40,7 +40,7 @@ export default function Home() {
                 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-8 flex items-center gap-4"
               >
                 <span className="w-8 h-[1px] bg-yellow-500"></span>
-                AI Operating System for Aesthetic & Wellness
+                AI-NATIVE CLINICAL SYSTEM
               </motion.div>
               
               <motion.h1 
@@ -61,9 +61,9 @@ export default function Home() {
                 transition={{ delay: 0.2 }}
                 className="text-sm text-slate-600 mb-8 leading-relaxed space-y-4"
               >
-                <p><b>RonaOS</b> adalah AI-native operating system yang menghubungkan seluruh perjalanan pasien dalam satu ekosistem cerdas.</p>
-                <p>Mulai dari AI Consultation, Smart Booking, Electronic Medical Records, AI Post-Care, Online Store, hingga Business Intelligence—semuanya bekerja bersama untuk membantu klinik bertumbuh lebih cepat, beroperasi lebih efisien, dan memberikan pengalaman pasien yang luar biasa.</p>
-                <p className="font-semibold text-slate-900 pt-2">One Platform. One Patient Journey. One Source of Truth.</p>
+                <p><b>RonaOS</b> is not a software. It is a singular, intelligent ecosystem designed to orchestrate every touchpoint of your clinic.</p>
+                <p>Mulai dari AI Consultation, Smart Booking, Electronic Medical Records, hingga Business Intelligence—kami mengeliminasi friksi operasional sehingga Anda dapat fokus pada hal yang paling penting: <i>the art of aesthetics.</i></p>
+                <p className="font-semibold text-slate-900 pt-2 tracking-wide">One Platform. One Patient Journey. One Source of Truth.</p>
               </motion.div>
               
               <motion.div 
@@ -72,7 +72,7 @@ export default function Home() {
                 transition={{ delay: 0.3 }}
               >
                 <a href="#demo" className="inline-flex items-center gap-3 bg-slate-900 text-white px-6 py-4 text-sm font-medium hover:bg-slate-800 transition-colors">
-                  Explore Platform <ArrowRight className="w-4 h-4" />
+                  Explore Architecture <ArrowRight className="w-4 h-4" />
                 </a>
               </motion.div>
             </div>
@@ -138,11 +138,11 @@ export default function Home() {
             Ini yang bikin <span className="text-yellow-500">RonaOS</span> beda.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-slate-400">
-            Bukan sekadar AI.<br/>
-            Semua orang sekarang punya AI.
+            Everybody has AI.<br/>
+            But generic AI cannot run a clinic.
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            Yang gak semua orang punya adalah <br/>
+            Yang kebanyakan orang tidak punya adalah <br/>
             <span className="text-white italic">Vertical AI dengan proprietary knowledge base.</span>
           </motion.p>
           
@@ -164,7 +164,7 @@ export default function Home() {
             <i className="text-yellow-500">Vertical AI Operating System.</i>
           </motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl md:text-3xl text-slate-400 font-sans font-light mt-8">
-            Dan ini kelasnya sudah berbeda dibanding software klinik biasa.
+            And this is a completely different class of intelligence.
           </motion.p>
         </div>
       </section>
@@ -174,10 +174,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
              <h2 className="text-4xl md:text-6xl font-serif leading-tight">
-               Built for scale.<br/>Designed for <i className="text-yellow-600">beauty.</i>
+               Engineered for scale.<br/>Crafted for <i className="text-yellow-600">aesthetics.</i>
              </h2>
              <p className="max-w-sm text-sm text-slate-500 leading-relaxed">
-               Didesain khusus buat klinik estetika modern. RonaOS mengeliminasi sistem konvensional yang kaku menjadi ekosistem digital yang <i>seamless</i>.
+               Didesain eksklusif untuk klinik estetika modern. RonaOS meredefinisi sistem konvensional menjadi sebuah ekosistem digital yang <i>seamless</i>.
              </p>
           </div>
 
@@ -186,9 +186,9 @@ export default function Home() {
             <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">01 / AI Clinical Intelligence</span>
-                <h3 className="text-3xl font-serif mb-6">Beyond Skin Analyzer.</h3>
+                <h3 className="text-3xl font-serif mb-6">Beyond Analysis.</h3>
                 <div className="text-sm text-slate-600 leading-relaxed mb-8 max-w-sm space-y-4">
-                  <p>AI kita bukan cuma scan wajah. AI kita bisa:</p>
+                  <p>AI kami bukan sekadar scanner wajah. AI kami mampu:</p>
                   <ul className="grid grid-cols-2 gap-y-2 gap-x-1 text-[11px] font-semibold text-slate-700">
                     <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> membaca wajah</li>
                     <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> histori treatment</li>
@@ -203,7 +203,7 @@ export default function Home() {
                     <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> analisa lifestyle</li>
                     <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-yellow-500"/> knowledge base</li>
                   </ul>
-                  <p className="font-bold text-slate-900 border-t border-slate-200 pt-4 mt-2">Ini udah jauh di atas "AI Skin Analyzer".</p>
+                  <p className="font-bold text-slate-900 border-t border-slate-200 pt-4 mt-2">Menjadi clinical assistant & business analyst.</p>
                 </div>
               </div>
               <div className="mt-auto pt-8">
@@ -215,9 +215,9 @@ export default function Home() {
             <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">02 / EMR System</span>
-                <h3 className="text-3xl font-serif mb-4">Electronic Records</h3>
+                <h3 className="text-3xl font-serif mb-4">The Living Record.</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan tertata secara visual. Akses kapanpun dari <i>device</i> apapun.
+                  Bukan sekadar arsip mati. Data rekam medis pasien yang <i>secure</i>, <i>encrypted</i>, dan berevolusi bersama riwayat <i>treatment</i> pasien Anda.
                 </p>
               </div>
               <div className="mt-auto pt-8">
@@ -229,9 +229,9 @@ export default function Home() {
             <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">03 / Smart Booking</span>
-                <h3 className="text-3xl font-serif mb-4">Frictionless Flow</h3>
+                <h3 className="text-3xl font-serif mb-4">Frictionless Flow.</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Kurangi <i>no-shows</i> lewat fitur <i>automated reminders</i>. Pasien Anda bisa <i>booking</i> dari HP semudah belanja <i>online</i>.
+                  Jadwal yang mengatur dirinya sendiri. Mengeliminasi <i>no-shows</i> dengan presisi dan berikan pengalaman <i>booking</i> semulus belanja <i>online</i>.
                 </p>
               </div>
               <div className="mt-auto pt-8">
@@ -243,9 +243,9 @@ export default function Home() {
             <div className="w-[85vw] sm:w-[60vw] shrink-0 md:w-auto snap-center md:snap-align-none bg-[#F9F8F6] p-12 lg:p-16 flex flex-col justify-between h-full">
               <div>
                 <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase mb-4 block">04 / Analytics</span>
-                <h3 className="text-3xl font-serif mb-4">Actionable Insights</h3>
+                <h3 className="text-3xl font-serif mb-4">Absolute Clarity.</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-12 max-w-sm">
-                  Pantau <i>revenue</i>, demografi pasien, sampai status stok <i>inventory</i> lewat <i>dashboard</i> estetik yang sangat detail.
+                  Bukan sekadar deretan angka, melainkan <i>One Source of Truth</i>. Pantau <i>revenue</i>, demografi, dan <i>inventory</i> dengan visualisasi tingkat tinggi.
                 </p>
               </div>
               <div className="mt-auto pt-8">
@@ -260,12 +260,12 @@ export default function Home() {
       <section id="fintech" className="py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1 space-y-8">
-            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase block">Fintech Integration</span>
+            <span className="text-xs font-bold text-yellow-600 tracking-widest uppercase block">INVISIBLE COMMERCE</span>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight">
-              Frictionless Payment, <br/>Zero No-Shows.
+              Transactions should be felt, <br/>not seen.
             </h2>
             <p className="text-slate-600 leading-relaxed max-w-lg">
-              Ubah cara pasien bertransaksi. RonaOS dilengkapi infrastruktur Payment Gateway terintegrasi atas nama klinik Anda. Terapkan sistem Down Payment (DP) otomatis via QRIS & Virtual Account untuk mengeliminasi pembatalan sepihak. Rekonsiliasi keuangan berjalan otomatis, dan dana cair langsung ke rekening klinik Anda tanpa campur tangan manual.
+              RonaOS mengubah proses pembayaran menjadi pengalaman tak kasat mata. Infrastruktur Payment Gateway terintegrasi penuh atas nama klinik Anda. Terapkan sistem auto-deposit dan rekonsiliasi instan untuk memusnahkan potensi <i>no-shows</i>. Uang Anda mengalir semulus pengalaman pasien Anda.
             </p>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -348,67 +348,67 @@ export default function Home() {
       <section id="pricing" className="py-32 px-6 bg-[#F9F8F6]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-10">
-            <h2 className="text-4xl md:text-5xl font-serif">Clear investment.</h2>
-            <p className="text-sm text-slate-500 max-w-xs md:text-right mt-4 md:mt-0">
-              Pilih lisensi yang paling pas buat skala operasional klinik Anda.
+            <h2 className="text-4xl md:text-5xl font-serif">Transparent by design.</h2>
+            <p className="text-sm text-slate-500 max-w-xs md:text-right mt-4 md:mt-0 font-medium">
+              Pilih arsitektur yang paling sesuai dengan skala visi klinik Anda.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 bg-white">
-            {/* Starter */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-200 bg-white shadow-sm">
+            {/* Boutique */}
             <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col">
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Starter</h3>
-              <p className="text-xs text-slate-500 mb-12">Cocok buat praktisi independen.</p>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Boutique</h3>
+              <p className="text-xs text-slate-500 mb-12">For the purist independent practitioner.</p>
               <div className="mb-12">
                 <span className="text-4xl font-serif">Rp 1.5M</span>
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['1 Doctor Account', 'Basic EMR', 'Smart Booking', 'Standard Support'].map((feature, i) => (
+                {['1 Doctor License', 'Basic EMR Architecture', 'Smart Booking Flow', 'Standard Support'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-4 border border-slate-900 text-sm font-medium hover:bg-slate-900 hover:text-white transition-colors">Select Plan</button>
+              <button className="w-full py-4 border border-slate-900 text-sm font-medium hover:bg-slate-900 hover:text-white transition-colors">Select Architecture</button>
             </div>
 
-            {/* Professional */}
+            {/* Scale */}
             <div className="p-10 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50 relative flex flex-col">
               <div className="absolute top-0 right-0 bg-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1">
                 Popular
               </div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Professional</h3>
-              <p className="text-xs text-slate-500 mb-12">Buat klinik yang lagi <i>scale up</i>.</p>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Scale</h3>
+              <p className="text-xs text-slate-500 mb-12">For high-growth aesthetic centers.</p>
               <div className="mb-12">
                 <span className="text-4xl font-serif">Rp 3.5M</span>
                 <span className="text-xs text-slate-400 uppercase tracking-widest ml-2">/ month</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Up to 5 Doctors', 'AI Skin Scanner (1000 scans/mo)', 'Advanced Analytics', 'Inventory Management', 'Priority Support'].map((feature, i) => (
+                {['Up to 5 Doctor Licenses', 'AI Clinical Intelligence', 'Advanced Analytics Suite', 'Inventory Orchestration', 'Priority Access'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-900 font-medium">
                     <Check className="w-4 h-4 text-yellow-600 mt-0.5 shrink-0" /> {feature}
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-4 bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors">Select Plan</button>
+              <button className="w-full py-4 bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition-colors">Select Architecture</button>
             </div>
 
             {/* Enterprise */}
             <div className="p-10 flex flex-col">
               <h3 className="text-sm font-bold uppercase tracking-widest mb-2">Enterprise</h3>
-              <p className="text-xs text-slate-500 mb-12">Jaringan klinik skala besar.</p>
+              <p className="text-xs text-slate-500 mb-12">For regional and global clinic networks.</p>
               <div className="mb-12">
                 <span className="text-4xl font-serif">Custom</span>
               </div>
               <ul className="space-y-4 mb-12 flex-1">
-                {['Unlimited Doctors', 'Custom AI Scan Quota', 'White-label Patient App', 'Dedicated Account Manager', 'Custom API Access'].map((feature, i) => (
+                {['Unlimited Licenses', 'Custom AI Infrastructure', 'White-label Patient Ecosystem', 'Dedicated Success Manager', 'Custom API Architecture'].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
                     <Check className="w-4 h-4 text-slate-900 mt-0.5 shrink-0" /> {feature}
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-4 border border-slate-200 text-slate-400 text-sm font-medium hover:border-slate-900 hover:text-slate-900 transition-colors">Contact Sales</button>
+              <button className="w-full py-4 border border-slate-200 text-slate-400 text-sm font-medium hover:border-slate-900 hover:text-slate-900 transition-colors">Request Consultation</button>
             </div>
           </div>
         </div>
