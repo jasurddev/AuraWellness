@@ -22,16 +22,21 @@ type AppState = {
   scanResult: {
     imageUrl: string;
     issues: string[];
-    recommendedTreatments: Treatment[];
+    recommendedTreatments: (Treatment | string)[];
     hautAiMetrics?: {
       metrics: {
         acne: number;
         pigmentation: number;
         hydration: number;
         wrinkles: number;
+        scarring: number;
+        texture: number;
+        oiliness: number;
       };
       overall_score: number;
+      confidence_score: number;
       detected_concerns: string[];
+      treatment_recommendations: string[];
       recommended_ingredients: string[];
     };
   } | null;
