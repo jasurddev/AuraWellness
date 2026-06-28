@@ -33,95 +33,83 @@ const manifestoPoints = [
     id: "06",
     title: "Enterprise by Design.",
     body: "Keamanan, kecepatan, dan reliabilitas. Semuanya dirancang sejak awal—bukan sekadar sebagai fitur tambahan, melainkan sebagai fondasi utama. Karena klinik premium membutuhkan infrastruktur yang mutlak dapat dipercaya."
+  },
+  {
+    id: "07",
+    title: "Intelligence Everywhere.",
+    body: "Artificial Intelligence bukan sekadar fitur sisipan, melainkan fondasi dari setiap keputusan. Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang secara kontinu belajar dan berevolusi dari data klinik Anda."
   }
 ];
 
 export default function ManifestoSection() {
   return (
-    <section id="manifesto" className="py-20 px-6 bg-slate-900 text-slate-300 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        
-        {/* Header - Compact Layout */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-slate-800 pb-10">
-          <div className="max-w-2xl">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-[11px] font-bold text-yellow-500 tracking-[0.2em] block mb-4"
-            >
-              THE RonaOS MANIFESTO
-            </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif text-white leading-tight"
-            >
-              Excellence is an <i className="text-yellow-500 font-light">Architecture.</i>
-            </motion.h2>
-          </div>
-        </div>
-
-        {/* 3-Column Compact Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
-          {manifestoPoints.map((point, index) => (
-            <motion.div 
-              key={point.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-6 rounded-2xl bg-slate-800/20 border border-slate-800/50 hover:bg-slate-800/40 hover:border-slate-700 transition-all duration-300"
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-xs font-medium text-yellow-600/70 font-mono">{point.id}</span>
-                <div className="flex-1 h-[1px] bg-slate-800 group-hover:bg-yellow-900/50 transition-colors"></div>
-              </div>
-              <h3 className="text-xl font-serif text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
-                {point.title}
-              </h3>
-              <p className="text-sm text-slate-400 leading-relaxed font-light">
-                {point.body}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* 7th Point - Grand Finale (Full Width Bento Style) */}
-        <motion.div
+    <section id="manifesto" className="py-24 md:py-32 bg-[#030712] relative">
+      
+      {/* Header */}
+      <div className="max-w-4xl mx-auto px-6 mb-24 text-center relative z-10">
+        <motion.span 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="w-full rounded-2xl bg-gradient-to-br from-slate-800/40 to-slate-900 border border-slate-700/50 p-8 md:p-12 relative overflow-hidden group hover:border-yellow-500/30 transition-colors duration-500"
+          transition={{ duration: 0.6 }}
+          className="text-[11px] font-bold text-yellow-600 tracking-[0.2em] uppercase block mb-4"
         >
-          {/* Subtle Glow inside the card */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 rounded-full blur-[80px] group-hover:bg-yellow-500/10 transition-colors duration-700"></div>
-          
-          <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/3">
-              <span className="text-xs font-medium text-yellow-600/70 font-mono mb-4 block">07</span>
-              <h3 className="text-3xl md:text-4xl font-serif text-white leading-tight">
-                Intelligence<br/>Everywhere.
-              </h3>
+          THE RonaOS MANIFESTO
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight"
+        >
+          Excellence is an <i className="text-yellow-500 font-light">Architecture.</i>
+        </motion.h2>
+      </div>
+
+      {/* Sticky Stacking Container */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative pb-[20vh]">
+        {manifestoPoints.map((point, index) => (
+          <div
+            key={point.id}
+            className="sticky w-full rounded-[2rem] border-t border-slate-700/60 bg-[#0B1120] shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col justify-center"
+            style={{ 
+              top: `calc(15vh + ${index * 32}px)`, 
+              minHeight: '55vh',
+              marginBottom: index === manifestoPoints.length - 1 ? '0' : '65vh',
+              zIndex: 10 + index
+            }}
+          >
+            {/* Ambient Top Glow for stacking contrast */}
+            <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent"></div>
+            
+            {/* Giant Watermark Number */}
+            <div className="absolute -bottom-10 -right-10 md:right-10 text-[180px] md:text-[280px] font-bold text-white/[0.02] leading-none pointer-events-none select-none font-sans tracking-tighter">
+              {point.id}
             </div>
-            <div className="md:w-2/3 border-l-0 md:border-l border-slate-700 md:pl-8">
-              <p className="text-base text-slate-300 leading-relaxed font-light mb-4">
-                <strong className="text-white font-medium">Artificial Intelligence bukan sekadar fitur sisipan, melainkan fondasi dari setiap keputusan.</strong>
-              </p>
-              <p className="text-sm text-slate-400 leading-relaxed font-light">
-                Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang secara kontinu belajar dan berevolusi dari data klinik Anda.
+
+            <div className="relative z-10 p-8 md:p-16 lg:p-20 max-w-3xl">
+              <div className="flex items-center gap-6 mb-8 md:mb-12">
+                <span className="text-sm md:text-base font-bold text-slate-500 font-mono tracking-widest">
+                  <span className="text-white">{point.id}</span> <span className="opacity-40">/ 07</span>
+                </span>
+                <div className="w-12 h-[1px] bg-slate-700"></div>
+              </div>
+              
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
+                {point.title}
+              </h3>
+              
+              <p className="text-base md:text-xl text-slate-400 leading-relaxed font-light max-w-2xl">
+                {point.body}
               </p>
             </div>
           </div>
-        </motion.div>
+        ))}
       </div>
       
-      {/* Decorative Glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-900/5 rounded-full blur-[100px] pointer-events-none"></div>
+      {/* Global Decorative Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-yellow-900/10 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
   );
 }
