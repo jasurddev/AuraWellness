@@ -16,7 +16,7 @@ const MockupContainer = ({ children }: { children: React.ReactNode }) => (
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
-    className="relative w-[320px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[8px] border-white/50 h-[650px] flex flex-col snap-center"
+    className="relative w-[260px] lg:w-[280px] shrink-0 bg-white/70 backdrop-blur-2xl rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] border-[6px] border-white/50 h-[560px] lg:h-[600px] flex flex-col snap-center"
   >
     <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-xl z-30"></div>
     {children}
@@ -262,8 +262,8 @@ export default function LiveAIScannerDemo() {
       <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       {/* Container */}
-      <div className="w-full mx-auto relative z-10">
-        <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 px-6 md:px-12 items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
+      <div className="w-full mx-auto max-w-[1400px] relative z-10">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12 xl:justify-center items-center pb-8 scrollbar-hide w-full" style={{ scrollPaddingLeft: '24px' }}>
           <PatientScannerMockup />
           <FrontdeskMockup />
           <DoctorEMRMockup />
