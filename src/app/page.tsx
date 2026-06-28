@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, ShieldCheck, Zap, Smartphone, Check, ArrowUpRight, LayoutDashboard } from 'lucide-react';
 import Image from 'next/image';
-import { LiveAIScannerDemo } from "@/components/home/LiveAIScannerDemo";
+import LiveAIScannerDemo from "@/components/home/LiveAIScannerDemo";
 import FourCoresAccordion from "@/components/home/FourCoresAccordion";
 import Chatbot from "@/components/shared/Chatbot";
 
