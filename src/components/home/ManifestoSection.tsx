@@ -1,149 +1,202 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Stethoscope, Clock, HeartHandshake, BrainCircuit, ShieldCheck, Shield, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
 
 const manifestoPoints = [
   {
     id: "01",
-    title: "One Patient - One Journey",
+    title: "One Patient\nOne Journey.",
     body: "Setiap pasien memiliki cerita. RonaOS memastikan seluruh perjalanan tersebut tetap utuh—mulai dari assessment, medical records, treatment, products, after care, hingga follow-up. Semuanya terhubung dalam satu timeline yang dirancang untuk memberikan pengalaman yang konsisten di setiap kunjungan.",
-    icon: Stethoscope
   },
   {
     id: "02",
-    title: "Every Appointment Has Value",
+    title: "Every Appointment\nHas Value.",
     body: "Waktu dokter adalah aset, dan setiap slot treatment adalah peluang. Melalui Smart Booking, pembayaran terintegrasi, dan konfirmasi otomatis, RonaOS membantu memastikan setiap jadwal benar-benar bernilai—berujung pada lebih sedikit no-show, lebih banyak kepastian, dan peningkatan pertumbuhan bisnis.",
-    icon: Clock
   },
   {
     id: "03",
-    title: "Care Beyond The Clinic",
+    title: "Care Beyond\nThe Clinic.",
     body: "Hubungan dengan pasien tidak berakhir setelah treatment selesai. AI Post-Care membantu klinik tetap hadir melalui edukasi, monitoring perkembangan, pengingat, hingga rekomendasi treatment berikutnya. Karena loyalitas sejati dibangun setelah pasien pulang.",
-    icon: HeartHandshake
   },
   {
     id: "04",
-    title: "One Intelligence",
-    body: "Every Department Connected. AI memahami lebih dari sekadar percakapan. Ia memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya terhadap urat nadi bisnis Anda.",
-    icon: BrainCircuit
+    title: "One Intelligence.\nEvery Department.",
+    body: "AI memahami lebih dari sekadar percakapan. Ia memahami SOP klinik, riwayat treatment, data pasien, inventory, performa dokter, transaksi, hingga revenue. Semakin lama digunakan, semakin dalam pemahamannya terhadap urat nadi bisnis Anda.",
   },
   {
     id: "05",
-    title: "Designed Around Your Brand",
+    title: "Designed Around\nYour Brand.",
     body: "Pasien mengenal brand Anda, bukan brand kami. Mulai dari aplikasi pasien, komunikasi, hingga pengalaman digital, seluruhnya dibangun menggunakan identitas klinik Anda secara eksklusif. Invisible technology, visible excellence.",
-    icon: Sparkles
   },
   {
     id: "06",
-    title: "Enterprise by Design",
+    title: "Enterprise\nby Design.",
     body: "Keamanan, kecepatan, dan reliabilitas. Semuanya dirancang sejak awal—bukan sekadar sebagai fitur tambahan, melainkan sebagai fondasi utama. Karena klinik premium membutuhkan infrastruktur yang mutlak dapat dipercaya.",
-    icon: ShieldCheck
   },
   {
     id: "07",
-    title: "Intelligence Everywhere",
+    title: "Intelligence\nEverywhere.",
     body: "Artificial Intelligence bukan sekadar fitur sisipan, melainkan fondasi dari setiap keputusan. Mulai dari AI Assessment, rekomendasi treatment, patient journey, operasional, hingga business intelligence—semuanya saling terhubung dalam satu intelligence layer yang secara kontinu belajar dan berevolusi dari data klinik Anda.",
-    icon: Shield
-  }
+  },
 ];
 
-export default function ManifestoSection() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  
-  // Track scroll progress of the entire tall section
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
+function SlideCard({
+  point,
+  index,
+  total,
+  progress,
+}: {
+  point: (typeof manifestoPoints)[0];
+  index: number;
+  total: number;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  // Each card occupies a segment of the scroll
+  const segmentSize = 1 / total;
+  const start = index * segmentSize;
+  const peakStart = start + segmentSize * 0.15;
+  const peakEnd = start + segmentSize * 0.85;
+  const end = start + segmentSize;
 
-  // Calculate translation: we move left by a percentage depending on how many cards we have
-  // 7 cards * width. A reasonable end value is around "-85%" for a long container.
-  // We use -85% to leave some margin for the last card so it doesn't snap off-screen.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+  // Opacity: fade in -> hold -> fade out (last card stays visible)
+  const opacity = useTransform(
+    progress,
+    index === total - 1
+      ? [start, peakStart, 1]
+      : [start, peakStart, peakEnd, end],
+    index === total - 1 ? [0, 1, 1] : [0, 1, 1, 0]
+  );
+
+  // Y translation: slide up from below -> hold -> slide up out (last card stays)
+  const y = useTransform(
+    progress,
+    index === total - 1
+      ? [start, peakStart, 1]
+      : [start, peakStart, peakEnd, end],
+    index === total - 1 ? [80, 0, 0] : [80, 0, 0, -40]
+  );
+
+  // Scale: slight zoom in
+  const scale = useTransform(
+    progress,
+    [start, peakStart],
+    [0.95, 1]
+  );
 
   return (
-    <section ref={targetRef} id="manifesto" className="bg-[#030712] relative h-[400vh]">
-      
-      {/* Sticky Container */}
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden flex-col md:flex-row pt-32 md:pt-0">
-        
-        {/* Left Sticky Content */}
-        <div className="w-full md:w-[40%] flex-shrink-0 px-8 md:px-16 lg:px-24 flex flex-col justify-center relative z-20 mb-12 md:mb-0">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-[10px] font-bold tracking-[0.2em] text-yellow-600 mb-6 block uppercase text-center md:text-left"
-          >
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{ opacity, y, scale }}
+    >
+      <div className="w-full max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 items-center">
+          {/* Left: Big Number + Title */}
+          <div className="lg:col-span-7 text-center lg:text-left">
+            {/* Floating number */}
+            <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+              <span className="text-sm font-mono font-bold text-yellow-600 tracking-widest">
+                {point.id}
+              </span>
+              <div className="w-12 h-[1px] bg-yellow-600/40"></div>
+              <span className="text-[10px] font-bold text-slate-600 tracking-[0.15em] uppercase">
+                / {String(total).padStart(2, "0")}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white leading-[1.08] tracking-tight whitespace-pre-line">
+              {point.title}
+            </h3>
+          </div>
+
+          {/* Right: Description */}
+          <div className="lg:col-span-5 text-center lg:text-left">
+            <div className="w-16 h-[1px] bg-slate-700 mb-8 mx-auto lg:mx-0"></div>
+            <p className="text-base md:text-lg text-slate-400 leading-relaxed font-light max-w-md mx-auto lg:mx-0">
+              {point.body}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function ProgressDots({
+  total,
+  progress,
+}: {
+  total: number;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useMotionValueEvent(progress, "change", (latest) => {
+    const segmentSize = 1 / total;
+    const idx = Math.min(Math.floor(latest / segmentSize), total - 1);
+    setActiveIndex(idx);
+  });
+
+  return (
+    <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-30">
+      {Array.from({ length: total }).map((_, i) => (
+        <div
+          key={i}
+          className={`rounded-full transition-all duration-500 ${
+            i === activeIndex
+              ? "w-2 h-6 bg-yellow-500"
+              : "w-2 h-2 bg-slate-700 hover:bg-slate-600"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function ManifestoSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <section
+      ref={containerRef}
+      id="manifesto"
+      className="bg-[#030712] relative"
+      style={{ height: `${manifestoPoints.length * 100}vh` }}
+    >
+      {/* Sticky viewport */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Section Label - always visible */}
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30 text-center">
+          <span className="text-[10px] font-bold tracking-[0.25em] text-yellow-600/70 uppercase">
             THE RonaOS MANIFESTO
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-serif text-white leading-[1.1] mb-6 text-center md:text-left"
-          >
-            Excellence is an <br className="hidden md:block" />
-            <i className="text-yellow-500 font-light">Architecture.</i>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-slate-400 text-sm md:text-base leading-relaxed max-w-sm mx-auto md:mx-0 text-center md:text-left"
-          >
-            Everything you need to scale, connected in one place. AI, web, and marketing — one 24/7 aesthetic business machine.
-          </motion.p>
+          </span>
         </div>
 
-        {/* Right Scrolling Cards */}
-        <motion.div 
-          style={{ x }} 
-          className="flex gap-6 px-4 md:px-8 flex-shrink-0 items-center w-full md:w-auto"
-        >
-          {manifestoPoints.map((point) => {
-            const Icon = point.icon;
-            return (
-              <div 
-                key={point.id} 
-                className="w-[300px] md:w-[380px] h-[400px] md:h-[480px] bg-[#0B1120] border border-slate-800/60 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between shrink-0 hover:border-slate-700/80 transition-colors group relative overflow-hidden"
-              >
-                {/* Subtle top glow */}
-                <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-slate-700/30 to-transparent"></div>
-                
-                <div>
-                  <div className="w-12 h-12 bg-slate-900/50 rounded-xl border border-slate-800 flex items-center justify-center mb-8 group-hover:border-slate-700 transition-colors">
-                    <Icon className="w-5 h-5 text-slate-300 group-hover:text-yellow-500 transition-colors" />
-                  </div>
-                  
-                  <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 leading-relaxed">
-                    {point.title}
-                  </h3>
-                  
-                  <p className="text-slate-400 text-sm leading-relaxed font-light">
-                    {point.body}
-                  </p>
-                </div>
+        {/* Cards */}
+        {manifestoPoints.map((point, index) => (
+          <SlideCard
+            key={point.id}
+            point={point}
+            index={index}
+            total={manifestoPoints.length}
+            progress={scrollYProgress}
+          />
+        ))}
 
-                <div className="flex items-center gap-2 pt-6 border-t border-slate-800/60 mt-6">
-                  <span className="w-1.5 h-1.5 bg-yellow-600 rounded-full opacity-50 group-hover:opacity-100 transition-opacity"></span>
-                  <span className="text-[9px] font-bold text-slate-500 tracking-[0.2em] uppercase">
-                    BUILT FOR RESULTS • {point.id}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
-        
+        {/* Progress Dots */}
+        <ProgressDots total={manifestoPoints.length} progress={scrollYProgress} />
+
+        {/* Ambient glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-900/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-slate-800/50 to-transparent"></div>
       </div>
-
-      {/* Global Decorative Glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[800px] max-w-[100vw] h-[800px] bg-yellow-900/10 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
   );
 }
