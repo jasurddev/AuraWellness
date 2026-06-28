@@ -301,10 +301,10 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-slate-200 pb-10">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-yellow-600 mb-4 block">ARCHITECTURE LICENSES</span>
-              <h2 className="text-4xl md:text-5xl font-serif">Scalability, Engineered.</h2>
+              <h2 className="text-4xl md:text-5xl font-serif max-w-lg leading-tight">Choose the Right Foundation for Your Growth.</h2>
             </div>
-            <p className="text-sm text-slate-500 max-w-sm md:text-right mt-4 md:mt-0 font-medium leading-relaxed">
-              RonaOS tidak menyewakan software. Kami melisensikan arsitektur sistem. Pilih infrastruktur yang sesuai dengan skala dan ambisi pertumbuhan klinik Anda.
+            <p className="text-sm text-slate-500 max-w-sm md:text-right mt-6 md:mt-0 font-medium leading-relaxed">
+              Tidak semua klinik berada pada tahap yang sama. Pilih lisensi yang sesuai dengan kebutuhan hari ini, dan biarkan RonaOS berkembang bersama bisnis Anda.
             </p>
           </div>
 
